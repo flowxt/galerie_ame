@@ -1,8 +1,50 @@
-import Link from "next/link";
+"use client";
 
-export default function CheckoutSuccess({ searchParams }) {
-  const sessionId = searchParams?.session_id;
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+
+export default function CheckoutSuccess() {
+  const searchParams = useSearchParams();
+  const sessionId = searchParams?.get("session_id");
+  const artworkId = searchParams?.get("artwork_id");
+  const [artworkUpdated, setArtworkUpdated] = useState(false);
+  const [updateError, setUpdateError] = useState(null);
+
   const isSimulation = sessionId?.startsWith("cs_test_simulation_");
+
+  useEffect(() => {
+    // Mettre à jour le statut de l'œuvre après un paiement réussi
+    const updateArtworkStatus = async () => {
+      if (!artworkId || artworkUpdated) return;
+
+      try {
+        const response = await fetch("/api/update-artwork-status", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            artworkId: artworkId,
+            status: "sold",
+            soldDate: new Date().toISOString(),
+          }),
+        });
+
+        if (response.ok) {
+          setArtworkUpdated(true);
+          console.log("✅ Œuvre marquée comme vendue");
+        } else {
+          throw new Error("Erreur lors de la mise à jour");
+        }
+      } catch (error) {
+        console.error("❌ Erreur lors de la mise à jour du statut:", error);
+        setUpdateError(error.message);
+      }
+    };
+
+    updateArtworkStatus();
+  }, [artworkId, artworkUpdated]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -28,6 +70,18 @@ export default function CheckoutSuccess({ searchParams }) {
             >
               Boutique
             </Link>
+            <Link
+              href="/attrape-reves"
+              className="text-gray-600 hover:text-gray-800"
+            >
+              Attrape-rêves
+            </Link>
+            <Link
+              href="/deja-realise"
+              className="text-gray-600 hover:text-gray-800"
+            >
+              Déjà réalisé
+            </Link>
             <Link href="/contact" className="text-gray-600 hover:text-gray-800">
               Contact
             </Link>
@@ -37,7 +91,7 @@ export default function CheckoutSuccess({ searchParams }) {
 
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-2xl mx-auto text-center">
-          {/* Success Icon */}
+          {/* Icône de succès */}
           <div className="mb-8">
             <div className="mx-auto w-24 h-24 bg-green-100 rounded-full flex items-center justify-center">
               <svg
@@ -56,90 +110,132 @@ export default function CheckoutSuccess({ searchParams }) {
             </div>
           </div>
 
-          {/* Success Message */}
+          {/* Message principal */}
           <h1 className="text-4xl font-light text-gray-800 mb-6">
-            {isSimulation
-              ? "Commande simulée avec succès !"
-              : "Commande confirmée !"}
+            Paiement réussi ! 🎉
           </h1>
 
+          {isSimulation && (
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+              <p className="text-blue-800 text-sm">
+                🔧 <strong>Mode simulation</strong> - Aucun paiement réel
+                n&apos;a été effectué
+              </p>
+            </div>
+          )}
+
           <p className="text-xl text-gray-600 mb-8">
-            {isSimulation
-              ? "Votre commande a été simulée avec succès. En production, le paiement serait traité par Stripe."
-              : "Merci pour votre commande ! Vous allez recevoir un email de confirmation dans quelques instants."}
+            Merci pour votre achat ! Votre commande a été confirmée et vous
+            recevrez bientôt un email de confirmation.
           </p>
 
-          {/* Order Details */}
-          <div className="bg-gray-50 p-6 rounded-lg mb-8">
-            <h2 className="text-lg font-medium text-gray-800 mb-4">
-              Détails de la commande
+          {/* Statut de mise à jour de l'œuvre */}
+          {artworkId && (
+            <div className="mb-8">
+              {artworkUpdated ? (
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <p className="text-green-800 text-sm">
+                    ✅ Œuvre automatiquement retirée de la vente
+                  </p>
+                </div>
+              ) : updateError ? (
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                  <p className="text-yellow-800 text-sm">
+                    ⚠️ L&apos;œuvre sera retirée de la vente prochainement
+                  </p>
+                </div>
+              ) : (
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <p className="text-blue-800 text-sm">
+                    🔄 Mise à jour en cours...
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Prochaines étapes */}
+          <div className="bg-gray-50 p-8 rounded-lg mb-8">
+            <h2 className="text-2xl font-medium text-gray-800 mb-4">
+              Que se passe-t-il maintenant ?
             </h2>
-            {sessionId && (
-              <p className="text-gray-600 mb-2">
-                <span className="font-medium">ID de session :</span> {sessionId}
-              </p>
-            )}
-            {isSimulation && (
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-4">
-                <p className="text-yellow-800 text-sm">
-                  <strong>Mode développement :</strong> Cette commande est
-                  simulée. Les vraies clés Stripe seront intégrées en
-                  production.
-                </p>
+            <div className="space-y-4 text-left">
+              <div className="flex items-start space-x-3">
+                <span className="bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0 mt-1">
+                  1
+                </span>
+                <div>
+                  <h3 className="font-medium text-gray-800">
+                    Confirmation par email
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Vous recevrez un email de confirmation dans les prochaines
+                    minutes
+                  </p>
+                </div>
               </div>
-            )}
+              <div className="flex items-start space-x-3">
+                <span className="bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0 mt-1">
+                  2
+                </span>
+                <div>
+                  <h3 className="font-medium text-gray-800">
+                    Préparation de l&apos;envoi
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Votre œuvre sera soigneusement emballée et expédiée sous 2-3
+                    jours
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <span className="bg-purple-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0 mt-1">
+                  3
+                </span>
+                <div>
+                  <h3 className="font-medium text-gray-800">
+                    Livraison sécurisée
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Livraison assurée avec certificat d&apos;authenticité inclus
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Next Steps */}
-          <div className="text-left bg-white border border-gray-200 rounded-lg p-6 mb-8">
-            <h3 className="text-lg font-medium text-gray-800 mb-4">
-              Prochaines étapes
-            </h3>
-            <ul className="space-y-2 text-gray-600">
-              <li className="flex items-start">
-                <span className="text-green-600 mr-2">1.</span>
-                <span>
-                  Vous recevrez un email de confirmation avec les détails de
-                  votre commande
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-600 mr-2">2.</span>
-                <span>
-                  L&apos;artiste vous contactera dans les 24-48h pour organiser
-                  la consultation
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-600 mr-2">3.</span>
-                <span>
-                  Le processus créatif commencera selon vos disponibilités
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-600 mr-2">4.</span>
-                <span>
-                  Vous recevrez des mises à jour régulières sur
-                  l&apos;avancement de votre œuvre
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex justify-center space-x-4">
+          {/* Actions */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/boutique"
-              className="bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition"
+              className="bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition font-medium"
             >
-              Retour à la boutique
+              Continuer mes achats
+            </Link>
+            <Link
+              href="/deja-realise"
+              className="border border-gray-300 text-gray-800 px-8 py-3 rounded-lg hover:bg-gray-50 transition font-medium"
+            >
+              Voir la galerie des œuvres vendues
             </Link>
             <Link
               href="/contact"
-              className="border border-gray-800 text-gray-800 px-8 py-3 rounded-lg hover:bg-gray-50 transition"
+              className="border border-gray-300 text-gray-800 px-8 py-3 rounded-lg hover:bg-gray-50 transition font-medium"
             >
               Nous contacter
             </Link>
+          </div>
+
+          {/* Note sur l'unicité */}
+          <div className="mt-8 p-6 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <h3 className="font-medium text-yellow-900 mb-2">
+              🎨 Félicitations !
+            </h3>
+            <p className="text-yellow-800 text-sm">
+              Vous venez d&apos;acquérir une œuvre unique qui n&apos;existe
+              qu&apos;en un seul exemplaire. Elle rejoindra bientôt notre
+              galerie des créations trouvées.
+            </p>
           </div>
         </div>
       </main>

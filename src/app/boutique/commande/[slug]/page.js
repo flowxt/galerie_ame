@@ -47,6 +47,18 @@ export default async function ArtworkOrderPage({ params }) {
             >
               Boutique
             </Link>
+            <Link
+              href="/attrape-reves"
+              className="text-gray-600 hover:text-gray-800"
+            >
+              Attrape-rêves
+            </Link>
+            <Link
+              href="/deja-realise"
+              className="text-gray-600 hover:text-gray-800"
+            >
+              Déjà réalisé
+            </Link>
             <Link href="/contact" className="text-gray-600 hover:text-gray-800">
               Contact
             </Link>

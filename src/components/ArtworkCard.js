@@ -78,11 +78,27 @@ export default function ArtworkCard({ artwork }) {
             </div>
           )}
         </Link>
-        {artwork.featured && (
-          <div className="absolute top-4 right-4 bg-yellow-400 text-gray-800 px-2 py-1 rounded-lg text-sm font-medium">
-            ⭐ Coup de cœur
-          </div>
-        )}
+
+        {/* Badges de statut */}
+        <div className="absolute top-4 right-4 flex flex-col gap-2">
+          {artwork.featured && (
+            <div className="bg-yellow-400 text-gray-800 px-2 py-1 rounded-lg text-sm font-medium">
+              ⭐ Coup de cœur
+            </div>
+          )}
+
+          {artwork.status === "sold" && (
+            <div className="bg-red-600 text-white px-3 py-1 rounded-lg text-sm font-medium">
+              ❌ VENDU
+            </div>
+          )}
+
+          {artwork.status === "reserved" && (
+            <div className="bg-orange-500 text-white px-3 py-1 rounded-lg text-sm font-medium">
+              🔶 RÉSERVÉ
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Content */}
@@ -109,6 +125,9 @@ export default function ArtworkCard({ artwork }) {
           <span className="text-2xl font-light text-gray-800">
             {artwork.price}€
           </span>
+          {artwork.status !== "available" && (
+            <span className="text-sm text-gray-500 ml-2">(Non disponible)</span>
+          )}
         </div>
 
         {/* Boutons */}
@@ -117,18 +136,42 @@ export default function ArtworkCard({ artwork }) {
             href={`/boutique/${artwork.slug?.current}`}
             className="flex-1 border border-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-50 transition text-center text-sm font-medium"
           >
-            En savoir plus
+            {artwork.status === "available"
+              ? "En savoir plus"
+              : "Voir les détails"}
           </Link>
-          <button
-            onClick={() =>
-              (window.location.href = `/boutique/commande/${artwork.slug?.current}`)
-            }
-            disabled={isLoading}
-            className="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-sm font-medium"
-          >
-            Commander
-          </button>
+
+          {artwork.status === "available" ? (
+            <button
+              onClick={() =>
+                (window.location.href = `/boutique/commande/${artwork.slug?.current}`)
+              }
+              disabled={isLoading}
+              className="flex-1 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-sm font-medium"
+            >
+              Commander
+            </button>
+          ) : (
+            <button
+              disabled
+              className="flex-1 bg-gray-300 text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed text-sm font-medium"
+            >
+              {artwork.status === "sold" ? "Vendu" : "Réservé"}
+            </button>
+          )}
         </div>
+
+        {/* Message pour œuvres non disponibles */}
+        {artwork.status !== "available" && (
+          <div className="mt-3 text-center">
+            <Link
+              href="/contact"
+              className="text-xs text-gray-600 hover:text-gray-800 border-b border-dotted border-gray-400 hover:border-gray-600"
+            >
+              💡 Intéressé par une création similaire ?
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

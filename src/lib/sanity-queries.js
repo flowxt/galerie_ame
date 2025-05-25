@@ -1,109 +1,175 @@
 import { client } from "./sanity";
 
-// Récupérer toutes les œuvres d'art disponibles
+// Requête pour récupérer toutes les œuvres disponibles (statut available)
 export async function getArtworks() {
-  const query = `*[_type == "artwork" && available == true] | order(_createdAt desc) {
-    _id,
-    title,
-    slug,
-    description,
-    price,
-    category,
-    technique,
-    available,
-    featured,
-    "image": image.asset->{
+  return client.fetch(`
+    *[_type == "artwork" && status == "available"] | order(createdDate desc) {
       _id,
-      url,
-      metadata {
-        dimensions
-      }
-    },
-    "gallery": gallery[].asset->{
-      _id,
-      url
+      title,
+      slug,
+      category,
+      status,
+      image,
+      gallery,
+      description,
+      longDescription,
+      price,
+      technique,
+      dimensions,
+      materials,
+      createdDate,
+      featured,
+      tags,
+      customizationOptions
     }
-  }`;
-
-  return await client.fetch(query);
+  `);
 }
 
-// Récupérer les œuvres par catégorie
+// Requête pour récupérer les œuvres par catégorie (disponibles uniquement)
 export async function getArtworksByCategory(category) {
-  const query = `*[_type == "artwork" && available == true && category == $category] | order(_createdAt desc) {
-    _id,
-    title,
-    slug,
-    description,
-    price,
-    category,
-    technique,
-    available,
-    featured,
-    "image": image.asset->{
+  return client.fetch(
+    `
+    *[_type == "artwork" && category == $category && status == "available"] | order(createdDate desc) {
       _id,
-      url,
-      metadata {
-        dimensions
-      }
+      title,
+      slug,
+      category,
+      status,
+      image,
+      gallery,
+      description,
+      longDescription,
+      price,
+      technique,
+      dimensions,
+      materials,
+      createdDate,
+      featured,
+      tags,
+      customizationOptions
     }
-  }`;
-
-  return await client.fetch(query, { category });
+  `,
+    { category }
+  );
 }
 
-// Récupérer les œuvres mises en avant
-export async function getFeaturedArtworks() {
-  const query = `*[_type == "artwork" && featured == true && available == true] | order(_createdAt desc) {
-    _id,
-    title,
-    slug,
-    description,
-    price,
-    category,
-    technique,
-    "image": image.asset->{
-      _id,
-      url,
-      metadata {
-        dimensions
-      }
-    }
-  }`;
-
-  return await client.fetch(query);
-}
-
-// Récupérer une œuvre par son slug
+// Requête pour récupérer une œuvre par son slug (tous statuts)
 export async function getArtworkBySlug(slug) {
-  const query = `*[_type == "artwork" && slug.current == $slug][0] {
-    _id,
-    title,
-    slug,
-    description,
-    longDescription,
-    price,
-    category,
-    technique,
-    dimensions,
-    available,
-    featured,
-    createdDate,
-    tags,
-    "image": image.asset->{
+  return client.fetch(
+    `
+    *[_type == "artwork" && slug.current == $slug][0] {
       _id,
-      url,
-      metadata {
-        dimensions
-      }
-    },
-    "gallery": gallery[].asset->{
-      _id,
-      url
+      title,
+      slug,
+      category,
+      status,
+      image,
+      gallery,
+      description,
+      longDescription,
+      price,
+      technique,
+      dimensions,
+      materials,
+      createdDate,
+      soldDate,
+      buyerTestimonial,
+      featured,
+      tags,
+      customizationOptions
     }
-  }`;
+  `,
+    { slug }
+  );
+}
 
-  return await client.fetch(query, { slug });
+// Requête pour récupérer les œuvres vendues (pour la galerie "Déjà réalisé")
+export async function getSoldArtworks() {
+  return client.fetch(`
+    *[_type == "artwork" && status == "sold"] | order(soldDate desc) {
+      _id,
+      title,
+      slug,
+      category,
+      status,
+      image,
+      gallery,
+      description,
+      longDescription,
+      price,
+      technique,
+      dimensions,
+      materials,
+      createdDate,
+      soldDate,
+      buyerTestimonial,
+      featured,
+      tags,
+      customizationOptions
+    }
+  `);
+}
+
+// Requête pour récupérer les œuvres mises en avant (disponibles)
+export async function getFeaturedArtworks() {
+  return client.fetch(`
+    *[_type == "artwork" && featured == true && status == "available"] | order(createdDate desc) {
+      _id,
+      title,
+      slug,
+      category,
+      status,
+      image,
+      gallery,
+      description,
+      longDescription,
+      price,
+      technique,
+      dimensions,
+      materials,
+      createdDate,
+      featured,
+      tags,
+      customizationOptions
+    }
+  `);
+}
+
+// Requête pour récupérer les attrape-rêves disponibles
+export async function getDreamCatchers() {
+  return getArtworksByCategory("attrape-reves");
+}
+
+// Fonction pour mettre à jour le statut d'une œuvre (utilisée après achat)
+export async function updateArtworkStatus(artworkId, status, soldDate = null) {
+  const updateData = {
+    status: status,
+  };
+
+  if (status === "sold" && soldDate) {
+    updateData.soldDate = soldDate;
+  }
+
+  return client.patch(artworkId).set(updateData).commit();
+}
+
+// Statistiques pour le dashboard admin
+export async function getArtworkStats() {
+  return client.fetch(`
+    {
+      "total": count(*[_type == "artwork"]),
+      "available": count(*[_type == "artwork" && status == "available"]),
+      "reserved": count(*[_type == "artwork" && status == "reserved"]),
+      "sold": count(*[_type == "artwork" && status == "sold"]),
+      "byCategory": {
+        "portraitAme": count(*[_type == "artwork" && category == "portrait-ame"]),
+        "original": count(*[_type == "artwork" && category == "original"]),
+        "reproduction": count(*[_type == "artwork" && category == "reproduction"]),
+        "attrapesReves": count(*[_type == "artwork" && category == "attrape-reves"]),
+        "custom": count(*[_type == "artwork" && category == "custom"])
+      }
+    }
+  `);
 }
 
 // Récupérer les témoignages pour la page d'accueil

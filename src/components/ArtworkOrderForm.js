@@ -86,6 +86,22 @@ export default function ArtworkOrderForm({ artwork }) {
     setIsLoading(true);
 
     try {
+      // D'abord, réserver l'œuvre
+      const reserveResponse = await fetch("/api/update-artwork-status", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          artworkId: artwork._id,
+          status: "reserved",
+        }),
+      });
+
+      if (!reserveResponse.ok) {
+        throw new Error("Impossible de réserver cette œuvre");
+      }
+
       // Préparer les données pour Stripe avec les informations client
       const orderData = {
         artwork: {
@@ -112,6 +128,17 @@ export default function ArtworkOrderForm({ artwork }) {
       const data = await response.json();
 
       if (data.error) {
+        // Si erreur, remettre l'œuvre disponible
+        await fetch("/api/update-artwork-status", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            artworkId: artwork._id,
+            status: "available",
+          }),
+        });
         throw new Error(data.error);
       }
 
@@ -121,6 +148,23 @@ export default function ArtworkOrderForm({ artwork }) {
       }
     } catch (error) {
       console.error("Erreur lors de la commande:", error);
+
+      // En cas d'erreur, remettre l'œuvre disponible
+      try {
+        await fetch("/api/update-artwork-status", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            artworkId: artwork._id,
+            status: "available",
+          }),
+        });
+      } catch (revertError) {
+        console.error("Erreur lors de la remise à disposition:", revertError);
+      }
+
       alert("Erreur lors de la commande. Veuillez réessayer.");
     } finally {
       setIsLoading(false);

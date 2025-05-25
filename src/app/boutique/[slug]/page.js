@@ -60,6 +60,18 @@ export default async function ArtworkDetail({ params }) {
             >
               Boutique
             </Link>
+            <Link
+              href="/attrape-reves"
+              className="text-gray-600 hover:text-gray-800"
+            >
+              Attrape-rêves
+            </Link>
+            <Link
+              href="/deja-realise"
+              className="text-gray-600 hover:text-gray-800"
+            >
+              Déjà réalisé
+            </Link>
             <Link href="/contact" className="text-gray-600 hover:text-gray-800">
               Contact
             </Link>
@@ -78,6 +90,52 @@ export default async function ArtworkDetail({ params }) {
             <span className="text-gray-900">{artwork.title}</span>
           </div>
         </nav>
+
+        {/* Bandeau pour œuvres vendues/réservées */}
+        {artwork.status !== "available" && (
+          <div
+            className={`mb-8 p-4 rounded-lg border text-center ${
+              artwork.status === "sold"
+                ? "bg-red-50 border-red-200 text-red-800"
+                : "bg-orange-50 border-orange-200 text-orange-800"
+            }`}
+          >
+            <div className="flex items-center justify-center gap-2">
+              {artwork.status === "sold" ? (
+                <>
+                  <span className="text-2xl">❌</span>
+                  <div>
+                    <h3 className="font-bold text-lg">
+                      Cette œuvre a été vendue
+                    </h3>
+                    <p className="text-sm">
+                      Cette pièce unique a trouvé son foyer.
+                      {artwork.soldDate &&
+                        ` Vendue le ${new Date(
+                          artwork.soldDate
+                        ).toLocaleDateString("fr-FR")}.`}
+                    </p>
+                    <p className="text-sm mt-1">
+                      Contactez-nous si vous recherchez une création similaire.
+                    </p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <span className="text-2xl">🔶</span>
+                  <div>
+                    <h3 className="font-bold text-lg">
+                      Cette œuvre est réservée
+                    </h3>
+                    <p className="text-sm">
+                      Cette pièce est actuellement en cours de réservation.
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        )}
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Images Section */}
@@ -171,10 +229,16 @@ export default async function ArtworkDetail({ params }) {
                   <span className="text-gray-600">Disponibilité :</span>
                   <span
                     className={`font-medium ${
-                      artwork.available ? "text-green-600" : "text-red-600"
+                      artwork.status === "available"
+                        ? "text-green-600"
+                        : "text-red-600"
                     }`}
                   >
-                    {artwork.available ? "Disponible" : "Vendu"}
+                    {artwork.status === "available"
+                      ? "Disponible"
+                      : artwork.status === "reserved"
+                      ? "Réservé"
+                      : "Vendu"}
                   </span>
                 </div>
               </div>
@@ -201,18 +265,22 @@ export default async function ArtworkDetail({ params }) {
 
             {/* Purchase Section */}
             <div className="mb-8">
-              {artwork.available ? (
+              {artwork.status === "available" ? (
                 <ArtworkPurchaseButton artwork={artwork} />
               ) : (
                 <div className="text-center p-4 bg-gray-100 rounded-lg">
                   <p className="text-gray-600 mb-2">
-                    Cette œuvre n&apos;est plus disponible
+                    {artwork.status === "sold"
+                      ? "Cette œuvre a été vendue et n'est plus disponible"
+                      : "Cette œuvre est actuellement réservée"}
                   </p>
                   <Link
                     href="/contact"
-                    className="text-gray-800 hover:underline"
+                    className="inline-flex items-center bg-gray-800 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition"
                   >
-                    Contactez-nous pour des œuvres similaires
+                    {artwork.status === "sold"
+                      ? "Demander une œuvre similaire"
+                      : "Nous contacter pour plus d'infos"}
                   </Link>
                 </div>
               )}

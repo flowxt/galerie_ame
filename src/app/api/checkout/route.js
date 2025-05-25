@@ -25,7 +25,11 @@ export async function POST(request) {
       // Simulation pour le développement
       console.log("🎨 Simulation Stripe Checkout pour:", artwork.title);
       return NextResponse.json({
-        url: "/checkout/success?session_id=cs_test_simulation_" + Date.now(),
+        url:
+          "/checkout/success?session_id=cs_test_simulation_" +
+          Date.now() +
+          "&artwork_id=" +
+          artwork._id,
         isSimulation: true,
       });
     }
@@ -50,7 +54,9 @@ export async function POST(request) {
       mode: "payment",
       success_url: `${
         process.env.NEXTAUTH_URL || "http://localhost:3000"
-      }/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      }/checkout/success?session_id={CHECKOUT_SESSION_ID}&artwork_id=${
+        artwork._id
+      }`,
       cancel_url: `${
         process.env.NEXTAUTH_URL || "http://localhost:3000"
       }/boutique`,
