@@ -1,5 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
+import {
+  Sparkles,
+  Heart,
+  Star,
+  ArrowRight,
+  Palette,
+  Eye,
+  Clock,
+  CheckCircle,
+  MessageCircle,
+  Award,
+  Users,
+  Calendar,
+} from "lucide-react";
 import { getSoldArtworks } from "../../lib/sanity-queries";
 import { urlFor } from "../../lib/sanity";
 
@@ -29,299 +43,472 @@ export default async function DejaRealisePage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="container mx-auto px-4 py-6">
-        <nav className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-gray-800">
-            Portraits d&apos;Âme
-          </Link>
-          <div className="flex space-x-6">
-            <Link href="/" className="text-gray-600 hover:text-gray-800">
-              Accueil
-            </Link>
-            <Link
-              href="/portrait-d-ame"
-              className="text-gray-600 hover:text-gray-800"
-            >
-              Portraits d&apos;Âme
-            </Link>
-            <Link
-              href="/boutique"
-              className="text-gray-600 hover:text-gray-800"
-            >
-              Boutique
-            </Link>
-            <Link
-              href="/attrape-reves"
-              className="text-gray-600 hover:text-gray-800"
-            >
-              Attrape-rêves
-            </Link>
-            <Link
-              href="/deja-realise"
-              className="text-gray-600 hover:text-gray-800 font-medium"
-            >
-              Déjà réalisé
-            </Link>
-            <Link href="/contact" className="text-gray-600 hover:text-gray-800">
-              Contact
-            </Link>
-          </div>
-        </nav>
-      </header>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50">
+        {/* Arrière-plan épuré */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-amber-200/20 to-orange-200/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-rose-200/20 to-amber-200/10 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
 
-      <main className="container mx-auto px-4 py-8">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center mb-6">
-            <div className="text-6xl mr-4">✨</div>
-            <h1 className="text-5xl font-light text-gray-800">Déjà réalisé</h1>
-            <div className="text-6xl ml-4">🎨</div>
+          {/* Éléments spirituels discrets */}
+          <div className="absolute top-1/4 left-1/4 text-amber-300 animate-float opacity-40">
+            <Star className="w-6 h-6" />
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Découvrez les œuvres qui ont trouvé leur foyer et les témoignages de
-            ceux qui vivent désormais avec ces créations uniques.
-          </p>
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 max-w-2xl mx-auto">
-            <p className="text-yellow-800 text-sm">
-              💡 <strong>Chaque pièce est unique</strong> - Ces œuvres ne sont
-              plus disponibles à l&apos;achat, mais elles peuvent vous inspirer
-              pour une commande personnalisée.
-            </p>
+          <div className="absolute bottom-1/3 right-1/4 text-orange-300 animate-float animation-delay-700 opacity-40">
+            <Heart className="w-5 h-5" />
+          </div>
+          <div className="absolute top-1/2 right-1/6 text-rose-400 animate-float animation-delay-1000 opacity-30">
+            <Sparkles className="w-4 h-4" />
           </div>
         </div>
 
-        {/* Statistiques */}
-        {soldArtworks && soldArtworks.length > 0 && (
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 mb-16">
-            <div className="text-center">
-              <h2 className="text-3xl font-light text-gray-800 mb-4">
-                {soldArtworks.length} œuvre{soldArtworks.length > 1 ? "s" : ""}{" "}
-                qui illuminent le quotidien
-              </h2>
-              <p className="text-gray-600">
-                Autant de foyers touchés par l&apos;art et d&apos;histoires
-                uniques qui continuent...
-              </p>
+        {/* Contenu principal */}
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+          <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm border border-amber-200/50 rounded-full px-6 py-3 mb-8 shadow-sm">
+            <Award className="w-4 h-4 text-amber-500" />
+            <span className="text-gray-700 text-sm font-medium">
+              Œuvres qui ont trouvé leur foyer
+            </span>
+          </div>
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light mb-8 leading-tight text-gray-800">
+            <span className="block bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent font-medium">
+              Galerie des Créations Trouvées
+            </span>
+          </h1>
+
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed font-light">
+            Découvrez les œuvres qui illuminent désormais le quotidien de leurs
+            propriétaires et les témoignages de ceux qui vivent avec ces
+            créations uniques.
+          </p>
+
+          <div className="bg-amber-50/80 backdrop-blur-sm border border-amber-200/50 rounded-2xl p-6 max-w-2xl mx-auto mb-12">
+            <div className="flex items-center justify-center space-x-2 mb-2">
+              <Sparkles className="w-5 h-5 text-amber-600" />
+              <span className="text-amber-800 font-semibold">
+                Pièces Uniques
+              </span>
+              <Sparkles className="w-5 h-5 text-amber-600" />
             </div>
-          </div>
-        )}
-
-        {/* Galerie des œuvres vendues */}
-        {soldArtworks && soldArtworks.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {soldArtworks.map((artwork) => (
-              <Link
-                key={artwork._id}
-                href={`/boutique/${artwork.slug?.current}`}
-                className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow cursor-pointer"
-              >
-                {/* Image avec overlay "VENDU" */}
-                <div className="relative h-64 bg-gray-100">
-                  {artwork.image ? (
-                    <Image
-                      src={urlFor(artwork.image).width(400).height(300).url()}
-                      alt={artwork.title}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      className="rounded-t-lg"
-                    />
-                  ) : (
-                    <div className="h-full flex items-center justify-center">
-                      <span className="text-gray-500">
-                        Image de {artwork.title}
-                      </span>
-                    </div>
-                  )}
-                  {/* Overlay vendu */}
-                  <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
-                    <div className="bg-red-600 text-white px-6 py-2 rounded-lg font-medium transform -rotate-12">
-                      ❌ VENDU
-                    </div>
-                  </div>
-                  {/* Badge catégorie */}
-                  <div className="absolute top-4 left-4 bg-white bg-opacity-90 px-3 py-1 rounded-lg text-sm font-medium text-gray-800">
-                    {getCategoryLabel(artwork.category)}
-                  </div>
-                  {/* Indicateur cliquable */}
-                  <div className="absolute top-4 right-4 bg-blue-600 text-white px-2 py-1 rounded-lg text-xs font-medium">
-                    👁️ Voir détails
-                  </div>
-                </div>
-
-                {/* Contenu */}
-                <div className="p-6">
-                  <h3 className="text-xl font-medium text-gray-800 mb-2">
-                    {artwork.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4 line-clamp-2">
-                    {artwork.description}
-                  </p>
-
-                  {/* Date de vente */}
-                  <div className="text-sm text-gray-500 mb-4">
-                    Réalisé en{" "}
-                    {formatDate(artwork.soldDate || artwork.createdDate)}
-                  </div>
-
-                  {/* Témoignage si disponible */}
-                  {artwork.buyerTestimonial && (
-                    <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                      <blockquote className="text-blue-800 italic text-sm">
-                        &quot;{artwork.buyerTestimonial}&quot;
-                      </blockquote>
-                    </div>
-                  )}
-
-                  {/* Prix (pour inspiration) */}
-                  <div className="flex justify-between items-center text-sm text-gray-600">
-                    <span>Prix de référence :</span>
-                    <span className="font-medium">{artwork.price}€</span>
-                  </div>
-
-                  {/* Note pour cliquer */}
-                  <div className="mt-3 text-center">
-                    <span className="text-blue-600 text-sm hover:underline">
-                      Cliquer pour voir tous les détails →
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-16">
-            <div className="text-6xl mb-6">🌱</div>
-            <h2 className="text-2xl font-light text-gray-800 mb-4">
-              Premières créations en cours
-            </h2>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Cette galerie se remplira au fur et à mesure que nos œuvres
-              trouvent leur foyer. Soyez parmi les premiers à découvrir nos
-              créations !
+            <p className="text-amber-700 text-sm">
+              Ces œuvres ne sont plus disponibles à l&apos;achat, mais elles
+              peuvent vous inspirer pour une commande personnalisée.
             </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href="/boutique"
-              className="bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition font-medium"
+              href="#galerie"
+              className="group bg-gradient-to-r from-amber-500 to-rose-500 text-white px-8 py-4 rounded-full hover:from-amber-600 hover:to-rose-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
             >
-              Découvrir les œuvres disponibles
+              <span className="flex items-center space-x-2">
+                <Eye className="w-5 h-5" />
+                <span>Découvrir la Galerie</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
+
+            <Link
+              href="/portrait-d-ame/commande"
+              className="group bg-white/80 backdrop-blur-sm border-2 border-amber-300 text-amber-700 hover:bg-amber-50 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
+            >
+              <span className="flex items-center space-x-2">
+                <Palette className="w-5 h-5" />
+                <span>M&apos;Inspirer pour ma Commande</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
             </Link>
           </div>
-        )}
+        </div>
+      </section>
 
-        {/* Section inspiration pour commander */}
-        {soldArtworks && soldArtworks.length > 0 && (
-          <div className="mt-20 bg-gray-50 rounded-2xl p-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl font-light text-gray-800 mb-6">
-                Inspiré par ces créations ?
+      {/* Section Statistiques */}
+      {soldArtworks && soldArtworks.length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="bg-gradient-to-r from-amber-50 to-rose-50 rounded-3xl p-12 text-center max-w-4xl mx-auto">
+              <div className="inline-flex items-center space-x-2 bg-amber-100 rounded-full px-6 py-2 mb-6">
+                <Users className="w-5 h-5 text-amber-600" />
+                <span className="text-amber-800 font-medium text-sm">
+                  Impact Spirituel
+                </span>
+              </div>
+
+              <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+                <span className="bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent font-medium">
+                  {soldArtworks.length}
+                </span>{" "}
+                œuvre{soldArtworks.length > 1 ? "s" : ""} qui illuminent le
+                quotidien
               </h2>
-              <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                Chaque œuvre est unique et ne peut être reproduite à
-                l&apos;identique. Cependant, nous pouvons créer quelque chose
-                d&apos;uniquement vôtre dans le même esprit.
-              </p>
 
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="text-center">
-                  <div className="text-4xl mb-3">🎨</div>
-                  <h3 className="font-medium text-gray-800 mb-2">
-                    Style similaire
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    Nous pouvons nous inspirer du style qui vous plaît
-                  </p>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Autant de foyers touchés par l&apos;art spirituel et
+                d&apos;histoires uniques qui continuent de s&apos;écrire...
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Section Galerie */}
+      <section
+        id="galerie"
+        className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50"
+      >
+        <div className="container mx-auto px-4">
+          {soldArtworks && soldArtworks.length > 0 ? (
+            <div>
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center space-x-2 bg-amber-100 rounded-full px-6 py-2 mb-6">
+                  <Award className="w-5 h-5 text-amber-600" />
+                  <span className="text-amber-800 font-medium text-sm">
+                    Créations Trouvées
+                  </span>
                 </div>
-                <div className="text-center">
-                  <div className="text-4xl mb-3">✨</div>
-                  <h3 className="font-medium text-gray-800 mb-2">
-                    Personnalisation
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    Adaptation à vos goûts et votre espace
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl mb-3">💎</div>
-                  <h3 className="font-medium text-gray-800 mb-2">
-                    Exclusivité
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    Votre œuvre sera tout aussi unique
-                  </p>
+
+                <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+                  Nos
+                  <span className="bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">
+                    {" "}
+                    œuvres adoptées
+                  </span>
+                </h2>
+
+                <div className="flex items-center justify-center space-x-2 text-gray-600">
+                  <Heart className="w-4 h-4" />
+                  <span className="text-lg">
+                    {soldArtworks.length} création
+                    {soldArtworks.length > 1 ? "s" : ""} qui illumine
+                    {soldArtworks.length > 1 ? "nt" : ""} des foyers
+                  </span>
+                  <Heart className="w-4 h-4" />
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                {soldArtworks.map((artwork) => (
+                  <Link
+                    key={artwork._id}
+                    href={`/boutique/${artwork.slug?.current}`}
+                    className="group bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  >
+                    {/* Image avec overlay "ADOPTÉ" */}
+                    <div className="relative h-64 bg-gray-100">
+                      {artwork.image ? (
+                        <Image
+                          src={urlFor(artwork.image)
+                            .width(400)
+                            .height(300)
+                            .url()}
+                          alt={artwork.title}
+                          fill
+                          style={{ objectFit: "cover" }}
+                          className="rounded-t-2xl"
+                        />
+                      ) : (
+                        <div className="h-full flex items-center justify-center">
+                          <span className="text-gray-500">
+                            Image de {artwork.title}
+                          </span>
+                        </div>
+                      )}
+
+                      {/* Overlay adopté */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end justify-center pb-4">
+                        <div className="bg-gradient-to-r from-amber-500 to-rose-500 text-white px-6 py-2 rounded-full font-medium transform rotate-3 shadow-lg">
+                          ✨ ADOPTÉ
+                        </div>
+                      </div>
+
+                      {/* Badge catégorie */}
+                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-800">
+                        {getCategoryLabel(artwork.category)}
+                      </div>
+
+                      {/* Indicateur cliquable */}
+                      <div className="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                        <Eye className="w-3 h-3 inline mr-1" />
+                        Détails
+                      </div>
+                    </div>
+
+                    {/* Contenu */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                        {artwork.title}
+                      </h3>
+                      <p className="text-gray-600 mb-4 line-clamp-2 text-sm leading-relaxed">
+                        {artwork.description}
+                      </p>
+
+                      {/* Date de création */}
+                      <div className="flex items-center space-x-2 text-sm text-gray-500 mb-4">
+                        <Calendar className="w-4 h-4" />
+                        <span>
+                          Réalisé en{" "}
+                          {formatDate(artwork.soldDate || artwork.createdDate)}
+                        </span>
+                      </div>
+
+                      {/* Témoignage si disponible */}
+                      {artwork.buyerTestimonial && (
+                        <div className="bg-amber-50 border border-amber-200/50 p-4 rounded-xl mb-4">
+                          <blockquote className="text-amber-800 italic text-sm leading-relaxed">
+                            &quot;{artwork.buyerTestimonial}&quot;
+                          </blockquote>
+                        </div>
+                      )}
+
+                      {/* Prix de référence */}
+                      <div className="flex justify-between items-center text-sm text-gray-600 mb-3">
+                        <span>Prix de référence :</span>
+                        <span className="font-semibold text-amber-600">
+                          {artwork.price}€
+                        </span>
+                      </div>
+
+                      {/* Note pour cliquer */}
+                      <div className="text-center">
+                        <span className="text-amber-600 text-sm group-hover:underline transition-all">
+                          Voir tous les détails →
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <div className="w-24 h-24 bg-gradient-to-r from-amber-400 to-rose-400 rounded-full flex items-center justify-center mx-auto mb-8">
+                <Sparkles className="w-12 h-12 text-white" />
+              </div>
+
+              <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-6">
+                Premières créations
+                <span className="bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">
+                  {" "}
+                  en cours
+                </span>
+              </h2>
+
+              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Cette galerie se remplira au fur et à mesure que nos œuvres
+                trouvent leur foyer. Soyez parmi les premiers à découvrir nos
+                créations !
+              </p>
+
+              <Link
+                href="/boutique"
+                className="group inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-amber-500 to-rose-500 text-white px-8 py-4 rounded-full hover:from-amber-600 hover:to-rose-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium whitespace-nowrap"
+              >
+                <Eye className="w-5 h-5" />
+                <span>Découvrir les œuvres disponibles</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Section Inspiration */}
+      {soldArtworks && soldArtworks.length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center space-x-2 bg-rose-100 rounded-full px-6 py-2 mb-6">
+                  <Palette className="w-5 h-5 text-rose-600" />
+                  <span className="text-rose-800 font-medium text-sm">
+                    Inspiration Créative
+                  </span>
+                </div>
+
+                <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+                  Inspiré par ces
+                  <span className="bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent">
+                    {" "}
+                    créations ?
+                  </span>
+                </h2>
+
+                <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                  Chaque œuvre est unique et ne peut être reproduite à
+                  l&apos;identique. Cependant, nous pouvons créer quelque chose
+                  d&apos;uniquement vôtre dans le même esprit.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-8 mb-12">
+                <div className="text-center">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-rose-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-rose-400 to-amber-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Palette className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                      Style Similaire
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Nous pouvons nous inspirer du style et de l&apos;énergie
+                      qui vous touchent le plus.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-amber-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-rose-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Heart className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                      Personnalisation
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Adaptation complète à vos goûts, votre espace et votre
+                      énergie personnelle.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-rose-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-rose-500 to-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Star className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                      Exclusivité
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Votre œuvre sera tout aussi unique et portera votre
+                      signature énergétique.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                 <Link
                   href="/portrait-d-ame/commande"
-                  className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition font-medium"
+                  className="group bg-gradient-to-r from-rose-500 to-amber-500 text-white px-10 py-5 rounded-full hover:from-rose-600 hover:to-amber-600 transition-all duration-300 transform hover:scale-105 shadow-xl text-lg font-medium"
                 >
-                  Commander un Portrait d&apos;Âme
+                  <span className="flex items-center space-x-3">
+                    <Heart className="w-6 h-6" />
+                    <span>Commander un Portrait d&apos;Âme</span>
+                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </Link>
+
                 <Link
                   href="/contact"
-                  className="border border-gray-300 text-gray-800 px-8 py-3 rounded-lg hover:bg-gray-50 transition font-medium"
+                  className="group bg-white border-2 border-rose-300 text-rose-700 hover:bg-rose-50 px-10 py-5 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
                 >
-                  Discuter d&apos;un projet personnalisé
+                  <span className="flex items-center space-x-3">
+                    <MessageCircle className="w-6 h-6" />
+                    <span>Discuter d&apos;un projet personnalisé</span>
+                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </Link>
               </div>
             </div>
           </div>
-        )}
+        </section>
+      )}
 
-        {/* Témoignages généraux */}
-        <div className="mt-16">
-          <h2 className="text-3xl font-light text-gray-800 mb-8 text-center">
-            Ce que disent nos collectionneurs
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
-              <div className="flex items-center mb-4">
-                <div className="text-yellow-400 text-lg">⭐⭐⭐⭐⭐</div>
+      {/* Section Témoignages */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-amber-50/30 to-rose-50/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 bg-gray-100 rounded-full px-6 py-2 mb-6">
+              <Heart className="w-5 h-5 text-gray-600" />
+              <span className="text-gray-800 font-medium text-sm">
+                Témoignages
+              </span>
+            </div>
+
+            <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+              Ce que disent nos
+              <span className="bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">
+                {" "}
+                collectionneurs
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-100 shadow-sm">
+              <div className="flex justify-center mb-4">
+                <div className="flex space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-5 h-5 text-yellow-400 fill-current"
+                    />
+                  ))}
+                </div>
               </div>
-              <blockquote className="text-gray-700 italic mb-4">
+
+              <blockquote className="text-gray-700 italic mb-6 leading-relaxed text-center">
                 &quot;Mon portrait d&apos;âme trône dans mon salon et ne cesse
                 d&apos;émerveiller mes invités. C&apos;est devenu une pièce de
                 conversation incontournable.&quot;
               </blockquote>
-              <cite className="text-gray-600 text-sm">- Émilie D.</cite>
+
+              <div className="text-center">
+                <cite className="text-gray-600 font-medium">- Émilie D.</cite>
+              </div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
-              <div className="flex items-center mb-4">
-                <div className="text-yellow-400 text-lg">⭐⭐⭐⭐⭐</div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-100 shadow-sm">
+              <div className="flex justify-center mb-4">
+                <div className="flex space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-5 h-5 text-yellow-400 fill-current"
+                    />
+                  ))}
+                </div>
               </div>
-              <blockquote className="text-gray-700 italic mb-4">
+
+              <blockquote className="text-gray-700 italic mb-6 leading-relaxed text-center">
                 &quot;L&apos;attrape-rêves que j&apos;ai commandé protège
                 vraiment mes nuits. Depuis que je l&apos;ai, mes rêves sont plus
                 beaux et plus inspirants.&quot;
               </blockquote>
-              <cite className="text-gray-600 text-sm">- Marc L.</cite>
+
+              <div className="text-center">
+                <cite className="text-gray-600 font-medium">- Marc L.</cite>
+              </div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
-              <div className="flex items-center mb-4">
-                <div className="text-yellow-400 text-lg">⭐⭐⭐⭐⭐</div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-100 shadow-sm">
+              <div className="flex justify-center mb-4">
+                <div className="flex space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-5 h-5 text-yellow-400 fill-current"
+                    />
+                  ))}
+                </div>
               </div>
-              <blockquote className="text-gray-700 italic mb-4">
+
+              <blockquote className="text-gray-700 italic mb-6 leading-relaxed text-center">
                 &quot;Une expérience artistique complète, de la consultation à
                 la livraison. Mon œuvre est exactement ce dont j&apos;avais
                 besoin dans ma vie.&quot;
               </blockquote>
-              <cite className="text-gray-600 text-sm">- Sophie R.</cite>
+
+              <div className="text-center">
+                <cite className="text-gray-600 font-medium">- Sophie R.</cite>
+              </div>
             </div>
           </div>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="container mx-auto px-4 py-8 mt-16 border-t border-gray-200">
-        <div className="text-center text-gray-600">
-          <p>&copy; 2024 Portraits d&apos;Âme. Tous droits réservés.</p>
-        </div>
-      </footer>
+      </section>
     </div>
   );
 }

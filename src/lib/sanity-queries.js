@@ -86,7 +86,7 @@ export async function getArtworkBySlug(slug) {
 // Requête pour récupérer les œuvres vendues (pour la galerie "Déjà réalisé")
 export async function getSoldArtworks() {
   return client.fetch(`
-    *[_type == "artwork" && status == "sold"] | order(soldDate desc) {
+    *[_type == "artwork" && status == "sold" && !hidden] | order(soldDate desc) {
       _id,
       title,
       slug,

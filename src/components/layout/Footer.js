@@ -3,7 +3,7 @@ import { Sparkles, Moon, Heart, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
+    <footer className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
       <div className="container mx-auto px-4 py-16">
         {/* Section principale */}
         <div className="grid md:grid-cols-4 gap-12 mb-12">
