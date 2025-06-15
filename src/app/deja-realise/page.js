@@ -45,54 +45,61 @@ export default async function DejaRealisePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50">
-        {/* Arrière-plan épuré */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-amber-200/20 to-orange-200/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-rose-200/20 to-amber-200/10 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Image de fond */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/portrait-dame.jpg"
+            alt="Portrait d'âme réalisé par Véronique"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          {/* Overlay gradient pour lisibilité */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/60"></div>
+        </div>
 
-          {/* Éléments spirituels discrets */}
-          <div className="absolute top-1/4 left-1/4 text-amber-300 animate-float opacity-40">
+        {/* Éléments spirituels flottants */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 text-white/30 animate-float">
             <Star className="w-6 h-6" />
           </div>
-          <div className="absolute bottom-1/3 right-1/4 text-orange-300 animate-float animation-delay-700 opacity-40">
+          <div className="absolute bottom-1/3 right-1/4 text-amber-300/40 animate-float animation-delay-700">
             <Heart className="w-5 h-5" />
           </div>
-          <div className="absolute top-1/2 right-1/6 text-rose-400 animate-float animation-delay-1000 opacity-30">
+          <div className="absolute top-1/2 right-1/6 text-rose-300/30 animate-float animation-delay-1000">
             <Sparkles className="w-4 h-4" />
           </div>
         </div>
 
         {/* Contenu principal */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm border border-amber-200/50 rounded-full px-6 py-3 mb-8 shadow-sm">
-            <Award className="w-4 h-4 text-amber-500" />
-            <span className="text-gray-700 text-sm font-medium">
+          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8 shadow-lg">
+            <Award className="w-4 h-4 text-amber-300" />
+            <span className="text-white text-sm font-medium">
               Œuvres qui ont trouvé leur foyer
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light mb-8 leading-tight text-gray-800">
-            <span className="block bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent font-medium">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-light mb-8 leading-tight text-white">
+            <span className="block bg-gradient-to-r from-amber-300 to-rose-300 bg-clip-text text-transparent font-medium">
               Galerie des Créations Trouvées
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-crimson">
             Découvrez les œuvres qui illuminent désormais le quotidien de leurs
             propriétaires et les témoignages de ceux qui vivent avec ces
             créations uniques.
           </p>
 
-          <div className="bg-amber-50/80 backdrop-blur-sm border border-amber-200/50 rounded-2xl p-6 max-w-2xl mx-auto mb-12">
+          <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-6 max-w-2xl mx-auto mb-12">
             <div className="flex items-center justify-center space-x-2 mb-2">
-              <Sparkles className="w-5 h-5 text-amber-600" />
-              <span className="text-amber-800 font-semibold">
-                Pièces Uniques
-              </span>
-              <Sparkles className="w-5 h-5 text-amber-600" />
+              <Sparkles className="w-5 h-5 text-amber-300" />
+              <span className="text-white font-semibold">Pièces Uniques</span>
+              <Sparkles className="w-5 h-5 text-amber-300" />
             </div>
-            <p className="text-amber-700 text-sm">
+            <p className="text-white/90 text-sm">
               Ces œuvres ne sont plus disponibles à l&apos;achat, mais elles
               peuvent vous inspirer pour une commande personnalisée.
             </p>
@@ -112,7 +119,7 @@ export default async function DejaRealisePage() {
 
             <Link
               href="/portrait-d-ame/commande"
-              className="group bg-white/80 backdrop-blur-sm border-2 border-amber-300 text-amber-700 hover:bg-amber-50 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
+              className="group bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/30 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-lg"
             >
               <span className="flex items-center space-x-2">
                 <Palette className="w-5 h-5" />

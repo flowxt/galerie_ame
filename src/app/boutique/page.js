@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { getArtworks } from "../../lib/sanity-queries";
 import ArtworkCard from "../../components/ArtworkCard";
+import Image from "next/image";
 
 export default async function Boutique() {
   // Récupérer les œuvres depuis Sanity
@@ -21,40 +22,49 @@ export default async function Boutique() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50">
-        {/* Arrière-plan épuré */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-purple-200/20 to-pink-200/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-rose-200/20 to-purple-200/10 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Image de fond */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/art.jpg"
+            alt="Art spirituel de Véronique"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          {/* Overlay gradient pour lisibilité */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/60"></div>
+        </div>
 
-          {/* Éléments spirituels discrets */}
-          <div className="absolute top-1/4 left-1/4 text-purple-300 animate-float opacity-40">
+        {/* Éléments spirituels flottants */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 text-white/30 animate-float">
             <Sparkles className="w-6 h-6" />
           </div>
-          <div className="absolute bottom-1/3 right-1/4 text-pink-300 animate-float animation-delay-700 opacity-40">
+          <div className="absolute bottom-1/3 right-1/4 text-purple-300/40 animate-float animation-delay-700">
             <Heart className="w-5 h-5" />
           </div>
-          <div className="absolute top-1/2 right-1/6 text-rose-400 animate-float animation-delay-1000 opacity-30">
+          <div className="absolute top-1/2 right-1/6 text-rose-300/30 animate-float animation-delay-1000">
             <Star className="w-4 h-4" />
           </div>
         </div>
 
         {/* Contenu principal */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm border border-purple-200/50 rounded-full px-6 py-3 mb-8 shadow-sm">
-            <ShoppingBag className="w-4 h-4 text-purple-500" />
-            <span className="text-gray-700 text-sm font-medium">
+          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8 shadow-lg">
+            <ShoppingBag className="w-4 h-4 text-purple-300" />
+            <span className="text-white text-sm font-medium">
               Œuvres d&apos;art spirituelles
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light mb-8 leading-tight text-gray-800">
-            <span className="block bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent font-medium">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-light mb-8 leading-tight text-white">
+            <span className="block bg-gradient-to-r from-purple-300 to-rose-300 bg-clip-text text-transparent font-medium">
               Boutique d&apos;Art Spirituel
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-crimson">
             Découvrez notre collection d&apos;œuvres uniques. Chaque création
             porte en elle une énergie particulière et une intention spirituelle
             profonde.
@@ -74,7 +84,7 @@ export default async function Boutique() {
 
             <Link
               href="/portrait-d-ame/commande"
-              className="group bg-white/80 backdrop-blur-sm border-2 border-purple-300 text-purple-700 hover:bg-purple-50 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
+              className="group bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/30 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-lg"
             >
               <span className="flex items-center space-x-2">
                 <Palette className="w-5 h-5" />
@@ -97,14 +107,14 @@ export default async function Boutique() {
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+            <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
               Types d&apos;
               <span className="bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent">
                 œuvres disponibles
               </span>
             </h2>
 
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
               Chaque catégorie d&apos;œuvre répond à des besoins spirituels
               différents et porte une intention particulière.
             </p>

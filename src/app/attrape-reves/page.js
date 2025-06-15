@@ -24,40 +24,49 @@ export default async function AttrapesRevesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-teal-50 to-blue-50">
-        {/* Arrière-plan épuré */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-200/20 to-teal-200/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-teal-200/20 to-blue-200/10 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Image de fond */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/attrape-reve-bleu.jpg"
+            alt="Attrape-rêves artisanal bleu"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          {/* Overlay gradient pour lisibilité */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/50"></div>
+        </div>
 
-          {/* Éléments spirituels discrets */}
-          <div className="absolute top-1/4 left-1/4 text-blue-300 animate-float opacity-40">
+        {/* Éléments spirituels flottants */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 text-white/30 animate-float">
             <Moon className="w-6 h-6" />
           </div>
-          <div className="absolute bottom-1/3 right-1/4 text-teal-300 animate-float animation-delay-700 opacity-40">
+          <div className="absolute bottom-1/3 right-1/4 text-blue-300/40 animate-float animation-delay-700">
             <Feather className="w-5 h-5" />
           </div>
-          <div className="absolute top-1/2 right-1/6 text-blue-400 animate-float animation-delay-1000 opacity-30">
+          <div className="absolute top-1/2 right-1/6 text-teal-300/30 animate-float animation-delay-1000">
             <Star className="w-4 h-4" />
           </div>
         </div>
 
         {/* Contenu principal */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm border border-blue-200/50 rounded-full px-6 py-3 mb-8 shadow-sm">
-            <Moon className="w-4 h-4 text-blue-500" />
-            <span className="text-gray-700 text-sm font-medium">
+          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8 shadow-lg">
+            <Moon className="w-4 h-4 text-blue-300" />
+            <span className="text-white text-sm font-medium">
               Créations artisanales protectrices
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light mb-8 leading-tight text-gray-800">
-            <span className="block bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent font-medium">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-light mb-8 leading-tight text-white">
+            <span className="block bg-gradient-to-r from-blue-300 to-teal-300 bg-clip-text text-transparent font-medium">
               Attrape-rêves artisanaux
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-crimson">
             Protégez vos plus beaux songes avec nos créations artisanales
             uniques. Chaque attrape-rêves est confectionné à la main avec
             intention et matériaux naturels.
@@ -77,7 +86,7 @@ export default async function AttrapesRevesPage() {
 
             <Link
               href="/contact"
-              className="group bg-white/80 backdrop-blur-sm border-2 border-blue-300 text-blue-700 hover:bg-blue-50 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
+              className="group bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/30 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-lg"
             >
               <span className="flex items-center space-x-2">
                 <Palette className="w-5 h-5" />
@@ -100,7 +109,7 @@ export default async function AttrapesRevesPage() {
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+            <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
               L&apos;essence de nos
               <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
                 {" "}
@@ -108,7 +117,7 @@ export default async function AttrapesRevesPage() {
               </span>
             </h2>
 
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
               Chaque attrape-rêves naît d&apos;une méditation profonde et porte
               une intention particulière pour votre protection et bien-être.
             </p>

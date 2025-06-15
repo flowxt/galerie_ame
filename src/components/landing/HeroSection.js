@@ -1,143 +1,138 @@
 "use client";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Moon, Heart } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Sparkles, Moon, Heart, Star } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-rose-50 via-purple-50 to-blue-50">
-      {/* Arrière-plan épuré */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Formes douces simplifiées */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-rose-200/20 to-pink-200/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-blue-200/20 to-purple-200/10 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Image de fond avec Véronique */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/veronique.jpg"
+          alt="Véronique artiste créatrice"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        {/* Overlay gradient pour lisibilité */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
+      </div>
 
-        {/* Quelques éléments spirituels discrets */}
-        <div className="absolute top-1/4 left-1/4 text-rose-300 animate-float opacity-40">
-          <Sparkles className="w-5 h-5" />
+      {/* Éléments spirituels flottants */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 text-white/30 animate-float">
+          <Sparkles className="w-6 h-6" />
         </div>
-        <div className="absolute bottom-1/3 right-1/4 text-purple-300 animate-float animation-delay-700 opacity-40">
-          <Moon className="w-6 h-6" />
+        <div className="absolute bottom-1/3 right-1/4 text-purple-300/40 animate-float animation-delay-700">
+          <Moon className="w-7 h-7" />
         </div>
-        <div className="absolute top-1/2 right-1/6 text-pink-300 animate-float animation-delay-1000 opacity-30">
-          <Heart className="w-4 h-4" />
+        <div className="absolute top-1/2 right-1/6 text-pink-300/30 animate-float animation-delay-1000">
+          <Heart className="w-5 h-5" />
+        </div>
+        <div className="absolute top-1/3 right-1/3 text-blue-300/30 animate-float animation-delay-500">
+          <Star className="w-4 h-4" />
         </div>
       </div>
 
-      {/* Contenu principal épuré */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        {/* Badge d'introduction simplifié */}
-        <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm border border-rose-200/50 rounded-full px-6 py-3 mb-8 shadow-sm">
-          <Sparkles className="w-4 h-4 text-rose-500" />
-          <span className="text-gray-700 text-sm font-medium">
-            Créations spirituelles uniques
-          </span>
-        </div>
-
-        {/* Nom de l'atelier sur une ligne */}
-        <div className="mb-6">
-          <h2 className="text-3xl md:text-4xl font-light bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent">
-            Atelier Art&apos;âme
-          </h2>
-        </div>
-
-        {/* H1 SEO-optimisé et évocateur */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-light mb-8 leading-tight text-gray-800">
-          <span className="block mb-2">
-            <span className="bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent font-medium">
-              Portraits d&apos;âme spirituels
+      {/* Contenu principal */}
+      <div className="relative z-10 text-left px-4 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Colonne de texte */}
+        <div className="text-white lg:pl-8">
+          {/* Badge d'introduction */}
+          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8 shadow-lg">
+            <Sparkles className="w-4 h-4 text-yellow-300" />
+            <span className="text-white text-sm font-medium">
+              Créations spirituelles authentiques
             </span>
-          </span>
-          <span className="block text-gray-600 text-3xl md:text-4xl lg:text-5xl mb-2">
-            et
-          </span>
-          <span className="block">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-medium">
-              Attrape-rêves artisanaux
-            </span>
-          </span>
-        </h1>
-
-        {/* Sous-titre épuré */}
-        <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
-          Révélez votre essence profonde à travers l&apos;art spirituel. Chaque
-          création capture votre beauté intérieure et protège vos énergies.
-        </p>
-
-        {/* Boutons d'action simplifiés */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-          <Link
-            href="/portrait-d-ame"
-            className="group bg-gradient-to-r from-rose-500 to-pink-500 text-white px-8 py-4 rounded-full hover:from-rose-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
-          >
-            <span className="flex items-center space-x-2">
-              <Sparkles className="w-5 h-5" />
-              <span>Découvrir les Portraits d&apos;Âme</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </Link>
-
-          <Link
-            href="/attrape-reves"
-            className="group bg-white/80 backdrop-blur-sm border-2 border-purple-300 text-purple-700 hover:bg-purple-50 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
-          >
-            <span className="flex items-center space-x-2">
-              <Moon className="w-5 h-5" />
-              <span>Explorer les Attrape-rêves</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </Link>
-        </div>
-
-        {/* Indicateurs de valeur épurés */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-          <div className="text-center">
-            <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-rose-200/30 shadow-sm">
-              <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Sparkles className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-gray-800 font-semibold mb-2">
-                Créations Uniques
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Œuvres uniques nées d&apos;une inspiration pure
-              </p>
-            </div>
           </div>
 
-          <div className="text-center">
-            <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-purple-200/30 shadow-sm">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-blue-400 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Heart className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-gray-800 font-semibold mb-2">
-                Fait avec Intention
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Chaque pièce porte une énergie bienveillante
-              </p>
-            </div>
+          {/* Titre principal */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-light mb-8 leading-tight">
+            <span className="block mb-2">
+              <span className="bg-gradient-to-r from-rose-300 to-pink-300 bg-clip-text text-transparent font-medium">
+                Portraits d&apos;âme
+              </span>
+            </span>
+            <span className="block text-white/80 text-3xl md:text-4xl lg:text-5xl mb-2">
+              & Attrape-rêves
+            </span>
+            <span className="block text-2xl md:text-3xl lg:text-4xl font-light text-white/70">
+              créations spirituelles uniques
+            </span>
+          </h1>
+
+          {/* Description vendeur */}
+          <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl leading-relaxed font-crimson">
+            Révélez votre essence profonde et protégez vos rêves avec nos
+            créations artisanales. Chaque œuvre porte une intention pure et
+            accompagne votre évolution spirituelle.
+          </p>
+
+          {/* Boutons d'action */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <Link
+              href="/portrait-d-ame"
+              className="group bg-gradient-to-r from-rose-500 to-pink-500 text-white px-8 py-4 rounded-full hover:from-rose-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
+            >
+              <span className="flex items-center space-x-2 justify-center">
+                <Sparkles className="w-5 h-5" />
+                <span>Mes Portraits</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
+
+            <Link
+              href="/attrape-reves"
+              className="group bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/30 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-lg"
+            >
+              <span className="flex items-center space-x-2 justify-center">
+                <Moon className="w-5 h-5" />
+                <span>Mes Attrape-rêves</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
           </div>
 
-          <div className="text-center">
-            <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-blue-200/30 shadow-sm">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-teal-400 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Moon className="w-6 h-6 text-white" />
+          {/* Statistiques/valeurs */}
+          <div className="grid grid-cols-3 gap-6 text-center">
+            <div>
+              <div className="text-2xl font-bold text-white mb-1 font-playfair">
+                15+
               </div>
-              <h3 className="text-gray-800 font-semibold mb-2">
-                Matériaux Naturels
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Éléments authentiques récoltés en conscience
-              </p>
+              <div className="text-white/70 text-sm font-crimson">
+                Portraits créés
+              </div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-white mb-1 font-playfair">
+                100%
+              </div>
+              <div className="text-white/70 text-sm font-crimson">
+                Fait main
+              </div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-white mb-1 font-playfair">
+                ⭐ 5/5
+              </div>
+              <div className="text-white/70 text-sm font-crimson">
+                Satisfaction
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Colonne d'images (masquée sur mobile pour éviter la redondance) */}
+        <div className="hidden lg:block relative">
+          {/* Cette colonne est optionnelle car l'image de fond montre déjà Véronique */}
         </div>
       </div>
 
-      {/* Scroll indicator discret */}
+      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce opacity-60">
-        <div className="w-5 h-8 border-2 border-purple-300 rounded-full flex justify-center bg-white/20 backdrop-blur-sm">
-          <div className="w-0.5 h-2 bg-purple-400 rounded-full mt-1.5 animate-pulse"></div>
+        <div className="w-5 h-8 border-2 border-white/40 rounded-full flex justify-center bg-white/10 backdrop-blur-sm">
+          <div className="w-0.5 h-2 bg-white/60 rounded-full mt-1.5 animate-pulse"></div>
         </div>
       </div>
 
@@ -156,10 +151,12 @@ export default function HeroSection() {
           animation: float 8s ease-in-out infinite;
         }
 
+        .animation-delay-500 {
+          animation-delay: 0.5s;
+        }
         .animation-delay-700 {
           animation-delay: 0.7s;
         }
-
         .animation-delay-1000 {
           animation-delay: 1s;
         }

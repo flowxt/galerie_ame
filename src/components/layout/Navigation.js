@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Sparkles, Moon } from "lucide-react";
 
 export default function Navigation() {
@@ -8,12 +9,14 @@ export default function Navigation() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <Sparkles className="w-8 h-8 text-blue-600 group-hover:text-purple-600 transition-colors duration-300" />
-              <div className="absolute -top-1 -right-1">
-                <Moon className="w-4 h-4 text-rose-400 animate-pulse" />
-              </div>
-            </div>
+            <Image
+              src="/images/logo-sansfond.png"
+              alt="Atelier Art'âme"
+              width={50}
+              height={50}
+              className="h-12 w-auto"
+              priority
+            />
             <div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-800 to-purple-600 bg-clip-text text-transparent">
                 Atelier Art&apos;âme

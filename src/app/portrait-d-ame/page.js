@@ -9,6 +9,8 @@ import {
   Brush,
   Star,
   Moon,
+  Palette,
+  Camera,
 } from "lucide-react";
 import PortraitOrderButton from "../../components/PortraitOrderButton";
 
@@ -16,40 +18,49 @@ export default function PortraitDame() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-rose-50 via-purple-50 to-blue-50">
-        {/* Arrière-plan épuré */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-rose-200/20 to-pink-200/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-purple-200/20 to-blue-200/10 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Image de fond */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/vero-portrait2.jpg"
+            alt="Véronique artiste créatrice de portraits d'âme"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          {/* Overlay gradient pour lisibilité */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+        </div>
 
-          {/* Éléments spirituels discrets */}
-          <div className="absolute top-1/4 left-1/4 text-rose-300 animate-float opacity-40">
+        {/* Éléments spirituels flottants */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 text-white/20 animate-float">
             <Sparkles className="w-5 h-5" />
           </div>
-          <div className="absolute bottom-1/3 right-1/4 text-purple-300 animate-float animation-delay-700 opacity-40">
+          <div className="absolute bottom-1/3 right-1/4 text-purple-300/30 animate-float animation-delay-700">
             <Star className="w-6 h-6" />
           </div>
-          <div className="absolute top-1/2 right-1/6 text-pink-300 animate-float animation-delay-1000 opacity-30">
+          <div className="absolute top-1/2 right-1/6 text-pink-300/20 animate-float animation-delay-1000">
             <Heart className="w-4 h-4" />
           </div>
         </div>
 
         {/* Contenu principal */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm border border-rose-200/50 rounded-full px-6 py-3 mb-8 shadow-sm">
-            <Sparkles className="w-4 h-4 text-rose-500" />
-            <span className="text-gray-700 text-sm font-medium">
+          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8 shadow-lg">
+            <Sparkles className="w-4 h-4 text-yellow-300" />
+            <span className="text-white text-sm font-medium">
               Art spirituel personnalisé
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light mb-8 leading-tight text-gray-800">
-            <span className="block bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent font-medium">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-light mb-8 leading-tight text-white">
+            <span className="block bg-gradient-to-r from-rose-300 to-pink-300 bg-clip-text text-transparent font-medium">
               Portraits d&apos;âme spirituels
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-crimson">
             Révélez votre essence profonde à travers l&apos;art spirituel.
             Chaque portrait capture votre beauté intérieure et accompagne votre
             évolution personnelle.
@@ -59,7 +70,7 @@ export default function PortraitDame() {
             <PortraitOrderButton />
             <Link
               href="/boutique"
-              className="group bg-white/80 backdrop-blur-sm border-2 border-purple-300 text-purple-700 hover:bg-purple-50 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
+              className="group bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/30 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-lg"
             >
               <span className="flex items-center space-x-2">
                 <Eye className="w-5 h-5" />
@@ -80,8 +91,8 @@ export default function PortraitDame() {
               <div className="bg-gradient-to-br from-rose-100 to-purple-100 rounded-3xl p-6 transform hover:scale-105 transition-transform duration-300">
                 <div className="aspect-square relative overflow-hidden rounded-2xl shadow-2xl">
                   <Image
-                    src="/images/portrait.png"
-                    alt="Exemple de Portrait d'âme spirituel avec éléments symboliques"
+                    src="/images/portrait-dame.jpg"
+                    alt="Portrait d'âme spirituel réalisé par Véronique"
                     fill
                     style={{ objectFit: "cover" }}
                     className="rounded-2xl"
@@ -95,7 +106,7 @@ export default function PortraitDame() {
                       </span>
                     </div>
                     <p className="text-rose-100 text-sm">
-                      Art spirituel & Symbolisme
+                      Essence révélée par Véronique
                     </p>
                   </div>
                 </div>
@@ -109,7 +120,7 @@ export default function PortraitDame() {
             {/* Explication */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-6">
+                <h2 className="text-3xl md:text-4xl font-playfair font-light text-gray-800 mb-6">
                   Qu&apos;est-ce qu&apos;un
                   <span className="bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent">
                     {" "}
@@ -117,7 +128,7 @@ export default function PortraitDame() {
                   </span>{" "}
                   ?
                 </h2>
-                <p className="text-gray-600 leading-relaxed text-lg mb-6">
+                <p className="text-gray-600 leading-relaxed text-lg mb-6 font-crimson">
                   Un portrait d&apos;âme va bien au-delà de la simple
                   représentation physique. C&apos;est une exploration artistique
                   qui capture l&apos;essence unique de votre être, vos émotions
@@ -172,6 +183,87 @@ export default function PortraitDame() {
                     accompagnant dans votre développement personnel et votre
                     découverte de soi.
                   </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Galerie de Portraits Réalisés */}
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 bg-rose-100 rounded-full px-6 py-3 mb-6">
+              <Camera className="w-5 h-5 text-rose-600" />
+              <span className="text-rose-800 font-medium">Galerie</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
+              Portraits d&apos;âme
+              <span className="bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent font-medium">
+                {" "}
+                réalisés
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
+              Découvrez quelques-unes des créations qui ont révélé
+              l&apos;essence profonde de leurs propriétaires
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+            {/* Portrait 1 */}
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              <div className="aspect-[4/5] relative">
+                <Image
+                  src="/images/portrait-dame.jpg"
+                  alt="Portrait d'âme - Essence féminine révélée"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="text-sm font-medium">Portrait d&apos;Âme</p>
+                    <p className="text-xs opacity-90">
+                      Essence féminine révélée
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Portrait 2 */}
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              <div className="aspect-[4/5] relative">
+                <Image
+                  src="/images/portrait-dame2.jpg"
+                  alt="Portrait d'âme - Lumière intérieure"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="text-sm font-medium">Portrait d&apos;Âme</p>
+                    <p className="text-xs opacity-90">Lumière intérieure</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Portrait 3 */}
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              <div className="aspect-[4/5] relative">
+                <Image
+                  src="/images/portrait-dame3.jpg"
+                  alt="Portrait d'âme - Beauté authentique"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="text-sm font-medium">Portrait d&apos;Âme</p>
+                    <p className="text-xs opacity-90">Beauté authentique</p>
+                  </div>
                 </div>
               </div>
             </div>
