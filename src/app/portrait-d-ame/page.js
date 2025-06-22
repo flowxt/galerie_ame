@@ -13,23 +13,24 @@ import {
   Camera,
 } from "lucide-react";
 import PortraitOrderButton from "../../components/PortraitOrderButton";
+import { Vortex } from "../../components/ui/Vortex";
 
 export default function PortraitDame() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Image de fond */}
+        {/* Image de fond - Portrait d'âme */}
         <div className="absolute inset-0">
           <Image
-            src="/images/vero-portrait2.jpg"
-            alt="Véronique artiste créatrice de portraits d'âme"
+            src="/images/portrait-dame.jpg"
+            alt="Portrait d'âme spirituel créé par l'Atelier Art'âme"
             fill
             className="object-cover object-center"
             priority
           />
           {/* Overlay gradient pour lisibilité */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20"></div>
         </div>
 
         {/* Éléments spirituels flottants */}
@@ -48,7 +49,7 @@ export default function PortraitDame() {
         {/* Contenu principal */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8 shadow-lg">
-            <Sparkles className="w-4 h-4 text-yellow-300" />
+            <Sparkles className="w-4 h-4 text-rose-300" />
             <span className="text-white text-sm font-medium">
               Art spirituel personnalisé
             </span>
@@ -91,7 +92,7 @@ export default function PortraitDame() {
               <div className="bg-gradient-to-br from-rose-100 to-purple-100 rounded-3xl p-6 transform hover:scale-105 transition-transform duration-300">
                 <div className="aspect-square relative overflow-hidden rounded-2xl shadow-2xl">
                   <Image
-                    src="/images/portrait-dame.jpg"
+                    src="/images/portrait-dame2.jpg"
                     alt="Portrait d'âme spirituel réalisé par Véronique"
                     fill
                     style={{ objectFit: "cover" }}
@@ -221,7 +222,7 @@ export default function PortraitDame() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 text-white">
                     <p className="text-sm font-medium">Portrait d&apos;Âme</p>
                     <p className="text-xs opacity-90">
@@ -241,7 +242,7 @@ export default function PortraitDame() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 text-white">
                     <p className="text-sm font-medium">Portrait d&apos;Âme</p>
                     <p className="text-xs opacity-90">Lumière intérieure</p>
@@ -259,7 +260,7 @@ export default function PortraitDame() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 text-white">
                     <p className="text-sm font-medium">Portrait d&apos;Âme</p>
                     <p className="text-xs opacity-90">Beauté authentique</p>

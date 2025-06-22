@@ -81,44 +81,20 @@ export default function PortraitsSection() {
             </div>
           </div>
 
-          {/* Colonne droite : Photos de Véronique au travail */}
-          <div className="space-y-6">
-            {/* Photo principale de Véronique */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+          {/* Colonne droite : Une seule photo de Véronique */}
+          <div className="flex justify-center">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl max-w-md">
               <Image
                 src="/images/vero-realisation.jpg"
                 alt="Véronique créant un portrait d'âme"
-                width={600}
-                height={400}
-                className="w-full h-[400px] object-cover"
+                width={400}
+                height={500}
+                className="w-full h-[500px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-              <div className="absolute bottom-4 left-4 text-white">
-                <p className="text-sm font-medium">
-                  Véronique en pleine création
-                </p>
-              </div>
-            </div>
-
-            {/* Petites photos en grille */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative rounded-xl overflow-hidden shadow-lg">
-                <Image
-                  src="/images/vero-portrait.jpg"
-                  alt="Portrait de Véronique"
-                  width={300}
-                  height={200}
-                  className="w-full h-32 object-cover"
-                />
-              </div>
-              <div className="relative rounded-xl overflow-hidden shadow-lg">
-                <Image
-                  src="/images/regard-vero.jpg"
-                  alt="Le regard artistique de Véronique"
-                  width={300}
-                  height={200}
-                  className="w-full h-32 object-cover"
-                />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-white">
+                <p className="text-lg font-medium">Véronique</p>
+                <p className="text-sm opacity-90">Artiste créatrice</p>
               </div>
             </div>
           </div>

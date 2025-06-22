@@ -4,8 +4,6 @@ import {
   Heart,
   CheckCircle,
   ArrowRight,
-  Star,
-  Moon,
   MessageCircle,
   Clock,
   Palette,
@@ -16,24 +14,7 @@ export default function PortraitRequestReceived() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-rose-50 via-purple-50 to-blue-50">
-        {/* Arrière-plan épuré */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-rose-200/20 to-pink-200/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-purple-200/20 to-blue-200/10 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
-
-          {/* Éléments spirituels discrets */}
-          <div className="absolute top-1/4 left-1/4 text-rose-300 animate-float opacity-40">
-            <Sparkles className="w-5 h-5" />
-          </div>
-          <div className="absolute bottom-1/3 right-1/4 text-purple-300 animate-float animation-delay-700 opacity-40">
-            <Star className="w-6 h-6" />
-          </div>
-          <div className="absolute top-1/2 right-1/6 text-pink-300 animate-float animation-delay-1000 opacity-30">
-            <Heart className="w-4 h-4" />
-          </div>
-        </div>
-
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-rose-50 to-purple-50">
         {/* Contenu principal */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           {/* Icône de confirmation élégante */}
@@ -50,13 +31,13 @@ export default function PortraitRequestReceived() {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light mb-8 leading-tight text-gray-800">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-light mb-8 leading-tight text-gray-800">
             <span className="block bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent font-medium">
               Votre demande a été reçue !
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed font-crimson">
             Merci pour votre confiance. Nous sommes touchés par votre partage et
             avons hâte de commencer ce voyage artistique avec vous. ✨
           </p>
@@ -74,7 +55,7 @@ export default function PortraitRequestReceived() {
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+            <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
               Que se passe-t-il
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 {" "}
@@ -198,7 +179,7 @@ export default function PortraitRequestReceived() {
               <div className="flex justify-center mb-6">
                 <div className="flex space-x-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star
+                    <Sparkles
                       key={i}
                       className="w-5 h-5 text-yellow-400 fill-current"
                     />
@@ -206,7 +187,7 @@ export default function PortraitRequestReceived() {
                 </div>
               </div>
 
-              <blockquote className="text-xl text-gray-700 italic mb-6 leading-relaxed">
+              <blockquote className="text-xl text-gray-700 italic mb-6 leading-relaxed font-crimson">
                 &quot;Mon portrait d&apos;âme a révélé des aspects de ma
                 personnalité que je n&apos;avais jamais vus. C&apos;est comme si
                 l&apos;artiste avait capturé mon essence profonde et
@@ -225,7 +206,7 @@ export default function PortraitRequestReceived() {
       <section className="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-8">
+            <h2 className="text-3xl md:text-4xl font-playfair font-light text-gray-800 mb-8">
               En attendant votre
               <span className="bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent">
                 {" "}
@@ -268,7 +249,7 @@ export default function PortraitRequestReceived() {
                 </h3>
               </div>
 
-              <blockquote className="text-gray-700 italic mb-4 leading-relaxed">
+              <blockquote className="text-gray-700 italic mb-4 leading-relaxed font-crimson">
                 &quot;Chaque portrait d&apos;âme est une aventure unique.
                 J&apos;ai hâte de découvrir votre lumière intérieure et de la
                 partager avec le monde à travers l&apos;art.&quot;
@@ -281,30 +262,6 @@ export default function PortraitRequestReceived() {
           </div>
         </div>
       </section>
-
-      <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-15px);
-          }
-        }
-
-        .animate-float {
-          animation: float 8s ease-in-out infinite;
-        }
-
-        .animation-delay-700 {
-          animation-delay: 0.7s;
-        }
-
-        .animation-delay-1000 {
-          animation-delay: 1s;
-        }
-      `}</style>
     </div>
   );
 }
