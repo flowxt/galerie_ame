@@ -91,7 +91,7 @@ export default function AdminTestStatus() {
               href="/deja-realise"
               className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
             >
-              👀 Voir "Déjà réalisé"
+              👀 Voir &quot;Déjà réalisé&quot;
             </Link>
           </div>
 
@@ -206,12 +206,19 @@ export default function AdminTestStatus() {
               ℹ️ Comment tester :
             </h3>
             <ol className="text-yellow-800 text-sm space-y-1">
-              <li>1. Mettez une œuvre en "Vendu" avec le bouton rouge</li>
               <li>
-                2. Allez sur la page "Déjà réalisé" pour voir si elle apparaît
+                1. Mettez une œuvre en &quot;Vendu&quot; avec le bouton rouge
               </li>
-              <li>3. Vérifiez qu'elle ne s'affiche plus dans la boutique</li>
-              <li>4. Remettez en "Disponible" pour la remettre en vente</li>
+              <li>
+                2. Allez sur la page &quot;Déjà réalisé&quot; pour voir si elle
+                apparaît
+              </li>
+              <li>
+                3. Vérifiez qu&apos;elle ne s&apos;affiche plus dans la boutique
+              </li>
+              <li>
+                4. Remettez en &quot;Disponible&quot; pour la remettre en vente
+              </li>
             </ol>
           </div>
         </div>
