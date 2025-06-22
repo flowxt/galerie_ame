@@ -9,7 +9,7 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Gérer le scroll
+  // Gérer le scroll pour l'effet flottant
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -20,26 +20,8 @@ export default function Navigation() {
   }, []);
 
   // Fonctions pour gérer le menu
-  const openMenu = () => {
-    console.log("Ouverture du menu");
-    setIsMenuOpen(true);
-  };
-
-  const closeMenu = () => {
-    console.log("Fermeture du menu");
-    setIsMenuOpen(false);
-  };
-
-  const toggleMenu = () => {
-    console.log("Toggle menu, état actuel:", isMenuOpen);
-    if (isMenuOpen) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  };
-
-  console.log("Rendu Navigation, isMenuOpen:", isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <>
@@ -60,7 +42,7 @@ export default function Navigation() {
                 alt="Atelier Art'âme"
                 width={50}
                 height={50}
-                className="h-12 w-auto"
+                className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
                 priority
               />
               <div>
@@ -75,37 +57,42 @@ export default function Navigation() {
             <div className="hidden md:flex items-center space-x-8">
               <Link
                 href="/"
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
+                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium relative group"
               >
                 Accueil
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 href="/portrait-d-ame"
-                className="text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium"
+                className="text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium relative group"
               >
                 Portraits d&apos;Âme
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 href="/attrape-reves"
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
+                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium relative group"
               >
                 Attrape-rêves
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 href="/boutique"
-                className="text-gray-700 hover:text-teal-600 transition-colors duration-200 font-medium"
+                className="text-gray-700 hover:text-teal-600 transition-colors duration-200 font-medium relative group"
               >
                 Boutique
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 href="/deja-realise"
-                className="text-gray-700 hover:text-rose-600 transition-colors duration-200 font-medium"
+                className="text-gray-700 hover:text-rose-600 transition-colors duration-200 font-medium relative group"
               >
                 Déjà réalisé
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-rose-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 href="/contact"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 font-medium shadow-lg"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 font-medium shadow-lg"
               >
                 Contact
               </Link>
@@ -114,8 +101,8 @@ export default function Navigation() {
             {/* Bouton Menu Mobile */}
             <button
               onClick={toggleMenu}
-              className="md:hidden relative z-50 p-3 rounded-lg bg-white shadow-lg border border-gray-200 text-gray-700 hover:text-blue-600"
-              type="button"
+              className="md:hidden relative z-50 p-2 text-gray-700 hover:text-blue-600 transition-colors duration-200"
+              aria-label="Menu"
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -132,12 +119,12 @@ export default function Navigation() {
         <div className="fixed inset-0 z-50 md:hidden">
           {/* Background Overlay */}
           <div
-            className="fixed inset-0 bg-black bg-opacity-50"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm"
             onClick={closeMenu}
           />
 
           {/* Menu Panel */}
-          <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-xl">
+          <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl">
             {/* Menu Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200">
               <div className="flex items-center space-x-3">
@@ -149,7 +136,7 @@ export default function Navigation() {
                   className="h-10 w-auto"
                 />
                 <div>
-                  <h2 className="text-lg font-bold text-gray-800">
+                  <h2 className="text-lg font-bold bg-gradient-to-r from-blue-800 to-purple-600 bg-clip-text text-transparent">
                     Art&apos;âme
                   </h2>
                   <p className="text-xs text-gray-500">Menu</p>
@@ -157,7 +144,7 @@ export default function Navigation() {
               </div>
               <button
                 onClick={closeMenu}
-                className="p-2 text-gray-500 hover:text-gray-700 rounded-lg"
+                className="p-2 text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -168,44 +155,53 @@ export default function Navigation() {
               <Link
                 href="/"
                 onClick={closeMenu}
-                className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium p-3 rounded-xl hover:bg-blue-50 group"
               >
-                Accueil
+                <div className="w-2 h-2 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span>Accueil</span>
               </Link>
+
               <Link
                 href="/portrait-d-ame"
                 onClick={closeMenu}
-                className="block px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors"
+                className="flex items-center space-x-3 text-gray-700 hover:text-purple-600 transition-colors duration-200 font-medium p-3 rounded-xl hover:bg-purple-50 group"
               >
-                Portraits d&apos;Âme
+                <div className="w-2 h-2 bg-purple-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span>Portraits d&apos;Âme</span>
               </Link>
+
               <Link
                 href="/attrape-reves"
                 onClick={closeMenu}
-                className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium p-3 rounded-xl hover:bg-blue-50 group"
               >
-                Attrape-rêves
+                <div className="w-2 h-2 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span>Attrape-rêves</span>
               </Link>
+
               <Link
                 href="/boutique"
                 onClick={closeMenu}
-                className="block px-4 py-3 text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors"
+                className="flex items-center space-x-3 text-gray-700 hover:text-teal-600 transition-colors duration-200 font-medium p-3 rounded-xl hover:bg-teal-50 group"
               >
-                Boutique
+                <div className="w-2 h-2 bg-teal-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span>Boutique</span>
               </Link>
+
               <Link
                 href="/deja-realise"
                 onClick={closeMenu}
-                className="block px-4 py-3 text-gray-700 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
+                className="flex items-center space-x-3 text-gray-700 hover:text-rose-600 transition-colors duration-200 font-medium p-3 rounded-xl hover:bg-rose-50 group"
               >
-                Déjà réalisé
+                <div className="w-2 h-2 bg-rose-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span>Déjà réalisé</span>
               </Link>
 
               {/* Contact Button */}
               <Link
                 href="/contact"
                 onClick={closeMenu}
-                className="mt-4 block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 font-medium text-center"
+                className="mt-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 font-medium text-center shadow-lg"
               >
                 Nous Contacter
               </Link>
