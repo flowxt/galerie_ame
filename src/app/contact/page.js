@@ -17,6 +17,8 @@ import {
   HelpCircle,
   Users,
   Palette,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 
 export default function Contact() {
@@ -28,6 +30,46 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [openFAQ, setOpenFAQ] = useState(null);
+
+  const faqData = [
+    {
+      id: 1,
+      question: "Comment fonctionne le processus de création ?",
+      answer:
+        "Le processus commence par un échange personnalisé pour comprendre votre essence. Ensuite, je crée intuitivement votre portrait d'âme en utilisant différentes techniques artistiques. Le processus prend généralement 2-3 semaines et inclut des photos d'étapes pour vous tenir informé.",
+    },
+    {
+      id: 2,
+      question: "Combien de temps prend la réalisation ?",
+      answer:
+        "Un portrait d'âme prend entre 15 à 21 jours ouvrés. Les attrape-rêves personnalisés nécessitent 7 à 10 jours. Pour les commandes urgentes, contactez-nous pour étudier les possibilités.",
+    },
+    {
+      id: 3,
+      question: "Quels sont les tarifs des créations ?",
+      answer:
+        "Les portraits d'âme commencent à partir de 150€. Les attrape-rêves personnalisés débutent à 80€. Les tarifs varient selon la taille, la complexité et les matériaux choisis. Contactez-nous pour un devis personnalisé.",
+    },
+    {
+      id: 4,
+      question: "Puis-je personnaliser un attrape-rêves ?",
+      answer:
+        "Absolument ! Nous créons des attrape-rêves sur-mesure selon vos intentions, couleurs préférées, et éléments symboliques. Chaque création est unique et adaptée à votre énergie personnelle.",
+    },
+    {
+      id: 5,
+      question: "Livrez-vous partout en France ?",
+      answer:
+        "Oui, nous livrons dans toute la France via Colissimo avec suivi. Les œuvres sont soigneusement emballées pour garantir leur protection. La livraison est gratuite à partir de 100€ d'achat.",
+    },
+    {
+      id: 6,
+      question: "Que faire si je ne suis pas satisfait ?",
+      answer:
+        "Votre satisfaction est notre priorité. Si l'œuvre ne correspond pas à vos attentes, nous proposons des ajustements ou un remboursement dans les 14 jours. Chaque création étant unique, nous privilégions le dialogue pour trouver une solution.",
+    },
+  ];
 
   const handleChange = (e) => {
     setFormData({
@@ -49,6 +91,10 @@ export default function Contact() {
       setSubmitStatus("success");
       setFormData({ firstName: "", lastName: "", email: "", message: "" });
     }, 2000);
+  };
+
+  const toggleFAQ = (id) => {
+    setOpenFAQ(openFAQ === id ? null : id);
   };
 
   return (
@@ -375,42 +421,33 @@ export default function Contact() {
                 Questions les plus fréquentes
               </h3>
               <div className="space-y-4">
-                <Link
-                  href="/portrait-d-ame#faq"
-                  className="group flex items-center justify-between p-4 bg-purple-50 hover:bg-purple-100 rounded-xl transition-all"
-                >
-                  <span className="text-gray-700 group-hover:text-purple-700">
-                    Comment fonctionne le processus de création ?
-                  </span>
-                  <ArrowRight className="w-5 h-5 text-purple-500 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  href="/portrait-d-ame#faq"
-                  className="group flex items-center justify-between p-4 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-all"
-                >
-                  <span className="text-gray-700 group-hover:text-indigo-700">
-                    Combien de temps prend la réalisation ?
-                  </span>
-                  <ArrowRight className="w-5 h-5 text-indigo-500 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  href="/portrait-d-ame#faq"
-                  className="group flex items-center justify-between p-4 bg-pink-50 hover:bg-pink-100 rounded-xl transition-all"
-                >
-                  <span className="text-gray-700 group-hover:text-pink-700">
-                    Quels sont les tarifs des créations ?
-                  </span>
-                  <ArrowRight className="w-5 h-5 text-pink-500 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  href="/attrape-reves#creation-sur-mesure"
-                  className="group flex items-center justify-between p-4 bg-purple-50 hover:bg-purple-100 rounded-xl transition-all"
-                >
-                  <span className="text-gray-700 group-hover:text-purple-700">
-                    Puis-je personnaliser un attrape-rêves ?
-                  </span>
-                  <ArrowRight className="w-5 h-5 text-purple-500 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                {faqData.map((faq) => (
+                  <div
+                    key={faq.id}
+                    className="border border-gray-200 rounded-xl overflow-hidden"
+                  >
+                    <button
+                      onClick={() => toggleFAQ(faq.id)}
+                      className="w-full flex items-center justify-between p-6 bg-white hover:bg-gray-50 transition-all text-left"
+                    >
+                      <span className="text-gray-800 font-medium pr-4">
+                        {faq.question}
+                      </span>
+                      {openFAQ === faq.id ? (
+                        <ChevronUp className="w-5 h-5 text-purple-500 flex-shrink-0" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5 text-purple-500 flex-shrink-0" />
+                      )}
+                    </button>
+                    {openFAQ === faq.id && (
+                      <div className="px-6 pb-6 bg-gray-50">
+                        <p className="text-gray-600 leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>

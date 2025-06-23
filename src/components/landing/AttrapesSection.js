@@ -200,7 +200,7 @@ export default function AttrapesSection() {
             {/* Attrape-rêve 4 */}
             <div className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
               <Image
-                src="/images/attrape-reve1.jpeg"
+                src="/images/cadeau_naissance.jpg"
                 alt="Attrape-rêve unique créé par Véronique"
                 width={300}
                 height={400}

@@ -35,25 +35,24 @@ export default function HeroSection() {
 
           {/* Titre principal */}
           <div className="relative z-10">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair font-light mb-8 leading-tight">
-              <span className="block mb-4">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair font-light mb-8 leading-tight text-center">
+              <span className="block text-gray-800 mb-6">Révélez votre</span>
+              <span className="block mb-6">
                 <span className="bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent font-medium">
-                  Portraits d&apos;âme
+                  Essence Spirituelle
                 </span>
               </span>
-              <span className="block text-gray-700 text-4xl md:text-5xl lg:text-6xl mb-4">
-                & Attrape-rêves
-              </span>
-              <span className="block text-3xl md:text-4xl lg:text-5xl font-light text-gray-500">
-                créations spirituelles uniques
+              <span className="block text-3xl md:text-4xl lg:text-5xl font-light text-gray-600">
+                Portraits d&apos;Âme • Attrape-rêves
               </span>
             </h1>
 
             {/* Description */}
             <p className="text-xl md:text-2xl text-gray-600 mb-16 max-w-4xl mx-auto leading-relaxed font-crimson">
-              Révélez votre essence profonde et protégez vos rêves avec nos
-              créations artisanales. Chaque œuvre porte une intention pure et
-              accompagne votre évolution spirituelle.
+              Créations spirituelles personnalisées pour révéler votre âme et
+              protéger vos rêves.
+              <br />
+              Chaque œuvre est unique et porte une intention pure.
             </p>
           </div>
         </div>
@@ -103,13 +102,6 @@ export default function HeroSection() {
             </div>
             <div className="text-gray-500 font-crimson">Satisfaction</div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce opacity-40">
-        <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center bg-white/30 backdrop-blur-sm">
-          <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
 

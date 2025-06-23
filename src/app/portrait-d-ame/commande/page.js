@@ -7,6 +7,8 @@ import {
   Brush,
   User,
   MessageCircle,
+  Palette,
+  Star,
 } from "lucide-react";
 import PortraitOrderForm from "../../../components/PortraitOrderForm";
 
@@ -67,73 +69,164 @@ export default function PortraitOrderPage() {
         </div>
       </section>
 
-      {/* Section Processus Créatif */}
+      {/* Section Tarifs */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-purple-100 rounded-full px-6 py-2 mb-6">
-              <Brush className="w-5 h-5 text-purple-600" />
-              <span className="text-purple-800 font-medium text-sm">
-                Processus Créatif
-              </span>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center space-x-2 bg-rose-100 rounded-full px-6 py-2 mb-6">
+                <Palette className="w-5 h-5 text-rose-600" />
+                <span className="text-rose-800 font-medium text-sm">
+                  Tarifs Portraits d&apos;Âme
+                </span>
+              </div>
+
+              <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
+                Investissement pour votre
+                <span className="bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent">
+                  {" "}
+                  Portrait d&apos;Âme
+                </span>
+              </h2>
+
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Chaque œuvre est créée avec amour et intention, incluant
+                consultation personnalisée et accompagnement complet.
+              </p>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
-              Le Voyage de Votre
-              <span className="bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent">
-                {" "}
-                Portrait d&apos;Âme
-              </span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
-            <div className="text-center">
-              <div className="bg-gradient-to-r from-rose-500 to-pink-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <span className="text-white text-2xl font-bold">1</span>
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              {/* Format 30x40cm */}
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-rose-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <div className="text-center">
+                  <div className="bg-gradient-to-r from-rose-500 to-pink-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <Brush className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                    Format Intime
+                  </h3>
+                  <div className="mb-6">
+                    <div className="text-4xl font-bold text-rose-600 mb-2">
+                      180€
+                    </div>
+                    <div className="text-gray-600 text-lg">30 x 40 cm</div>
+                  </div>
+                  <ul className="text-gray-600 space-y-2 mb-8">
+                    <li className="flex items-center">
+                      <Sparkles className="w-4 h-4 text-rose-500 mr-2" />
+                      Consultation personnalisée
+                    </li>
+                    <li className="flex items-center">
+                      <Sparkles className="w-4 h-4 text-rose-500 mr-2" />
+                      Création méditative unique
+                    </li>
+                    <li className="flex items-center">
+                      <Sparkles className="w-4 h-4 text-rose-500 mr-2" />
+                      Explication des symboles
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-rose-200/50 shadow-sm">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                  Consultation Spirituelle
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Entretien approfondi pour comprendre votre personnalité, vos
-                  aspirations et votre histoire unique lors d&apos;un échange
-                  bienveillant.
-                </p>
+
+              {/* Format 50x70cm */}
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-purple-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                    Le plus choisi
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="bg-gradient-to-r from-purple-500 to-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <Heart className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                    Format Élégant
+                  </h3>
+                  <div className="mb-6">
+                    <div className="text-4xl font-bold text-purple-600 mb-2">
+                      280€
+                    </div>
+                    <div className="text-gray-600 text-lg">50 x 70 cm</div>
+                  </div>
+                  <ul className="text-gray-600 space-y-2 mb-8">
+                    <li className="flex items-center">
+                      <Sparkles className="w-4 h-4 text-purple-500 mr-2" />
+                      Consultation personnalisée
+                    </li>
+                    <li className="flex items-center">
+                      <Sparkles className="w-4 h-4 text-purple-500 mr-2" />
+                      Création méditative unique
+                    </li>
+                    <li className="flex items-center">
+                      <Sparkles className="w-4 h-4 text-purple-500 mr-2" />
+                      Explication des symboles
+                    </li>
+                    <li className="flex items-center">
+                      <Sparkles className="w-4 h-4 text-purple-500 mr-2" />
+                      Format idéal pour décoration
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Duo 60x80cm */}
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-blue-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <div className="text-center">
+                  <div className="bg-gradient-to-r from-blue-500 to-teal-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <Star className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                    Format Duo
+                  </h3>
+                  <div className="mb-6">
+                    <div className="text-4xl font-bold text-blue-600 mb-2">
+                      380€
+                    </div>
+                    <div className="text-gray-600 text-lg">60 x 80 cm</div>
+                  </div>
+                  <ul className="text-gray-600 space-y-2 mb-8">
+                    <li className="flex items-center">
+                      <Sparkles className="w-4 h-4 text-blue-500 mr-2" />
+                      Consultation personnalisée
+                    </li>
+                    <li className="flex items-center">
+                      <Sparkles className="w-4 h-4 text-blue-500 mr-2" />
+                      Portrait de couple/famille
+                    </li>
+                    <li className="flex items-center">
+                      <Sparkles className="w-4 h-4 text-blue-500 mr-2" />
+                      Création méditative unique
+                    </li>
+                    <li className="flex items-center">
+                      <Sparkles className="w-4 h-4 text-blue-500 mr-2" />
+                      Format grand impact
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            <div className="text-center">
-              <div className="bg-gradient-to-r from-purple-500 to-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <span className="text-white text-2xl font-bold">2</span>
-              </div>
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-purple-200/50 shadow-sm">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                  Création Méditative
+            {/* Note personnalisée */}
+            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-sm text-center">
+              <div className="flex items-center justify-center space-x-2 mb-4">
+                <Palette className="w-6 h-6 text-gray-600" />
+                <h3 className="text-xl font-semibold text-gray-800">
+                  Demande Spéciale ?
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Processus artistique intuitif de 3-4 semaines pour laisser
-                  émerger votre véritable essence à travers les couleurs et les
-                  formes.
-                </p>
               </div>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-gradient-to-r from-blue-500 to-teal-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <span className="text-white text-2xl font-bold">3</span>
-              </div>
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-blue-200/50 shadow-sm">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                  Révélation & Livraison
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Présentation de votre portrait d&apos;âme unique avec
-                  explication des symboles et énergies révélés durant la
-                  création.
-                </p>
-              </div>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Vous souhaitez un format différent, des dimensions spécifiques
+                ou avez une demande particulière ?
+                <br />
+                Contactez-nous pour un devis personnalisé adapté à vos besoins.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-gray-600 to-gray-800 text-white px-6 py-3 rounded-full hover:from-gray-700 hover:to-gray-900 transition-all duration-300 transform hover:scale-105 font-medium"
+              >
+                <span>Demande personnalisée</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>
