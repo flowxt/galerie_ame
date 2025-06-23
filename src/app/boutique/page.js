@@ -7,7 +7,6 @@ import {
   Palette,
   Eye,
   ShoppingBag,
-  Filter,
   MessageCircle,
   Brush,
 } from "lucide-react";
@@ -120,18 +119,18 @@ export default async function Boutique() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-purple-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-rose-400 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Heart className="w-8 h-8 text-white" />
+                  <Sparkles className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                  Portraits d&apos;Âme
+                  Attrape-Rêves Spirituels
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Créations personnalisées qui révèlent l&apos;essence
-                  spirituelle unique de chaque être.
+                  Créations artisanales uniques qui protègent vos nuits et
+                  filtrent les énergies négatives pour des rêves apaisants.
                 </p>
               </div>
             </div>
@@ -139,50 +138,16 @@ export default async function Boutique() {
             <div className="text-center">
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-rose-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-rose-400 to-purple-400 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Sparkles className="w-8 h-8 text-white" />
+                  <Palette className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                  Œuvres Originales
+                  Tableaux Intuitifs
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Créations uniques nées de méditations profondes et
-                  d&apos;inspirations spirituelles.
+                  Œuvres originales nées de méditations profondes, chaque toile
+                  porte une énergie particulière et une intention spirituelle.
                 </p>
               </div>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-purple-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-rose-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Star className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                  Reproductions
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Impressions haute qualité d&apos;œuvres spirituelles pour
-                  partager l&apos;énergie créative.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Filtres */}
-          <div className="flex justify-center">
-            <div className="inline-flex items-center space-x-2 bg-gray-100 rounded-full p-2">
-              <Filter className="w-4 h-4 text-gray-500 ml-2" />
-              <button className="px-6 py-2 bg-purple-500 text-white rounded-full text-sm font-medium">
-                Toutes
-              </button>
-              <button className="px-6 py-2 text-gray-600 hover:bg-white hover:shadow-sm rounded-full text-sm font-medium transition-all">
-                Portraits d&apos;Âme
-              </button>
-              <button className="px-6 py-2 text-gray-600 hover:bg-white hover:shadow-sm rounded-full text-sm font-medium transition-all">
-                Originales
-              </button>
-              <button className="px-6 py-2 text-gray-600 hover:bg-white hover:shadow-sm rounded-full text-sm font-medium transition-all">
-                Reproductions
-              </button>
             </div>
           </div>
         </div>
