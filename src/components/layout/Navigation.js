@@ -70,6 +70,13 @@ export default function Navigation() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
+                href="/tableau-de-vie"
+                className="text-gray-700 hover:text-teal-600 transition-colors duration-200 font-medium relative group"
+              >
+                Tableau de Vie
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 group-hover:w-full transition-all duration-300"></span>
+              </Link>
+              <Link
                 href="/attrape-reves"
                 className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium relative group"
               >
@@ -84,10 +91,10 @@ export default function Navigation() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
-                href="/deja-realise"
+                href="/galerie"
                 className="text-gray-700 hover:text-rose-600 transition-colors duration-200 font-medium relative group"
               >
-                Déjà réalisé
+                Galerie
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-rose-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
@@ -171,6 +178,15 @@ export default function Navigation() {
               </Link>
 
               <Link
+                href="/tableau-de-vie"
+                onClick={closeMenu}
+                className="flex items-center space-x-3 text-gray-700 hover:text-teal-600 transition-colors duration-200 font-medium p-3 rounded-xl hover:bg-teal-50 group"
+              >
+                <div className="w-2 h-2 bg-teal-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span>Tableau de Vie</span>
+              </Link>
+
+              <Link
                 href="/attrape-reves"
                 onClick={closeMenu}
                 className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium p-3 rounded-xl hover:bg-blue-50 group"
@@ -189,12 +205,12 @@ export default function Navigation() {
               </Link>
 
               <Link
-                href="/deja-realise"
+                href="/galerie"
                 onClick={closeMenu}
                 className="flex items-center space-x-3 text-gray-700 hover:text-rose-600 transition-colors duration-200 font-medium p-3 rounded-xl hover:bg-rose-50 group"
               >
                 <div className="w-2 h-2 bg-rose-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span>Déjà réalisé</span>
+                <span>Galerie</span>
               </Link>
 
               {/* Contact Button */}

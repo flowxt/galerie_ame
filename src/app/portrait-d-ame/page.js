@@ -8,6 +8,13 @@ import {
   ArrowRight,
   Brush,
   Star,
+  Gift,
+  Archive,
+  CheckCircle,
+  Award,
+  Stamp,
+  Truck,
+  ShieldCheck,
   Moon,
   Palette,
   Camera,
@@ -349,6 +356,183 @@ export default function PortraitDame() {
         </div>
       </section>
 
+      {/* Section Inclusions & Authenticité */}
+      <section className="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 bg-amber-100 rounded-full px-6 py-2 mb-6">
+              <Gift className="w-5 h-5 text-amber-600" />
+              <span className="text-amber-800 font-medium text-sm">
+                Inclusions Premium
+              </span>
+            </div>
+
+            <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
+              Votre portrait d&apos;âme
+              <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+                {" "}
+                complet
+              </span>
+            </h2>
+
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
+              Chaque portrait d&apos;âme est accompagné d&apos;éléments exclusifs qui enrichissent votre expérience spirituelle.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Clé USB & Contenu Digital */}
+            <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-amber-200/50 shadow-lg">
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <Archive className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-800">
+                    Clé USB Spirituelle
+                  </h3>
+                  <p className="text-amber-600 font-medium">
+                    Contenu exclusif inclus
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Éléments du portrait</p>
+                    <p className="text-sm text-gray-600">Détail de chaque symbole, couleur et forme utilisés dans votre création</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Significations profondes</p>
+                    <p className="text-sm text-gray-600">Interprétation spirituelle et symbolique de votre portrait d'âme</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Étapes de création</p>
+                    <p className="text-sm text-gray-600">Processus méditatif et énergétique de votre portrait</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Rituel d'accueil</p>
+                    <p className="text-sm text-gray-600">Guide pour recevoir et intégrer l'énergie de votre portrait</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Certificat & Garanties */}
+            <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-orange-200/50 shadow-lg">
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <Award className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-800">
+                    Certificat d&apos;Authenticité
+                  </h3>
+                  <p className="text-orange-600 font-medium">
+                    Pièce unique certifiée
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Stamp className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Authenticité garantie</p>
+                    <p className="text-sm text-gray-600">Certificat officiel attestant de l'unicité de votre œuvre</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Truck className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Livraison sécurisée</p>
+                    <p className="text-sm text-gray-600">Envoi soigné et gratuit partout en France</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Heart className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Suivi personnalisé</p>
+                    <p className="text-sm text-gray-600">Accompagnement dédié tout au long du processus</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <ShieldCheck className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Satisfaction garantie</p>
+                    <p className="text-sm text-gray-600">Engagement qualité sur chaque création d'âme</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Final */}
+          <div className="text-center mt-16">
+            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-amber-200/50 shadow-sm max-w-4xl mx-auto">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                Une expérience complète et authentique
+              </h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Votre portrait d&apos;âme est bien plus qu&apos;une œuvre d&apos;art : c&apos;est un voyage spirituel documenté et accompagné, 
+                livré avec tout ce qui vous permettra de comprendre et d&apos;intégrer pleinement votre création d&apos;âme.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                  <span>Livraison offerte</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                  <span>Contenu exclusif inclus</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                  <span>Certificat d'authenticité</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+                  <span>Suivi personnalisé</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Section FAQ */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -441,14 +625,14 @@ export default function PortraitDame() {
                   </h3>
                   <div className="mb-6">
                     <div className="text-4xl font-bold text-rose-600 mb-2">
-                      180€
+                      240€
                     </div>
                     <div className="text-gray-600 text-lg">30 x 40 cm</div>
                   </div>
                   <ul className="text-gray-600 space-y-2 mb-8">
                     <li className="flex items-center">
                       <Sparkles className="w-4 h-4 text-rose-500 mr-2" />
-                      Consultation personnalisée
+                      15-20h de travail
                     </li>
                     <li className="flex items-center">
                       <Sparkles className="w-4 h-4 text-rose-500 mr-2" />
@@ -478,14 +662,14 @@ export default function PortraitDame() {
                   </h3>
                   <div className="mb-6">
                     <div className="text-4xl font-bold text-purple-600 mb-2">
-                      280€
+                      340€
                     </div>
                     <div className="text-gray-600 text-lg">50 x 70 cm</div>
                   </div>
                   <ul className="text-gray-600 space-y-2 mb-8">
                     <li className="flex items-center">
                       <Sparkles className="w-4 h-4 text-purple-500 mr-2" />
-                      Consultation personnalisée
+                      20-25h de travail
                     </li>
                     <li className="flex items-center">
                       <Sparkles className="w-4 h-4 text-purple-500 mr-2" />
@@ -514,18 +698,18 @@ export default function PortraitDame() {
                   </h3>
                   <div className="mb-6">
                     <div className="text-4xl font-bold text-blue-600 mb-2">
-                      380€
+                      500€
                     </div>
                     <div className="text-gray-600 text-lg">60 x 80 cm</div>
                   </div>
                   <ul className="text-gray-600 space-y-2 mb-8">
                     <li className="flex items-center">
                       <Sparkles className="w-4 h-4 text-blue-500 mr-2" />
-                      Consultation personnalisée
+                      30-40h de travail
                     </li>
                     <li className="flex items-center">
                       <Sparkles className="w-4 h-4 text-blue-500 mr-2" />
-                      Portrait de couple/famille
+                      Portrait de couple
                     </li>
                     <li className="flex items-center">
                       <Sparkles className="w-4 h-4 text-blue-500 mr-2" />

@@ -173,225 +173,290 @@ export default async function AttrapesRevesPage() {
         </div>
       </section>
 
-      {/* Section Créations Disponibles */}
+      {/* Section Galerie d'Attrape-Rêves Uniques */}
       <section
         id="creations"
         className="py-20 bg-gradient-to-br from-blue-50 via-teal-50 to-blue-50"
       >
         <div className="container mx-auto px-4">
-          {dreamCatchers && dreamCatchers.length > 0 ? (
-            <div>
-              <div className="text-center mb-16">
-                <div className="inline-flex items-center space-x-2 bg-blue-100 rounded-full px-6 py-2 mb-6">
-                  <Shield className="w-5 h-5 text-blue-600" />
-                  <span className="text-blue-800 font-medium text-sm">
-                    Créations Disponibles
-                  </span>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 bg-blue-100 rounded-full px-6 py-2 mb-6">
+              <Shield className="w-5 h-5 text-blue-600" />
+              <span className="text-blue-800 font-medium text-sm">
+                Créations Uniques
+              </span>
+            </div>
+
+            <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+              Nos
+              <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
+                {" "}
+                attrape-rêves uniques
+              </span>
+            </h2>
+
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+              Chaque attrape-rêves présenté ici est une pièce unique créée avec intention. 
+              Ils ne sont pas disponibles à la vente mais peuvent vous inspirer pour votre propre création personnalisée.
+            </p>
+          </div>
+
+          {/* Galerie d'inspiration */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              <div className="aspect-square relative">
+                <Image
+                  src="/images/attrape-reve-bleu.jpg"
+                  alt="Attrape-rêves bleu unique"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="text-sm font-medium">Attrape-Rêves Océan</p>
+                    <p className="text-xs opacity-90">Protection des eaux profondes</p>
+                  </div>
                 </div>
-
-                <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
-                  Nos
-                  <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-                    {" "}
-                    attrape-rêves
-                  </span>
-                </h2>
-
-                <div className="flex items-center justify-center space-x-2 text-gray-600">
-                  <Sparkles className="w-4 h-4" />
-                  <span className="text-lg">
-                    {dreamCatchers.length} pièce
-                    {dreamCatchers.length > 1 ? "s" : ""} unique
-                    {dreamCatchers.length > 1 ? "s" : ""} disponible
-                    {dreamCatchers.length > 1 ? "s" : ""}
-                  </span>
-                  <Sparkles className="w-4 h-4" />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                {dreamCatchers.map((dreamCatcher) => (
-                  <ArtworkCard key={dreamCatcher._id} artwork={dreamCatcher} />
-                ))}
               </div>
             </div>
-          ) : (
-            <div className="text-center py-16">
-              <div className="w-24 h-24 bg-gradient-to-r from-blue-400 to-teal-400 rounded-full flex items-center justify-center mx-auto mb-8">
-                <Moon className="w-12 h-12 text-white" />
-              </div>
 
-              <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-6">
-                Nouvelles créations
-                <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-                  {" "}
-                  en cours
-                </span>
-              </h2>
-
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Nous préparons de nouveaux attrape-rêves magiques avec intention
-                et amour. En attendant, vous pouvez commander une création
-                personnalisée.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/contact"
-                  className="group bg-gradient-to-r from-blue-500 to-teal-500 text-white px-8 py-4 rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
-                >
-                  <span className="flex items-center justify-center space-x-2">
-                    <Palette className="w-5 h-5" />
-                    <span>Commander une création sur mesure</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-
-                <Link
-                  href="/boutique"
-                  className="group bg-white/80 backdrop-blur-sm border-2 border-blue-300 text-blue-700 hover:bg-blue-50 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
-                >
-                  <span className="flex items-center justify-center space-x-2">
-                    <Sparkles className="w-5 h-5" />
-                    <span>Découvrir nos autres œuvres</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              <div className="aspect-square relative">
+                <Image
+                  src="/images/attrape-reve-plume.jpg"
+                  alt="Attrape-rêves aux plumes naturelles"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="text-sm font-medium">Attrape-Rêves Naturel</p>
+                    <p className="text-xs opacity-90">Connexion aux éléments</p>
+                  </div>
+                </div>
               </div>
             </div>
-          )}
+
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              <div className="aspect-square relative">
+                <Image
+                  src="/images/vero-attrape-reve.jpg"
+                  alt="Attrape-rêves artisanal unique"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="text-sm font-medium">Attrape-Rêves Spirituel</p>
+                    <p className="text-xs opacity-90">Énergie de protection</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Ces créations vous inspirent ? Partagez-nous vos souhaits et créons ensemble 
+              l'attrape-rêves qui vous ressemble.
+            </p>
+            
+            <Link
+              href="#questionnaire"
+              className="group bg-gradient-to-r from-blue-500 to-teal-500 text-white px-8 py-4 rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
+            >
+              <span className="flex items-center justify-center space-x-2">
+                <Palette className="w-5 h-5" />
+                <span>Créer mon attrape-rêves unique</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Section Création Sur Mesure */}
-      <section className="py-20 bg-white">
+      {/* Section Questionnaire */}
+      <section id="questionnaire" className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <div className="inline-flex items-center space-x-2 bg-purple-100 rounded-full px-6 py-2 mb-6">
-                <Palette className="w-5 h-5 text-purple-600" />
+                <MessageCircle className="w-5 h-5 text-purple-600" />
                 <span className="text-purple-800 font-medium text-sm">
-                  Création Sur Mesure
+                  Questionnaire Personnalisé
                 </span>
               </div>
 
               <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
-                Votre attrape-rêves
+                Créons ensemble votre
                 <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                   {" "}
-                  unique
+                  attrape-rêves unique
                 </span>
               </h2>
 
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Vous rêvez d&apos;un attrape-rêves qui vous ressemble ?
-                Partagez-nous vos intentions, couleurs préférées et éléments
-                symboliques.
+                Partagez-nous vos souhaits et vos intentions pour que nous puissions créer l'attrape-rêves qui vous correspond parfaitement.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Options disponibles */}
-              <div className="space-y-8">
-                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-purple-200/50 shadow-sm">
-                  <div className="flex items-center space-x-3 mb-6">
-                    <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-3 rounded-xl">
-                      <Shield className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-gray-800">
-                      Options disponibles
-                    </h3>
+            <div className="bg-gradient-to-r from-blue-50 to-teal-50 rounded-3xl p-8 shadow-lg">
+              <form className="space-y-8">
+                {/* Informations de contact */}
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Votre prénom *
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Votre prénom"
+                    />
                   </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Votre email *
+                    </label>
+                    <input
+                      type="email"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="votre@email.com"
+                    />
+                  </div>
+                </div>
 
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                      <span className="text-gray-600">
-                        Tailles de 15cm à 40cm de diamètre
-                      </span>
+                {/* Questions sur les souhaits */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Quelle est votre intention pour cet attrape-rêves ? *
+                  </label>
+                  <textarea
+                    rows="3"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Protection, guérison, guidance, amélioration du sommeil..."
+                  ></textarea>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Couleurs souhaitées
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Bleu océan, blanc pur, couleurs naturelles..."
+                  />
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Taille souhaitée
+                    </label>
+                    <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                      <option value="">Sélectionnez une taille</option>
+                      <option value="15cm">Petit (15cm)</option>
+                      <option value="25cm">Moyen (25cm)</option>
+                      <option value="35cm">Grand (35cm)</option>
+                      <option value="custom">Taille personnalisée</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Où sera-t-il placé ?
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Chambre, salon, bureau..."
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Éléments symboliques importants pour vous
+                  </label>
+                  <textarea
+                    rows="3"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Pierres naturelles, plumes d'oiseaux spécifiques, symboles spirituels..."
+                  ></textarea>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Y a-t-il des éléments à éviter ?
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Allergies, couleurs non souhaitées..."
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Message libre
+                  </label>
+                  <textarea
+                    rows="4"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Partagez-nous tout ce qui vous semble important pour votre création..."
+                  ></textarea>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 border border-blue-200">
+                  <h4 className="text-lg font-medium text-gray-800 mb-4">Processus de création</h4>
+                  <div className="grid md:grid-cols-4 gap-4 text-sm text-gray-600">
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <span className="text-white font-bold">1</span>
+                      </div>
+                      <p className="font-medium">Consultation</p>
+                      <p className="text-xs">Analyse de vos souhaits</p>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                      <span className="text-gray-600">
-                        Choix des couleurs et matériaux naturels
-                      </span>
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <span className="text-white font-bold">2</span>
+                      </div>
+                      <p className="font-medium">Création</p>
+                      <p className="text-xs">2-3 semaines de travail</p>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                      <span className="text-gray-600">
-                        Intégration de pierres naturelles
-                      </span>
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <span className="text-white font-bold">3</span>
+                      </div>
+                      <p className="font-medium">Purification</p>
+                      <p className="text-xs">Bénédiction spirituelle</p>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                      <span className="text-gray-600">
-                        Symboles personnalisés selon vos intentions
-                      </span>
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-gradient-to-r from-teal-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <span className="text-white font-bold">4</span>
+                      </div>
+                      <p className="font-medium">Livraison</p>
+                      <p className="text-xs">Avec guide d'utilisation</p>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Processus de création */}
-              <div className="space-y-8">
-                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-blue-200/50 shadow-sm">
-                  <div className="flex items-center space-x-3 mb-6">
-                    <div className="bg-gradient-to-r from-blue-500 to-teal-500 p-3 rounded-xl">
-                      <Clock className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-gray-800">
-                      Le processus créatif
-                    </h3>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="flex items-start space-x-3">
-                      <div className="bg-gradient-to-r from-blue-500 to-teal-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
-                        1
-                      </div>
-                      <span className="text-gray-600">
-                        Consultation pour définir vos intentions spirituelles
-                      </span>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="bg-gradient-to-r from-teal-500 to-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
-                        2
-                      </div>
-                      <span className="text-gray-600">
-                        Création méditative sur 2-3 semaines
-                      </span>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="bg-gradient-to-r from-blue-600 to-teal-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
-                        3
-                      </div>
-                      <span className="text-gray-600">
-                        Purification et bénédiction de l&apos;œuvre
-                      </span>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="bg-gradient-to-r from-teal-600 to-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
-                        4
-                      </div>
-                      <span className="text-gray-600">
-                        Livraison avec guide d&apos;utilisation spirituelle
-                      </span>
-                    </div>
-                  </div>
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    className="group bg-gradient-to-r from-purple-500 to-blue-500 text-white px-10 py-4 rounded-full hover:from-purple-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-xl text-lg font-medium"
+                  >
+                    <span className="flex items-center justify-center space-x-3">
+                      <Moon className="w-6 h-6" />
+                      <span>Envoyer ma demande</span>
+                      <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </button>
+                  <p className="text-sm text-gray-500 mt-4">
+                    Nous vous recontacterons sous 24h pour discuter de votre projet
+                  </p>
                 </div>
-              </div>
-            </div>
-
-            <div className="text-center mt-12">
-              <Link
-                href="/contact"
-                className="group bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 sm:px-10 py-4 sm:py-5 rounded-full hover:from-purple-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-xl text-base sm:text-lg font-medium inline-flex items-center justify-center space-x-2 sm:space-x-3 whitespace-nowrap"
-              >
-                <Moon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
-                <span className="hidden sm:inline">Discuter de mon projet</span>
-                <span className="sm:hidden">Mon projet</span>
-                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform flex-shrink-0" />
-              </Link>
+              </form>
             </div>
           </div>
         </div>

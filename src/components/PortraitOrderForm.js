@@ -7,48 +7,27 @@ export default function PortraitOrderForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
-    // Informations personnelles
+    // Informations personnelles pour Portrait d'âme
     firstName: "",
     lastName: "",
+    maidenName: "",
+    birthDate: "",
+    birthPlace: "",
     email: "",
     phone: "",
-    age: "",
-    profession: "",
 
-    // Adresse
+    // Adresse de livraison
     address: "",
     addressComplement: "",
     postalCode: "",
     city: "",
     country: "France",
 
-    // Questions sur la personnalité
-    personalityDescription: "",
-    lifeValues: "",
-    currentChallenges: "",
-    aspirations: "",
-    significantMoments: "",
-    emotionalState: "",
-    spiritualPath: "",
+    // Format et budget
+    format: "intime",
+    budget: "240",
 
-    // Préférences artistiques
-    colorPreferences: "",
-    stylePreferences: "",
-    symbolsImportant: "",
-    avoidElements: "",
-
-    // Informations sur le projet
-    portraitPurpose: "",
-    shareWithOthers: "",
-    timeline: "",
-    budget: "299",
-
-    // Communication
-    consultationPreference: "",
-    availableHours: "",
-    communicationStyle: "",
-
-    // Consentements
+    // Communication et finalisation
     message: "",
     newsletter: false,
     terms: false,
@@ -77,11 +56,14 @@ export default function PortraitOrderForm() {
         newErrors.firstName = "Le prénom est obligatoire";
       if (!formData.lastName.trim())
         newErrors.lastName = "Le nom est obligatoire";
+      if (!formData.birthDate.trim())
+        newErrors.birthDate = "La date de naissance est obligatoire";
+      if (!formData.birthPlace.trim())
+        newErrors.birthPlace = "Le lieu de naissance est obligatoire";
       if (!formData.email.trim())
         newErrors.email = "L&apos;email est obligatoire";
       if (!formData.phone.trim())
         newErrors.phone = "Le téléphone est obligatoire";
-      if (!formData.age.trim()) newErrors.age = "L&apos;âge est obligatoire";
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (formData.email && !emailRegex.test(formData.email)) {
@@ -103,16 +85,6 @@ export default function PortraitOrderForm() {
     }
 
     if (step === 3) {
-      if (!formData.personalityDescription.trim())
-        newErrors.personalityDescription =
-          "Cette question est importante pour votre portrait";
-      if (!formData.lifeValues.trim())
-        newErrors.lifeValues = "Partagez vos valeurs principales";
-      if (!formData.aspirations.trim())
-        newErrors.aspirations = "Vos aspirations nous aident à vous comprendre";
-    }
-
-    if (step === 5) {
       if (!formData.terms)
         newErrors.terms = "Vous devez accepter les conditions";
       if (!formData.dataConsent)
@@ -125,7 +97,7 @@ export default function PortraitOrderForm() {
 
   const nextStep = () => {
     if (validateStep(currentStep)) {
-      setCurrentStep((prev) => Math.min(prev + 1, 5));
+      setCurrentStep((prev) => Math.min(prev + 1, 3));
     }
   };
 
@@ -136,7 +108,7 @@ export default function PortraitOrderForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateStep(5)) return;
+    if (!validateStep(3)) return;
 
     setIsLoading(true);
 
@@ -179,6 +151,9 @@ export default function PortraitOrderForm() {
             <h3 className="text-xl font-medium text-gray-800 mb-4">
               Informations personnelles
             </h3>
+            <p className="text-gray-600 mb-6">
+              Ces informations essentielles nous permettent de créer votre portrait d'âme personnalisé.
+            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -194,7 +169,7 @@ export default function PortraitOrderForm() {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
+                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent ${
                     errors.firstName ? "border-red-500" : "border-gray-300"
                   }`}
                 />
@@ -218,12 +193,77 @@ export default function PortraitOrderForm() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
+                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent ${
                     errors.lastName ? "border-red-500" : "border-gray-300"
                   }`}
                 />
                 {errors.lastName && (
                   <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="maidenName"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Nom de jeune fille (si applicable)
+              </label>
+              <input
+                type="text"
+                id="maidenName"
+                name="maidenName"
+                value={formData.maidenName}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                placeholder="Votre nom de naissance"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label
+                  htmlFor="birthDate"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Date de naissance *
+                </label>
+                <input
+                  type="date"
+                  id="birthDate"
+                  name="birthDate"
+                  value={formData.birthDate}
+                  onChange={handleChange}
+                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent ${
+                    errors.birthDate ? "border-red-500" : "border-gray-300"
+                  }`}
+                />
+                {errors.birthDate && (
+                  <p className="text-red-500 text-sm mt-1">{errors.birthDate}</p>
+                )}
+              </div>
+
+              <div>
+                <label
+                  htmlFor="birthPlace"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Lieu de naissance *
+                </label>
+                <input
+                  type="text"
+                  id="birthPlace"
+                  name="birthPlace"
+                  value={formData.birthPlace}
+                  onChange={handleChange}
+                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent ${
+                    errors.birthPlace ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="Ville, pays"
+                />
+                {errors.birthPlace && (
+                  <p className="text-red-500 text-sm mt-1">{errors.birthPlace}</p>
                 )}
               </div>
             </div>
@@ -242,7 +282,7 @@ export default function PortraitOrderForm() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
+                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent ${
                     errors.email ? "border-red-500" : "border-gray-300"
                   }`}
                 />
@@ -264,57 +304,13 @@ export default function PortraitOrderForm() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
+                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent ${
                     errors.phone ? "border-red-500" : "border-gray-300"
                   }`}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
                 )}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label
-                  htmlFor="age"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Âge *
-                </label>
-                <input
-                  type="number"
-                  id="age"
-                  name="age"
-                  min="18"
-                  max="120"
-                  value={formData.age}
-                  onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
-                    errors.age ? "border-red-500" : "border-gray-300"
-                  }`}
-                />
-                {errors.age && (
-                  <p className="text-red-500 text-sm mt-1">{errors.age}</p>
-                )}
-              </div>
-
-              <div>
-                <label
-                  htmlFor="profession"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Profession / Activité
-                </label>
-                <input
-                  type="text"
-                  id="profession"
-                  name="profession"
-                  value={formData.profession}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                  placeholder="Votre activité principale"
-                />
               </div>
             </div>
           </div>
@@ -324,8 +320,11 @@ export default function PortraitOrderForm() {
         return (
           <div className="space-y-6">
             <h3 className="text-xl font-medium text-gray-800 mb-4">
-              Adresse de contact
+              Adresse de livraison
             </h3>
+            <p className="text-gray-600 mb-6">
+              Votre portrait d'âme vous sera envoyé avec livraison offerte.
+            </p>
 
             <div>
               <label
@@ -340,7 +339,7 @@ export default function PortraitOrderForm() {
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
-                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
+                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent ${
                   errors.address ? "border-red-500" : "border-gray-300"
                 }`}
               />
@@ -362,7 +361,7 @@ export default function PortraitOrderForm() {
                 name="addressComplement"
                 value={formData.addressComplement}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
               />
             </div>
 
@@ -380,7 +379,7 @@ export default function PortraitOrderForm() {
                   name="postalCode"
                   value={formData.postalCode}
                   onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
+                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent ${
                     errors.postalCode ? "border-red-500" : "border-gray-300"
                   }`}
                   maxLength="5"
@@ -405,7 +404,7 @@ export default function PortraitOrderForm() {
                   name="city"
                   value={formData.city}
                   onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
+                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent ${
                     errors.city ? "border-red-500" : "border-gray-300"
                   }`}
                 />
@@ -421,302 +420,89 @@ export default function PortraitOrderForm() {
         return (
           <div className="space-y-6">
             <h3 className="text-xl font-medium text-gray-800 mb-4">
-              Votre essence profonde
+              Format et finalisation
             </h3>
             <p className="text-gray-600 mb-6">
-              Ces questions nous aident à comprendre qui vous êtes vraiment pour
-              créer un portrait authentique.
+              Choisissez le format de votre portrait d'âme et finalisez votre commande.
             </p>
 
             <div>
-              <label
-                htmlFor="personalityDescription"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Comment vous décririez-vous en quelques mots ? *
+              <label className="block text-sm font-medium text-gray-700 mb-3">
+                Format de votre Portrait d'Âme
               </label>
-              <textarea
-                id="personalityDescription"
-                name="personalityDescription"
-                rows="4"
-                value={formData.personalityDescription}
-                onChange={handleChange}
-                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
-                  errors.personalityDescription
-                    ? "border-red-500"
-                    : "border-gray-300"
-                }`}
-                placeholder="Partagez votre personnalité, vos traits de caractère, ce qui vous définit..."
-              />
-              {errors.personalityDescription && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.personalityDescription}
-                </p>
-              )}
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
+                  formData.format === 'intime' 
+                    ? 'border-rose-500 bg-rose-50' 
+                    : 'border-gray-300 hover:border-rose-300'
+                }`} 
+                onClick={() => setFormData(prev => ({ ...prev, format: 'intime', budget: '240' }))}>
+                  <div className="text-center">
+                    <div className="text-lg font-semibold text-gray-800">Format Intime</div>
+                    <div className="text-sm text-gray-600 mb-2">30 x 40 cm</div>
+                    <div className="text-2xl font-bold text-rose-600 mb-2">240€</div>
+                    <div className="text-xs text-gray-500">15-20h de travail</div>
+                  </div>
+                </div>
+
+                <div className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
+                  formData.format === 'elegant' 
+                    ? 'border-rose-500 bg-rose-50' 
+                    : 'border-gray-300 hover:border-rose-300'
+                }`} 
+                onClick={() => setFormData(prev => ({ ...prev, format: 'elegant', budget: '340' }))}>
+                  <div className="text-center">
+                    <div className="text-lg font-semibold text-gray-800">Format Élégant</div>
+                    <div className="text-sm text-gray-600 mb-2">50 x 70 cm</div>
+                    <div className="text-2xl font-bold text-purple-600 mb-2">340€</div>
+                    <div className="text-xs text-gray-500">20-25h de travail</div>
+                  </div>
+                </div>
+
+                <div className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
+                  formData.format === 'duo' 
+                    ? 'border-rose-500 bg-rose-50' 
+                    : 'border-gray-300 hover:border-rose-300'
+                }`} 
+                onClick={() => setFormData(prev => ({ ...prev, format: 'duo', budget: '500' }))}>
+                  <div className="text-center">
+                    <div className="text-lg font-semibold text-gray-800">Format Duo</div>
+                    <div className="text-sm text-gray-600 mb-2">60 x 80 cm</div>
+                    <div className="text-2xl font-bold text-blue-600 mb-2">500€</div>
+                    <div className="text-xs text-gray-500">30-40h de travail</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <label
-                htmlFor="lifeValues"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Quelles sont vos valeurs principales dans la vie ? *
-              </label>
-              <textarea
-                id="lifeValues"
-                name="lifeValues"
-                rows="3"
-                value={formData.lifeValues}
-                onChange={handleChange}
-                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
-                  errors.lifeValues ? "border-red-500" : "border-gray-300"
-                }`}
-                placeholder="Liberté, famille, créativité, justice, amour, authenticité..."
-              />
-              {errors.lifeValues && (
-                <p className="text-red-500 text-sm mt-1">{errors.lifeValues}</p>
-              )}
-            </div>
-
-            <div>
-              <label
-                htmlFor="currentChallenges"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Quels défis traversez-vous actuellement ?
-              </label>
-              <textarea
-                id="currentChallenges"
-                name="currentChallenges"
-                rows="3"
-                value={formData.currentChallenges}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                placeholder="Transitions de vie, questionnements, épreuves..."
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="aspirations"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Quels sont vos rêves et aspirations ? *
-              </label>
-              <textarea
-                id="aspirations"
-                name="aspirations"
-                rows="3"
-                value={formData.aspirations}
-                onChange={handleChange}
-                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
-                  errors.aspirations ? "border-red-500" : "border-gray-300"
-                }`}
-                placeholder="Vos projets, vos envies profondes, ce vers quoi vous tendez..."
-              />
-              {errors.aspirations && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.aspirations}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label
-                htmlFor="significantMoments"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Y a-t-il des moments marquants de votre vie à intégrer ?
-              </label>
-              <textarea
-                id="significantMoments"
-                name="significantMoments"
-                rows="3"
-                value={formData.significantMoments}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                placeholder="Événements qui vous ont transformé, révélations, tournants..."
-              />
-            </div>
-          </div>
-        );
-
-      case 4:
-        return (
-          <div className="space-y-6">
-            <h3 className="text-xl font-medium text-gray-800 mb-4">
-              Préférences créatives
-            </h3>
-
-            <div>
-              <label
-                htmlFor="colorPreferences"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Couleurs qui vous attirent ou vous représentent
-              </label>
-              <input
-                type="text"
-                id="colorPreferences"
-                name="colorPreferences"
-                value={formData.colorPreferences}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                placeholder="Bleu océan, rouge passion, vert forêt, dorés..."
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="symbolsImportant"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Symboles ou éléments importants pour vous
-              </label>
-              <textarea
-                id="symbolsImportant"
-                name="symbolsImportant"
-                rows="3"
-                value={formData.symbolsImportant}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                placeholder="Animaux, éléments naturels, objets spirituels, formes géométriques..."
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="emotionalState"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Comment vous sentez-vous en ce moment dans votre vie ?
-              </label>
-              <textarea
-                id="emotionalState"
-                name="emotionalState"
-                rows="3"
-                value={formData.emotionalState}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                placeholder="Votre état émotionnel, votre énergie actuelle..."
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="spiritualPath"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Avez-vous un cheminement spirituel particulier ?
-              </label>
-              <textarea
-                id="spiritualPath"
-                name="spiritualPath"
-                rows="3"
-                value={formData.spiritualPath}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                placeholder="Méditation, religion, philosophie, développement personnel..."
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="portraitPurpose"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Dans quel but souhaitez-vous ce portrait ?
-              </label>
-              <select
-                id="portraitPurpose"
-                name="portraitPurpose"
-                value={formData.portraitPurpose}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              >
-                <option value="">Sélectionnez...</option>
-                <option value="connaissance-soi">Mieux me connaître</option>
-                <option value="transition">
-                  Marquer une transition de vie
-                </option>
-                <option value="cadeau">Cadeau pour un proche</option>
-                <option value="healing">Processus de guérison</option>
-                <option value="celebration">Célébrer qui je suis</option>
-                <option value="autre">Autre raison</option>
-              </select>
-            </div>
-          </div>
-        );
-
-      case 5:
-        return (
-          <div className="space-y-6">
-            <h3 className="text-xl font-medium text-gray-800 mb-4">
-              Finalisation
-            </h3>
-
-            <div>
-              <label
-                htmlFor="consultationPreference"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Préférence pour la consultation
-              </label>
-              <select
-                id="consultationPreference"
-                name="consultationPreference"
-                value={formData.consultationPreference}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              >
-                <option value="">Sélectionnez...</option>
-                <option value="video">Visioconférence</option>
-                <option value="phone">Téléphone</option>
-                <option value="presence">En personne (si possible)</option>
-                <option value="email">Échanges par email</option>
-              </select>
-            </div>
-
-            <div>
-              <label
-                htmlFor="availableHours"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Créneaux de disponibilité
-              </label>
-              <input
-                type="text"
-                id="availableHours"
-                name="availableHours"
-                value={formData.availableHours}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                placeholder="Ex: Semaine 18h-20h, Weekend matin"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="budget"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Budget souhaité
-              </label>
-              <select
-                id="budget"
-                name="budget"
-                value={formData.budget}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              >
-                <option value="299">299€ - Portrait d&apos;âme standard</option>
-                <option value="450">
-                  450€ - Portrait d&apos;âme avec session étendue
-                </option>
-                <option value="650">
-                  650€ - Portrait d&apos;âme premium avec suivi
-                </option>
-              </select>
+            <div className="bg-gradient-to-r from-purple-50 to-rose-50 rounded-lg p-6">
+              <h4 className="text-lg font-medium text-gray-800 mb-3">Inclus avec votre Portrait d'Âme</h4>
+              <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
+                <div className="flex items-center">
+                  <span className="w-2 h-2 bg-rose-500 rounded-full mr-2"></span>
+                  Clé USB avec éléments du tirage
+                </div>
+                <div className="flex items-center">
+                  <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                  Signification des symboles
+                </div>
+                <div className="flex items-center">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                  Étapes de confection détaillées
+                </div>
+                <div className="flex items-center">
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Rituel d'accueil du portrait
+                </div>
+                <div className="flex items-center">
+                  <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
+                  Certificat d'authenticité
+                </div>
+                <div className="flex items-center">
+                  <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
+                  Livraison offerte
+                </div>
+              </div>
             </div>
 
             <div>
@@ -724,16 +510,16 @@ export default function PortraitOrderForm() {
                 htmlFor="message"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Message libre
+                Message libre (optionnel)
               </label>
               <textarea
                 id="message"
                 name="message"
-                rows="4"
+                rows="3"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                placeholder="Tout ce que vous souhaitez nous partager d'autre..."
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                placeholder="Partagez-nous toute information supplémentaire..."
               />
             </div>
 
@@ -745,14 +531,13 @@ export default function PortraitOrderForm() {
                   name="newsletter"
                   checked={formData.newsletter}
                   onChange={handleChange}
-                  className="mt-1 h-4 w-4 text-gray-600 focus:ring-gray-500 border-gray-300 rounded"
+                  className="mt-1 h-4 w-4 text-rose-600 focus:ring-rose-500 border-gray-300 rounded"
                 />
                 <label
                   htmlFor="newsletter"
                   className="ml-2 text-sm text-gray-600"
                 >
-                  Je souhaite recevoir des nouvelles de l&apos;artiste et des
-                  témoignages
+                  Je souhaite recevoir des nouvelles de l&apos;atelier et des témoignages
                 </label>
               </div>
 
@@ -763,7 +548,7 @@ export default function PortraitOrderForm() {
                   name="dataConsent"
                   checked={formData.dataConsent}
                   onChange={handleChange}
-                  className={`mt-1 h-4 w-4 text-gray-600 focus:ring-gray-500 rounded ${
+                  className={`mt-1 h-4 w-4 text-rose-600 focus:ring-rose-500 rounded ${
                     errors.dataConsent ? "border-red-500" : "border-gray-300"
                   }`}
                 />
@@ -771,8 +556,7 @@ export default function PortraitOrderForm() {
                   htmlFor="dataConsent"
                   className="ml-2 text-sm text-gray-600"
                 >
-                  J&apos;autorise l&apos;utilisation de mes informations pour la
-                  création de mon portrait d&apos;âme *
+                  J&apos;autorise l&apos;utilisation de mes informations pour la création de mon portrait d&apos;âme *
                 </label>
               </div>
               {errors.dataConsent && (
@@ -788,7 +572,7 @@ export default function PortraitOrderForm() {
                   name="terms"
                   checked={formData.terms}
                   onChange={handleChange}
-                  className={`mt-1 h-4 w-4 text-gray-600 focus:ring-gray-500 rounded ${
+                  className={`mt-1 h-4 w-4 text-rose-600 focus:ring-rose-500 rounded ${
                     errors.terms ? "border-red-500" : "border-gray-300"
                   }`}
                 />
@@ -796,14 +580,14 @@ export default function PortraitOrderForm() {
                   J&apos;accepte les{" "}
                   <Link
                     href="/conditions"
-                    className="text-gray-800 hover:underline"
+                    className="text-rose-600 hover:underline"
                   >
                     conditions générales
                   </Link>{" "}
                   et la{" "}
                   <Link
                     href="/confidentialite"
-                    className="text-gray-800 hover:underline"
+                    className="text-rose-600 hover:underline"
                   >
                     politique de confidentialité
                   </Link>{" "}
@@ -823,38 +607,52 @@ export default function PortraitOrderForm() {
     <div>
       {/* Indicateur d'étapes */}
       <div className="mb-8">
-        <div className="flex items-center justify-center space-x-4">
-          {[1, 2, 3, 4, 5].map((step) => (
-            <div
-              key={step}
-              className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
-                step === currentStep
-                  ? "bg-gray-800 border-gray-800 text-white"
-                  : step < currentStep
-                  ? "bg-green-500 border-green-500 text-white"
-                  : "bg-white border-gray-300 text-gray-400"
-              }`}
-            >
-              {step < currentStep ? (
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              ) : (
-                step
+        <div className="flex items-center justify-center space-x-6">
+          {[1, 2, 3].map((step) => (
+            <div key={step} className="flex items-center">
+              <div
+                className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
+                  step === currentStep
+                    ? "bg-rose-600 border-rose-600 text-white"
+                    : step < currentStep
+                    ? "bg-green-500 border-green-500 text-white"
+                    : "bg-white border-gray-300 text-gray-400"
+                }`}
+              >
+                {step < currentStep ? (
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                ) : (
+                  step
+                )}
+              </div>
+              {step < 3 && (
+                <div className={`w-12 h-0.5 ml-4 ${
+                  step < currentStep ? "bg-green-500" : "bg-gray-300"
+                }`} />
               )}
             </div>
           ))}
         </div>
-        <div className="flex justify-center mt-2 text-sm text-gray-600">
-          Étape {currentStep} sur 5
+        <div className="flex justify-center mt-4 text-sm text-gray-600 space-x-8">
+          <span className={currentStep === 1 ? "font-medium text-rose-600" : ""}>
+            Informations
+          </span>
+          <span className={currentStep === 2 ? "font-medium text-rose-600" : ""}>
+            Livraison
+          </span>
+          <span className={currentStep === 3 ? "font-medium text-rose-600" : ""}>
+            Format
+          </span>
         </div>
       </div>
 
@@ -874,11 +672,11 @@ export default function PortraitOrderForm() {
           )}
 
           <div className="ml-auto">
-            {currentStep < 5 ? (
+            {currentStep < 3 ? (
               <button
                 type="button"
                 onClick={nextStep}
-                className="px-6 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition"
+                className="px-6 py-3 bg-gradient-to-r from-rose-500 to-purple-500 text-white rounded-lg hover:from-rose-600 hover:to-purple-600 transition font-medium"
               >
                 Suivant
               </button>
@@ -886,7 +684,7 @@ export default function PortraitOrderForm() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="px-8 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+                className="px-8 py-3 bg-gradient-to-r from-rose-500 to-purple-500 text-white rounded-lg hover:from-rose-600 hover:to-purple-600 transition font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
               >
                 {isLoading ? (
                   <>
@@ -913,7 +711,7 @@ export default function PortraitOrderForm() {
                     Envoi en cours...
                   </>
                 ) : (
-                  "Envoyer ma demande"
+                  "Commander mon Portrait d'Âme"
                 )}
               </button>
             )}

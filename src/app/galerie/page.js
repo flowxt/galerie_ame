@@ -24,9 +24,11 @@ export default async function DejaRealisePage() {
   const getCategoryLabel = (category) => {
     const categoryLabels = {
       "portrait-ame": "Portraits d'Âme",
+      "tableau-de-vie": "Tableau de Vie",
+      "attrape-reves": "Attrape-rêves",
+      "tableau-intuitif": "Tableau Intuitif",
       original: "Œuvres Originales",
       reproduction: "Reproductions",
-      "attrape-reves": "Attrape-rêves",
       custom: "Commandes Personnalisées",
     };
     return categoryLabels[category] || category;

@@ -135,9 +135,19 @@ export async function getFeaturedArtworks() {
   `);
 }
 
-// Requête pour récupérer les attrape-rêves disponibles
+// Requête pour récupérer les attrape-rêves disponibles pour la boutique
+export async function getDreamCatchersForShop() {
+  return getArtworksByCategory("attrape-reves-boutique");
+}
+
+// Requête pour récupérer les attrape-rêves uniques pour inspiration (page attrape-rêves)
+export async function getUniqueDreamCatchers() {
+  return getArtworksByCategory("attrape-reves-unique");
+}
+
+// Maintien de la fonction originale pour compatibilité (sera dépréciée)
 export async function getDreamCatchers() {
-  return getArtworksByCategory("attrape-reves");
+  return getArtworksByCategory("attrape-reves-boutique");
 }
 
 // Fonction pour mettre à jour le statut d'une œuvre (utilisée après achat)
@@ -165,7 +175,10 @@ export async function getArtworkStats() {
         "portraitAme": count(*[_type == "artwork" && category == "portrait-ame"]),
         "original": count(*[_type == "artwork" && category == "original"]),
         "reproduction": count(*[_type == "artwork" && category == "reproduction"]),
-        "attrapesReves": count(*[_type == "artwork" && category == "attrape-reves"]),
+        "attrapesRevesBoutique": count(*[_type == "artwork" && category == "attrape-reves-boutique"]),
+        "attrapesRevesUnique": count(*[_type == "artwork" && category == "attrape-reves-unique"]),
+        "tableauDeVie": count(*[_type == "artwork" && category == "tableau-de-vie"]),
+        "tableauIntuitif": count(*[_type == "artwork" && category == "tableau-intuitif"]),
         "custom": count(*[_type == "artwork" && category == "custom"])
       }
     }

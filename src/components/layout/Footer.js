@@ -65,6 +65,14 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/tableau-de-vie"
+                  className="text-gray-600 hover:text-teal-500 transition-colors duration-200"
+                >
+                  Tableau de Vie
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/attrape-reves"
                   className="text-gray-600 hover:text-blue-500 transition-colors duration-200"
                 >
@@ -81,10 +89,10 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/deja-realise"
+                  href="/galerie"
                   className="text-gray-600 hover:text-rose-500 transition-colors duration-200"
                 >
-                  Déjà réalisé
+                  Galerie
                 </Link>
               </li>
               <li>
@@ -106,18 +114,18 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-center space-x-3 text-gray-600">
                 <Mail className="w-5 h-5 text-rose-400 flex-shrink-0" />
-                <span className="text-sm">contact@atelier-artame.fr</span>
+                <span className="text-sm">contact@atelierartame.com</span>
               </li>
               <li className="flex items-center space-x-3 text-gray-600">
                 <Phone className="w-5 h-5 text-purple-400 flex-shrink-0" />
-                <span className="text-sm">+33 (0)6 63 72 73 00</span>
+                <span className="text-sm">06 32 21 52 88</span>
               </li>
               <li className="flex items-start space-x-3 text-gray-600">
                 <MapPin className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
                 <span className="text-sm">
-                  France
+                  Saint Sixt, France
                   <br />
-                  Créations spirituelles
+                  Créations spirituelles uniques
                 </span>
               </li>
             </ul>
@@ -149,7 +157,7 @@ export default function Footer() {
             </div>
 
             {/* Badges de confiance */}
-            <div className="flex items-center space-x-6 text-xs text-gray-500">
+            <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500">
               <div className="flex items-center space-x-1">
                 <div className="w-2 h-2 bg-green-300 rounded-full"></div>
                 <span>Matériaux naturels</span>
@@ -161,6 +169,10 @@ export default function Footer() {
               <div className="flex items-center space-x-1">
                 <div className="w-2 h-2 bg-purple-300 rounded-full"></div>
                 <span>Pièces uniques</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <div className="w-2 h-2 bg-amber-300 rounded-full"></div>
+                <span>Livraison offerte</span>
               </div>
             </div>
           </div>

@@ -6,6 +6,7 @@ import {
 // Composants de la landing page
 import HeroSection from "../components/landing/HeroSection";
 import PortraitsSection from "../components/landing/PortraitsSection";
+import TableauDeVieSection from "../components/landing/TableauDeVieSection";
 import AttrapesSection from "../components/landing/AttrapesSection";
 import FAQSection from "../components/landing/FAQSection";
 
@@ -21,6 +22,9 @@ export default async function Home() {
 
       {/* Section Portraits d'Âme */}
       <PortraitsSection />
+
+      {/* Section Tableau de Vie */}
+      <TableauDeVieSection />
 
       {/* Section Attrape-rêves */}
       <AttrapesSection />

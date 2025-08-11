@@ -153,6 +153,179 @@ export default async function Boutique() {
         </div>
       </section>
 
+      {/* Section Bons Cadeaux */}
+      <section className="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 bg-amber-100 rounded-full px-6 py-2 mb-6">
+              <Heart className="w-5 h-5 text-amber-600" />
+              <span className="text-amber-800 font-medium text-sm">
+                Cadeaux Spirituels
+              </span>
+            </div>
+
+            <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
+              Bons
+              <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+                {" "}
+                Cadeaux
+              </span>
+            </h2>
+
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
+              Offrez un moment magique à vos proches avec nos bons cadeaux. Une
+              attention spirituelle qui leur permettra de choisir leur création
+              d'âme.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Bon cadeau 100€ */}
+            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-amber-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden">
+              {/* Effet de brillance */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-amber-300/30 to-transparent rounded-full transform translate-x-6 -translate-y-6"></div>
+
+              <div className="text-center relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <Heart className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                  Bon Cadeau
+                </h3>
+                <div className="mb-6">
+                  <div className="text-4xl font-bold text-amber-600 mb-2">
+                    100€
+                  </div>
+                  <div className="text-gray-600 text-sm">
+                    Contribution pour une création
+                  </div>
+                </div>
+                <p className="text-gray-600 leading-relaxed mb-6 text-sm">
+                  Parfait pour participer à un portrait d'âme ou découvrir nos
+                  créations spirituelles.
+                </p>
+                <button className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-3 rounded-full hover:from-amber-600 hover:to-orange-600 transition-all duration-300 font-medium">
+                  Choisir ce montant
+                </button>
+              </div>
+            </div>
+
+            {/* Bon cadeau 200€ */}
+            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-orange-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden">
+              {/* Badge populaire */}
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                  Le plus offert
+                </div>
+              </div>
+
+              {/* Effet de brillance */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-orange-300/30 to-transparent rounded-full transform translate-x-6 -translate-y-6"></div>
+
+              <div className="text-center relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <Star className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                  Bon Cadeau
+                </h3>
+                <div className="mb-6">
+                  <div className="text-4xl font-bold text-orange-600 mb-2">
+                    200€
+                  </div>
+                  <div className="text-gray-600 text-sm">
+                    Idéal pour un portrait d'âme
+                  </div>
+                </div>
+                <p className="text-gray-600 leading-relaxed mb-6 text-sm">
+                  Montant parfait pour offrir un portrait d'âme format intime ou
+                  contribuer à un format plus grand.
+                </p>
+                <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 font-medium">
+                  Choisir ce montant
+                </button>
+              </div>
+            </div>
+
+            {/* Bon cadeau 500€ */}
+            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-red-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden">
+              {/* Effet de brillance */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-red-300/30 to-transparent rounded-full transform translate-x-6 -translate-y-6"></div>
+
+              <div className="text-center relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-red-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <ShoppingBag className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                  Bon Cadeau
+                </h3>
+                <div className="mb-6">
+                  <div className="text-4xl font-bold text-red-600 mb-2">
+                    500€
+                  </div>
+                  <div className="text-gray-600 text-sm">
+                    Cadeau premium complet
+                  </div>
+                </div>
+                <p className="text-gray-600 leading-relaxed mb-6 text-sm">
+                  Pour offrir une expérience complète : portrait d'âme grand
+                  format ou tableau de vie.
+                </p>
+                <button className="w-full bg-gradient-to-r from-red-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-red-600 hover:to-pink-600 transition-all duration-300 font-medium">
+                  Choisir ce montant
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Informations supplémentaires */}
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-amber-200/50 shadow-sm mt-12 max-w-4xl mx-auto">
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                Comment ça fonctionne ?
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6 text-sm text-gray-600">
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center mb-3">
+                    <span className="text-white font-bold">1</span>
+                  </div>
+                  <p className="font-medium mb-1">Achat du bon cadeau</p>
+                  <p className="text-xs text-center">
+                    Choisissez le montant et finalisez votre commande
+                  </p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-3">
+                    <span className="text-white font-bold">2</span>
+                  </div>
+                  <p className="font-medium mb-1">Réception du code</p>
+                  <p className="text-xs text-center">
+                    Vous recevez un code unique à offrir
+                  </p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center mb-3">
+                    <span className="text-white font-bold">3</span>
+                  </div>
+                  <p className="font-medium mb-1">Utilisation libre</p>
+                  <p className="text-xs text-center">
+                    Le bénéficiaire choisit sa création d'âme
+                  </p>
+                </div>
+              </div>
+              <div className="mt-6 pt-6 border-t border-amber-200">
+                <p className="text-sm text-gray-600">
+                  <span className="font-medium">Validité :</span> 2 ans •
+                  <span className="font-medium ml-2">Livraison :</span> Offerte
+                  •<span className="font-medium ml-2">Utilisation :</span>{" "}
+                  Cumuls possibles
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Section Collection */}
       <section
         id="collection"
