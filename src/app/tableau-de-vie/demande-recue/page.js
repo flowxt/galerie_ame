@@ -23,7 +23,7 @@ export default function TableauDeVieDemandeRecue() {
           </h1>
 
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Merci pour votre confiance ! Nous allons étudier votre demande avec attention et commencer l'exploration de votre tableau de vie.
+            Merci pour votre confiance ! Nous allons étudier votre demande avec attention et commencer l&apos;exploration de votre tableau de vie.
           </p>
 
           {/* Prochaines étapes */}
@@ -123,7 +123,7 @@ export default function TableauDeVieDemandeRecue() {
           <div className="space-y-6">
             <div className="text-center">
               <p className="text-gray-600 mb-6">
-                Une question ? N'hésitez pas à nous contacter
+                Une question ? N&apos;hésitez pas à nous contacter
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

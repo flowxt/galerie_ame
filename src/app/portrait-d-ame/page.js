@@ -31,7 +31,7 @@ export default function PortraitDame() {
         <div className="absolute inset-0">
           <Image
             src="/images/portrait-dame.jpg"
-            alt="Portrait d'âme spirituel créé par l'Atelier Art'âme"
+            alt="Portrait d&apos;âme spirituel créé par l&apos;Atelier Art&apos;âme"
             fill
             className="object-cover object-center"
             priority
@@ -100,7 +100,7 @@ export default function PortraitDame() {
                 <div className="aspect-square relative overflow-hidden rounded-2xl shadow-2xl">
                   <Image
                     src="/images/portrait-dame2.jpg"
-                    alt="Portrait d'âme spirituel réalisé par Véronique"
+                    alt="Portrait d&apos;âme spirituel réalisé par Véronique"
                     fill
                     style={{ objectFit: "cover" }}
                     className="rounded-2xl"
@@ -225,7 +225,7 @@ export default function PortraitDame() {
               <div className="aspect-[4/5] relative">
                 <Image
                   src="/images/portrait-dame.jpg"
-                  alt="Portrait d'âme - Essence féminine révélée"
+                  alt="Portrait d&apos;âme - Essence féminine révélée"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -245,7 +245,7 @@ export default function PortraitDame() {
               <div className="aspect-[4/5] relative">
                 <Image
                   src="/images/portrait-dame2.jpg"
-                  alt="Portrait d'âme - Lumière intérieure"
+                  alt="Portrait d&apos;âme - Lumière intérieure"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -263,7 +263,7 @@ export default function PortraitDame() {
               <div className="aspect-[4/5] relative">
                 <Image
                   src="/images/portrait-dame3.jpg"
-                  alt="Portrait d'âme - Beauté authentique"
+                  alt="Portrait d&apos;âme - Beauté authentique"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />

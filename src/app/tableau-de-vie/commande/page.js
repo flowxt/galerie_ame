@@ -102,7 +102,7 @@ export default function TableauDeVieOrderForm() {
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (formData.email && !emailRegex.test(formData.email)) {
-        newErrors.email = "Format d'email invalide";
+        newErrors.email = "Format d&apos;email invalide";
       }
     }
 
@@ -171,7 +171,7 @@ export default function TableauDeVieOrderForm() {
         artwork: {
           _id: "tableau-de-vie-custom",
           title: "Tableau de Vie personnalisé",
-          description: "Commande d'un tableau de vie unique",
+          description: "Commande d&apos;un tableau de vie unique",
           price: parseInt(formData.budget),
         },
       };
@@ -180,9 +180,9 @@ export default function TableauDeVieOrderForm() {
 
       window.location.href = "/tableau-de-vie/demande-recue";
     } catch (error) {
-      console.error("Erreur lors de l'envoi:", error);
+      console.error("Erreur lors de l&apos;envoi:", error);
       alert(
-        "Erreur lors de l'envoi de votre demande. Veuillez réessayer."
+        "Erreur lors de l&apos;envoi de votre demande. Veuillez réessayer."
       );
     } finally {
       setIsLoading(false);
@@ -594,7 +594,7 @@ export default function TableauDeVieOrderForm() {
                 className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent ${
                   errors.lifeTransitions ? "border-red-500" : "border-gray-300"
                 }`}
-                placeholder="Changements de carrière, déménagements, relations, perte d'un proche..."
+                placeholder="Changements de carrière, déménagements, relations, perte d&apos;un proche..."
               />
               {errors.lifeTransitions && (
                 <p className="text-red-500 text-sm mt-1">
@@ -832,11 +832,11 @@ export default function TableauDeVieOrderForm() {
                 </div>
                 <div className="flex items-center">
                   <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                  Guide d'intégration personnelle
+                  Guide d&apos;intégration personnelle
                 </div>
                 <div className="flex items-center">
                   <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                  Certificat d'authenticité
+                  Certificat d&apos;authenticité
                 </div>
                 <div className="flex items-center">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
@@ -859,7 +859,7 @@ export default function TableauDeVieOrderForm() {
                 value={formData.message}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                placeholder="Tout ce que vous souhaitez nous partager d'autre..."
+                placeholder="Tout ce que vous souhaitez nous partager d&apos;autre..."
               />
             </div>
 
@@ -967,7 +967,7 @@ export default function TableauDeVieOrderForm() {
         </div>
 
         <div className="bg-white rounded-3xl shadow-xl p-8">
-          {/* Indicateur d'étapes */}
+          {/* Indicateur d&apos;étapes */}
           <div className="mb-8">
             <div className="flex items-center justify-between max-w-4xl mx-auto">
               {[1, 2, 3, 4, 5, 6].map((step) => (

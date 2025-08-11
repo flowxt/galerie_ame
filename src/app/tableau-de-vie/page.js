@@ -347,7 +347,9 @@ export default function TableauDeVie() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 text-white">
                     <p className="text-sm font-medium">Tableau de Vie</p>
-                    <p className="text-xs opacity-90">Chemin d'évolution</p>
+                    <p className="text-xs opacity-90">
+                      Chemin d&apos;évolution
+                    </p>
                   </div>
                 </div>
               </div>
@@ -467,7 +469,7 @@ export default function TableauDeVie() {
                   </div>
                   <div>
                     <p className="font-medium text-gray-800">
-                      Guide d'intégration
+                      Guide d&apos;intégration
                     </p>
                     <p className="text-sm text-gray-600">
                       Conseils pour accueillir et travailler avec l&apos;énergie
@@ -580,7 +582,7 @@ export default function TableauDeVie() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                  <span>Certificat d'authenticité</span>
+                  <span>Certificat d&apos;authenticité</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
@@ -612,7 +614,7 @@ export default function TableauDeVie() {
                 Tableau de Vie ?
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Le Portrait d'Âme révèle votre essence profonde à un moment
+                Le Portrait d&apos;Âme révèle votre essence profonde à un moment
                 donné, tandis que le Tableau de Vie explore votre parcours
                 complet : passé, présent et aspirations futures. C'est une
                 cartographie plus complète de votre existence.
@@ -637,9 +639,9 @@ export default function TableauDeVie() {
               </h3>
               <p className="text-gray-600 leading-relaxed">
                 La consultation peut se faire par visioconférence, téléphone ou
-                en personne selon vos préférences. C'est un moment d'échange
-                profond où nous explorons ensemble les thèmes centraux de votre
-                existence pour guider la création.
+                en personne selon vos préférences. C&apos;est un moment
+                d&apos;échange profond où nous explorons ensemble les thèmes
+                centraux de votre existence pour guider la création.
               </p>
             </div>
           </div>
