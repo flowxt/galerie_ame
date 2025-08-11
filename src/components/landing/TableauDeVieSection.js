@@ -39,8 +39,8 @@ export default function TableauDeVieSection() {
               </h2>
 
               <p className="text-xl text-gray-600 leading-relaxed font-crimson mb-8">
-                Découvrez votre parcours d&apos;âme à travers une création 
-                intuitive qui révèle les énergies, les leçons et les potentiels 
+                Découvrez votre parcours d&apos;âme à travers une création
+                intuitive qui révèle les énergies, les leçons et les potentiels
                 de votre chemin de vie.
               </p>
             </div>
@@ -56,8 +56,8 @@ export default function TableauDeVieSection() {
                     Analyse énergétique complète
                   </h3>
                   <p className="text-gray-600">
-                    Exploration approfondie de votre essence, vos défis, vos aspirations 
-                    et votre mission d&apos;âme.
+                    Exploration approfondie de votre essence, vos défis, vos
+                    aspirations et votre mission d&apos;âme.
                   </p>
                 </div>
               </div>
@@ -71,7 +71,7 @@ export default function TableauDeVieSection() {
                     Création intuitive guidée
                   </h3>
                   <p className="text-gray-600">
-                    Œuvre channelée qui transcrit visuellement les informations 
+                    Œuvre channelée qui transcrit visuellement les informations
                     reçues lors de votre consultation spirituelle.
                   </p>
                 </div>
@@ -86,7 +86,7 @@ export default function TableauDeVieSection() {
                     Guide spirituel inclus
                   </h3>
                   <p className="text-gray-600">
-                    Documentation complète avec significations, interprétations 
+                    Documentation complète avec significations, interprétations
                     et conseils pour votre évolution personnelle.
                   </p>
                 </div>
@@ -97,20 +97,20 @@ export default function TableauDeVieSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/tableau-de-vie"
-                className="group bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-8 py-4 rounded-full hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium inline-flex items-center justify-center space-x-2"
+                className="group bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-3 rounded-full hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-base font-medium inline-flex items-center justify-center space-x-2"
               >
-                <Compass className="w-5 h-5" />
-                <span>Découvrir les Tableaux de Vie</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <Compass className="w-4 h-4" />
+                <span>Découvrir</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <Link
                 href="/tableau-de-vie/commande"
-                className="group bg-white/80 backdrop-blur-sm border-2 border-emerald-300 text-emerald-700 hover:bg-emerald-50 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm inline-flex items-center justify-center space-x-2"
+                className="group bg-white/80 backdrop-blur-sm border-2 border-emerald-300 text-emerald-700 hover:bg-emerald-50 px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 text-base font-medium shadow-sm inline-flex items-center justify-center space-x-2"
               >
-                <Heart className="w-5 h-5" />
-                <span>Commander le mien</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <Heart className="w-4 h-4" />
+                <span>Commander</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
@@ -121,8 +121,8 @@ export default function TableauDeVieSection() {
               <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
                 <div className="aspect-[4/5] relative">
                   <Image
-                    src="/images/vero-portrait.jpg"
-                    alt="Tableau de vie spirituel - Énergie féminine"
+                    src="/images/art.jpg"
+                    alt="Tableau de vie spirituel - Énergie créative"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -141,7 +141,7 @@ export default function TableauDeVieSection() {
               <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
                 <div className="aspect-square relative">
                   <Image
-                    src="/images/vero-realisation.jpg"
+                    src="/images/portrait-dame2.jpg"
                     alt="Processus de création d'un tableau de vie"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -163,8 +163,8 @@ export default function TableauDeVieSection() {
               <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
                 <div className="aspect-square relative">
                   <Image
-                    src="/images/vero-portrait2.jpg"
-                    alt="Tableau de vie - Parcours d'âme révélé"
+                    src="/images/portrait-dame3.jpg"
+                    alt="Tableau de vie - Parcours d&apos;âme révélé"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -183,8 +183,8 @@ export default function TableauDeVieSection() {
               <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
                 <div className="aspect-[4/5] relative">
                   <Image
-                    src="/images/regard-vero.jpg"
-                    alt="Regard spirituel - Connexion profonde"
+                    src="/images/portrait.jpg"
+                    alt="Connexion spirituelle - Tableau de vie"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -210,31 +210,40 @@ export default function TableauDeVieSection() {
               Une nouvelle approche spirituelle
             </h3>
             <p className="text-gray-600 leading-relaxed mb-6">
-              Les Tableaux de Vie représentent l&apos;évolution naturelle de notre approche artistique. 
-              Ils offrent une perspective plus large sur votre parcours spirituel, intégrant les 
-              différentes phases de votre évolution et les leçons de votre âme.
+              Les Tableaux de Vie représentent l&apos;évolution naturelle de
+              notre approche artistique. Ils offrent une perspective plus large
+              sur votre parcours spirituel, intégrant les différentes phases de
+              votre évolution et les leçons de votre âme.
             </p>
             <div className="grid md:grid-cols-3 gap-6 text-sm">
               <div className="text-center">
                 <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-white font-bold">1</span>
                 </div>
-                <p className="font-medium text-gray-800">Questionnaire approfondi</p>
-                <p className="text-gray-600 text-xs mt-1">Exploration complète de votre être</p>
+                <p className="font-medium text-gray-800">
+                  Questionnaire approfondi
+                </p>
+                <p className="text-gray-600 text-xs mt-1">
+                  Exploration complète de votre être
+                </p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-white font-bold">2</span>
                 </div>
                 <p className="font-medium text-gray-800">Création channelée</p>
-                <p className="text-gray-600 text-xs mt-1">4-6 semaines de processus intuitif</p>
+                <p className="text-gray-600 text-xs mt-1">
+                  4-6 semaines de processus intuitif
+                </p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-white font-bold">3</span>
                 </div>
                 <p className="font-medium text-gray-800">Guide complet</p>
-                <p className="text-gray-600 text-xs mt-1">Clé USB + certificat d&apos;authenticité</p>
+                <p className="text-gray-600 text-xs mt-1">
+                  Clé USB + certificat d&apos;authenticité
+                </p>
               </div>
             </div>
           </div>

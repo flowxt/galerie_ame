@@ -263,13 +263,11 @@ export default async function AttrapesRevesPage() {
             
             <Link
               href="#questionnaire"
-              className="group bg-gradient-to-r from-blue-500 to-teal-500 text-white px-8 py-4 rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
+              className="group bg-gradient-to-r from-blue-500 to-teal-500 text-white px-6 py-3 rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-base font-medium inline-flex items-center justify-center space-x-2"
             >
-              <span className="flex items-center justify-center space-x-2">
-                <Palette className="w-5 h-5" />
-                <span>Créer mon attrape-rêves unique</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
+              <Palette className="w-4 h-4" />
+              <span>Commander le mien</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
@@ -301,9 +299,9 @@ export default async function AttrapesRevesPage() {
             </div>
 
             <div className="bg-gradient-to-r from-blue-50 to-teal-50 rounded-3xl p-8 shadow-lg">
-              <form className="space-y-8">
+              <form className="space-y-6">
                 {/* Informations de contact */}
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Votre prénom *
@@ -326,130 +324,51 @@ export default async function AttrapesRevesPage() {
                   </div>
                 </div>
 
-                {/* Questions sur les souhaits */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Quelle est votre intention pour cet attrape-rêves ? *
-                  </label>
-                  <textarea
-                    rows="3"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Protection, guérison, guidance, amélioration du sommeil..."
-                  ></textarea>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Couleurs souhaitées
+                    Téléphone
                   </label>
                   <input
-                    type="text"
+                    type="tel"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Bleu océan, blanc pur, couleurs naturelles..."
+                    placeholder="Votre numéro de téléphone"
                   />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Taille souhaitée
-                    </label>
-                    <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                      <option value="">Sélectionnez une taille</option>
-                      <option value="15cm">Petit (15cm)</option>
-                      <option value="25cm">Moyen (25cm)</option>
-                      <option value="35cm">Grand (35cm)</option>
-                      <option value="custom">Taille personnalisée</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Où sera-t-il placé ?
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Chambre, salon, bureau..."
-                    />
-                  </div>
-                </div>
-
+                {/* Message simple */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Éléments symboliques importants pour vous
-                  </label>
-                  <textarea
-                    rows="3"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Pierres naturelles, plumes d'oiseaux spécifiques, symboles spirituels..."
-                  ></textarea>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Y a-t-il des éléments à éviter ?
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Allergies, couleurs non souhaitées..."
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message libre
+                    Décrivez-nous votre projet d'attrape-rêves *
                   </label>
                   <textarea
                     rows="4"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Partagez-nous tout ce qui vous semble important pour votre création..."
+                    placeholder="Partagez-nous vos souhaits : intentions, couleurs préférées, taille souhaitée, où il sera placé, éléments particuliers..."
                   ></textarea>
                 </div>
 
                 <div className="bg-white rounded-2xl p-6 border border-blue-200">
-                  <h4 className="text-lg font-medium text-gray-800 mb-4">Processus de création</h4>
-                  <div className="grid md:grid-cols-4 gap-4 text-sm text-gray-600">
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <span className="text-white font-bold">1</span>
-                      </div>
-                      <p className="font-medium">Consultation</p>
-                      <p className="text-xs">Analyse de vos souhaits</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <span className="text-white font-bold">2</span>
-                      </div>
-                      <p className="font-medium">Création</p>
-                      <p className="text-xs">2-3 semaines de travail</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <span className="text-white font-bold">3</span>
-                      </div>
-                      <p className="font-medium">Purification</p>
-                      <p className="text-xs">Bénédiction spirituelle</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-gradient-to-r from-teal-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <span className="text-white font-bold">4</span>
-                      </div>
-                      <p className="font-medium">Livraison</p>
-                      <p className="text-xs">Avec guide d'utilisation</p>
-                    </div>
+                  <h4 className="text-lg font-medium text-gray-800 mb-4 flex items-center">
+                    <MessageCircle className="w-5 h-5 mr-2 text-blue-600" />
+                    Comment ça se passe ?
+                  </h4>
+                  <div className="text-sm text-gray-600 space-y-2">
+                    <p>• <strong>Étape 1</strong> : Vous nous envoyez votre demande</p>
+                    <p>• <strong>Étape 2</strong> : Nous vous recontactons pour discuter des détails</p>
+                    <p>• <strong>Étape 3</strong> : Création de votre attrape-rêves unique (2-3 semaines)</p>
+                    <p>• <strong>Étape 4</strong> : Livraison offerte avec guide d'utilisation</p>
                   </div>
                 </div>
 
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="group bg-gradient-to-r from-purple-500 to-blue-500 text-white px-10 py-4 rounded-full hover:from-purple-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-xl text-lg font-medium"
+                    className="group bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-full hover:from-purple-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-xl text-lg font-medium"
                   >
-                    <span className="flex items-center justify-center space-x-3">
-                      <Moon className="w-6 h-6" />
+                    <span className="flex items-center justify-center space-x-2">
+                      <Moon className="w-5 h-5" />
                       <span>Envoyer ma demande</span>
-                      <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </button>
                   <p className="text-sm text-gray-500 mt-4">

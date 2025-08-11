@@ -7,7 +7,7 @@ export default function PortraitOrderForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
-    // Informations personnelles pour Portrait d'âme
+    // Informations personnelles pour Portrait d&apos;âme
     firstName: "",
     lastName: "",
     maidenName: "",
@@ -113,7 +113,7 @@ export default function PortraitOrderForm() {
     setIsLoading(true);
 
     try {
-      // Pour les portraits d'âme, on traite d'abord la demande sans paiement immédiat
+      // Pour les portraits d&apos;âme, on traite d&apos;abord la demande sans paiement immédiat
       const orderData = {
         orderType: "portrait",
         customer: formData,
@@ -126,12 +126,12 @@ export default function PortraitOrderForm() {
       };
 
       // Ici on pourrait envoyer les données à un service de gestion des demandes
-      // Pour l'instant, on simule et redirige vers une page de confirmation
+      // Pour l&apos;instant, on simule et redirige vers une page de confirmation
 
       // Simuler un délai de traitement
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // Rediriger vers une page de confirmation spéciale pour les portraits d'âme
+      // Rediriger vers une page de confirmation spéciale pour les portraits d&apos;âme
       window.location.href = "/portrait-d-ame/demande-recue";
     } catch (error) {
       console.error("Erreur lors de l&apos;envoi:", error);
@@ -152,7 +152,7 @@ export default function PortraitOrderForm() {
               Informations personnelles
             </h3>
             <p className="text-gray-600 mb-6">
-              Ces informations essentielles nous permettent de créer votre portrait d'âme personnalisé.
+              Ces informations essentielles nous permettent de créer votre portrait d&apos;âme personnalisé.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -323,7 +323,7 @@ export default function PortraitOrderForm() {
               Adresse de livraison
             </h3>
             <p className="text-gray-600 mb-6">
-              Votre portrait d'âme vous sera envoyé avec livraison offerte.
+              Votre portrait d&apos;âme vous sera envoyé avec livraison offerte.
             </p>
 
             <div>
@@ -423,12 +423,12 @@ export default function PortraitOrderForm() {
               Format et finalisation
             </h3>
             <p className="text-gray-600 mb-6">
-              Choisissez le format de votre portrait d'âme et finalisez votre commande.
+              Choisissez le format de votre portrait d&apos;âme et finalisez votre commande.
             </p>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                Format de votre Portrait d'Âme
+                Format de votre Portrait d&apos;Âme
               </label>
               <div className="grid md:grid-cols-3 gap-4">
                 <div className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
@@ -476,7 +476,7 @@ export default function PortraitOrderForm() {
             </div>
 
             <div className="bg-gradient-to-r from-purple-50 to-rose-50 rounded-lg p-6">
-              <h4 className="text-lg font-medium text-gray-800 mb-3">Inclus avec votre Portrait d'Âme</h4>
+              <h4 className="text-lg font-medium text-gray-800 mb-3">Inclus avec votre Portrait d&apos;Âme</h4>
               <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
                 <div className="flex items-center">
                   <span className="w-2 h-2 bg-rose-500 rounded-full mr-2"></span>
@@ -492,11 +492,11 @@ export default function PortraitOrderForm() {
                 </div>
                 <div className="flex items-center">
                   <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                  Rituel d'accueil du portrait
+                  Rituel d&apos;accueil du portrait
                 </div>
                 <div className="flex items-center">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
-                  Certificat d'authenticité
+                  Certificat d&apos;authenticité
                 </div>
                 <div className="flex items-center">
                   <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
@@ -605,7 +605,7 @@ export default function PortraitOrderForm() {
 
   return (
     <div>
-      {/* Indicateur d'étapes */}
+      {/* Indicateur d&apos;étapes */}
       <div className="mb-8">
         <div className="flex items-center justify-center space-x-6">
           {[1, 2, 3].map((step) => (
@@ -711,7 +711,7 @@ export default function PortraitOrderForm() {
                     Envoi en cours...
                   </>
                 ) : (
-                  "Commander mon Portrait d'Âme"
+                  "Commander mon Portrait d&apos;Âme"
                 )}
               </button>
             )}

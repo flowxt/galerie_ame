@@ -211,9 +211,9 @@ export default async function Boutique() {
             </div>
 
             {/* Bon cadeau 200€ */}
-            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-orange-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden">
+            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl pt-12 px-8 pb-8 border border-orange-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden">
               {/* Badge populaire */}
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+              <div className="absolute top-3 left-1/2 transform -translate-x-1/2 z-20">
                 <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                   Le plus offert
                 </div>

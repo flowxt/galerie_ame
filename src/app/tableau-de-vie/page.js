@@ -31,7 +31,7 @@ export default function TableauDeVie() {
         {/* Image de fond */}
         <div className="absolute inset-0">
           <Image
-            src="/images/vero-portrait.jpg"
+            src="/images/art.jpg"
             alt="Tableau de vie spirituel créé par l'Atelier Art'âme"
             fill
             className="object-cover object-center"
@@ -70,7 +70,9 @@ export default function TableauDeVie() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-crimson">
-            Explorez les méandres de votre existence à travers une création artistique unique qui révèle votre parcours, vos défis et vos aspirations les plus profondes.
+            Explorez les méandres de votre existence à travers une création
+            artistique unique qui révèle votre parcours, vos défis et vos
+            aspirations les plus profondes.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -98,7 +100,7 @@ export default function TableauDeVie() {
         </div>
       </section>
 
-      {/* Section Qu'est-ce qu'un Tableau de Vie */}
+      {/* Section Qu&apos;est-ce qu&apos;un Tableau de Vie */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -145,7 +147,10 @@ export default function TableauDeVie() {
                   ?
                 </h2>
                 <p className="text-gray-600 leading-relaxed text-lg mb-6 font-crimson">
-                  Un tableau de vie est une exploration artistique complète de votre parcours existentiel. Cette création révèle les moments clés, les défis surmontés, les leçons apprises et les aspirations qui dessinent la carte unique de votre existence.
+                  Un tableau de vie est une exploration artistique complète de
+                  votre parcours existentiel. Cette création révèle les moments
+                  clés, les défis surmontés, les leçons apprises et les
+                  aspirations qui dessinent la carte unique de votre existence.
                 </p>
               </div>
 
@@ -160,7 +165,8 @@ export default function TableauDeVie() {
                     </h3>
                   </div>
                   <p className="text-gray-600">
-                    Révèle votre histoire personnelle, vos valeurs fondamentales et les événements qui ont façonné votre identité actuelle.
+                    Révèle votre histoire personnelle, vos valeurs fondamentales
+                    et les événements qui ont façonné votre identité actuelle.
                   </p>
                 </div>
 
@@ -174,7 +180,9 @@ export default function TableauDeVie() {
                     </h3>
                   </div>
                   <p className="text-gray-600">
-                    Cartographie vos défis actuels, vos aspirations futures et les ressources intérieures pour naviguer votre chemin de vie.
+                    Cartographie vos défis actuels, vos aspirations futures et
+                    les ressources intérieures pour naviguer votre chemin de
+                    vie.
                   </p>
                 </div>
 
@@ -188,7 +196,8 @@ export default function TableauDeVie() {
                     </h3>
                   </div>
                   <p className="text-gray-600">
-                    Accompagne votre évolution personnelle en révélant les patterns récurrents et les opportunités de transformation.
+                    Accompagne votre évolution personnelle en révélant les
+                    patterns récurrents et les opportunités de transformation.
                   </p>
                 </div>
               </div>
@@ -217,7 +226,8 @@ export default function TableauDeVie() {
             </h2>
 
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Un processus approfondi en quatre étapes qui honore la complexité et la richesse de votre parcours existentiel.
+              Un processus approfondi en quatre étapes qui honore la complexité
+              et la richesse de votre parcours existentiel.
             </p>
           </div>
 
@@ -231,7 +241,8 @@ export default function TableauDeVie() {
                   Exploration Biographique
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Questionnaire approfondi sur votre parcours, vos valeurs, vos défis et vos aspirations les plus profondes.
+                  Questionnaire approfondi sur votre parcours, vos valeurs, vos
+                  défis et vos aspirations les plus profondes.
                 </p>
               </div>
             </div>
@@ -245,7 +256,8 @@ export default function TableauDeVie() {
                   Consultation Intuitive
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Échange personnel pour approfondir votre histoire et identifier les thèmes centraux de votre existence.
+                  Échange personnel pour approfondir votre histoire et
+                  identifier les thèmes centraux de votre existence.
                 </p>
               </div>
             </div>
@@ -259,7 +271,8 @@ export default function TableauDeVie() {
                   Création Méditative
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Réalisation artistique en état méditatif, laissant votre essence guider la création de votre cartographie spirituelle.
+                  Réalisation artistique en état méditatif, laissant votre
+                  essence guider la création de votre cartographie spirituelle.
                 </p>
               </div>
             </div>
@@ -273,7 +286,8 @@ export default function TableauDeVie() {
                   Transmission & Intégration
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Explication détaillée des symboles et guidance pour intégrer les révélations dans votre évolution personnelle.
+                  Explication détaillée des symboles et guidance pour intégrer
+                  les révélations dans votre évolution personnelle.
                 </p>
               </div>
             </div>
@@ -297,7 +311,8 @@ export default function TableauDeVie() {
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
-              Découvrez quelques créations qui ont révélé la cartographie spirituelle de leurs propriétaires
+              Découvrez quelques créations qui ont révélé la cartographie
+              spirituelle de leurs propriétaires
             </p>
           </div>
 
@@ -313,7 +328,9 @@ export default function TableauDeVie() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 text-white">
                     <p className="text-sm font-medium">Tableau de Vie</p>
-                    <p className="text-xs opacity-90">Cartographie existentielle</p>
+                    <p className="text-xs opacity-90">
+                      Cartographie existentielle
+                    </p>
                   </div>
                 </div>
               </div>
@@ -376,7 +393,8 @@ export default function TableauDeVie() {
             </h2>
 
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
-              Chaque tableau de vie est accompagné d&apos;éléments exclusifs qui enrichissent votre compréhension spirituelle.
+              Chaque tableau de vie est accompagné d&apos;éléments exclusifs qui
+              enrichissent votre compréhension spirituelle.
             </p>
           </div>
 
@@ -403,38 +421,58 @@ export default function TableauDeVie() {
                     <CheckCircle className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Éléments du tableau</p>
-                    <p className="text-sm text-gray-600">Détail de chaque symbole, couleur et énergie présents dans votre tableau de vie</p>
+                    <p className="font-medium text-gray-800">
+                      Éléments du tableau
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Détail de chaque symbole, couleur et énergie présents dans
+                      votre tableau de vie
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <CheckCircle className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Significations spirituelles</p>
-                    <p className="text-sm text-gray-600">Interprétation énergétique et symbolique de votre parcours de vie</p>
+                    <p className="font-medium text-gray-800">
+                      Significations spirituelles
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Interprétation énergétique et symbolique de votre parcours
+                      de vie
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <CheckCircle className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Processus créatif</p>
-                    <p className="text-sm text-gray-600">Étapes de channeling et de création intuitive de votre tableau</p>
+                    <p className="font-medium text-gray-800">
+                      Processus créatif
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Étapes de channeling et de création intuitive de votre
+                      tableau
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <CheckCircle className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Guide d'intégration</p>
-                    <p className="text-sm text-gray-600">Conseils pour accueillir et travailler avec l'énergie de votre tableau</p>
+                    <p className="font-medium text-gray-800">
+                      Guide d'intégration
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Conseils pour accueillir et travailler avec l&apos;énergie
+                      de votre tableau
+                    </p>
                   </div>
                 </div>
               </div>
@@ -462,38 +500,57 @@ export default function TableauDeVie() {
                     <Stamp className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Authenticité garantie</p>
-                    <p className="text-sm text-gray-600">Certificat officiel attestant du caractère unique de votre tableau</p>
+                    <p className="font-medium text-gray-800">
+                      Authenticité garantie
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Certificat officiel attestant du caractère unique de votre
+                      tableau
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Truck className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Livraison sécurisée</p>
-                    <p className="text-sm text-gray-600">Envoi soigné et gratuit partout en France</p>
+                    <p className="font-medium text-gray-800">
+                      Livraison sécurisée
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Envoi soigné et gratuit partout en France
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Heart className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Accompagnement dédié</p>
-                    <p className="text-sm text-gray-600">Suivi personnalisé tout au long de votre parcours spirituel</p>
+                    <p className="font-medium text-gray-800">
+                      Accompagnement dédié
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Suivi personnalisé tout au long de votre parcours
+                      spirituel
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <ShieldCheck className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Qualité spirituelle</p>
-                    <p className="text-sm text-gray-600">Engagement sur l'authenticité de chaque création intuitive</p>
+                    <p className="font-medium text-gray-800">
+                      Qualité spirituelle
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Engagement sur l&apos;authenticité de chaque création
+                      intuitive
+                    </p>
                   </div>
                 </div>
               </div>
@@ -507,8 +564,10 @@ export default function TableauDeVie() {
                 Une expérience spirituelle documentée
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Votre tableau de vie transcende la simple œuvre d&apos;art : c&apos;est une carte spirituelle de votre âme, 
-                accompagnée de tous les éléments pour comprendre et intégrer ses messages profonds.
+                Votre tableau de vie transcende la simple œuvre d&apos;art :
+                c&apos;est une carte spirituelle de votre âme, accompagnée de
+                tous les éléments pour comprendre et intégrer ses messages
+                profonds.
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
@@ -549,10 +608,14 @@ export default function TableauDeVie() {
           <div className="max-w-4xl mx-auto space-y-6">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 p-8 shadow-sm">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Quelle est la différence entre un Portrait d&apos;Âme et un Tableau de Vie ?
+                Quelle est la différence entre un Portrait d&apos;Âme et un
+                Tableau de Vie ?
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Le Portrait d'Âme révèle votre essence profonde à un moment donné, tandis que le Tableau de Vie explore votre parcours complet : passé, présent et aspirations futures. C'est une cartographie plus complète de votre existence.
+                Le Portrait d'Âme révèle votre essence profonde à un moment
+                donné, tandis que le Tableau de Vie explore votre parcours
+                complet : passé, présent et aspirations futures. C'est une
+                cartographie plus complète de votre existence.
               </p>
             </div>
 
@@ -561,7 +624,10 @@ export default function TableauDeVie() {
                 Combien de temps prend la création d&apos;un Tableau de Vie ?
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Le processus complet s'étend sur 4 à 6 semaines, incluant le questionnaire approfondi, la consultation personnalisée, la création méditative et la transmission des enseignements. Ce délai permet une exploration en profondeur.
+                Le processus complet s&apos;étend sur 4 à 6 semaines, incluant
+                le questionnaire approfondi, la consultation personnalisée, la
+                création méditative et la transmission des enseignements. Ce
+                délai permet une exploration en profondeur.
               </p>
             </div>
 
@@ -570,7 +636,10 @@ export default function TableauDeVie() {
                 Comment se déroule la consultation personnalisée ?
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                La consultation peut se faire par visioconférence, téléphone ou en personne selon vos préférences. C'est un moment d'échange profond où nous explorons ensemble les thèmes centraux de votre existence pour guider la création.
+                La consultation peut se faire par visioconférence, téléphone ou
+                en personne selon vos préférences. C'est un moment d'échange
+                profond où nous explorons ensemble les thèmes centraux de votre
+                existence pour guider la création.
               </p>
             </div>
           </div>
@@ -585,7 +654,9 @@ export default function TableauDeVie() {
               Prêt à Explorer Votre Parcours ?
             </h2>
             <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-              Entamez ce voyage vers la découverte de votre cartographie existentielle unique et révélez les trésors cachés de votre histoire personnelle.
+              Entamez ce voyage vers la découverte de votre cartographie
+              existentielle unique et révélez les trésors cachés de votre
+              histoire personnelle.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
