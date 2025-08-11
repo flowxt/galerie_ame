@@ -164,7 +164,7 @@ export default function TableauDeVieSection() {
                 <div className="aspect-square relative">
                   <Image
                     src="/images/portrait-dame3.jpg"
-                    alt="Tableau de vie - Parcours d&apos;âme révélé"
+                    alt="Tableau de vie - Parcours d'âme révélé"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />

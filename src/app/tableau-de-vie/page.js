@@ -616,7 +616,7 @@ export default function TableauDeVie() {
               <p className="text-gray-600 leading-relaxed">
                 Le Portrait d&apos;Âme révèle votre essence profonde à un moment
                 donné, tandis que le Tableau de Vie explore votre parcours
-                complet : passé, présent et aspirations futures. C'est une
+                complet : passé, présent et aspirations futures. C&apos;est une
                 cartographie plus complète de votre existence.
               </p>
             </div>
