@@ -27,7 +27,7 @@ export default function PortraitDame() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Image de fond - Portrait d'âme */}
+        {/* Image de fond - Portrait d&apos;âme */}
         <div className="absolute inset-0">
           <Image
             src="/images/portrait-dame.jpg"
@@ -90,11 +90,11 @@ export default function PortraitDame() {
         </div>
       </section>
 
-      {/* Section Qu'est-ce qu'un Portrait d'Âme */}
+      {/* Section Qu&apos;est-ce qu&apos;un Portrait d&apos;Âme */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Image du portrait d'âme */}
+            {/* Image du portrait d&apos;âme */}
             <div className="relative">
               <div className="bg-gradient-to-br from-rose-100 to-purple-100 rounded-3xl p-6 transform hover:scale-105 transition-transform duration-300">
                 <div className="aspect-square relative overflow-hidden rounded-2xl shadow-2xl">
@@ -376,7 +376,8 @@ export default function PortraitDame() {
             </h2>
 
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
-              Chaque portrait d&apos;âme est accompagné d&apos;éléments exclusifs qui enrichissent votre expérience spirituelle.
+              Chaque portrait d&apos;âme est accompagné d&apos;éléments
+              exclusifs qui enrichissent votre expérience spirituelle.
             </p>
           </div>
 
@@ -403,38 +404,57 @@ export default function PortraitDame() {
                     <CheckCircle className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Éléments du portrait</p>
-                    <p className="text-sm text-gray-600">Détail de chaque symbole, couleur et forme utilisés dans votre création</p>
+                    <p className="font-medium text-gray-800">
+                      Éléments du portrait
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Détail de chaque symbole, couleur et forme utilisés dans
+                      votre création
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <CheckCircle className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Significations profondes</p>
-                    <p className="text-sm text-gray-600">Interprétation spirituelle et symbolique de votre portrait d'âme</p>
+                    <p className="font-medium text-gray-800">
+                      Significations profondes
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Interprétation spirituelle et symbolique de votre portrait
+                      d&apos;âme
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <CheckCircle className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Étapes de création</p>
-                    <p className="text-sm text-gray-600">Processus méditatif et énergétique de votre portrait</p>
+                    <p className="font-medium text-gray-800">
+                      Étapes de création
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Processus méditatif et énergétique de votre portrait
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <CheckCircle className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Rituel d'accueil</p>
-                    <p className="text-sm text-gray-600">Guide pour recevoir et intégrer l'énergie de votre portrait</p>
+                    <p className="font-medium text-gray-800">
+                      Rituel d&apos;accueil
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Guide pour recevoir et intégrer l&apos;énergie de votre
+                      portrait
+                    </p>
                   </div>
                 </div>
               </div>
@@ -462,38 +482,55 @@ export default function PortraitDame() {
                     <Stamp className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Authenticité garantie</p>
-                    <p className="text-sm text-gray-600">Certificat officiel attestant de l'unicité de votre œuvre</p>
+                    <p className="font-medium text-gray-800">
+                      Authenticité garantie
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Certificat officiel attestant de l&apos;unicité de votre
+                      œuvre
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Truck className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Livraison sécurisée</p>
-                    <p className="text-sm text-gray-600">Envoi soigné et gratuit partout en France</p>
+                    <p className="font-medium text-gray-800">
+                      Livraison sécurisée
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Envoi soigné et gratuit partout en France
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Heart className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Suivi personnalisé</p>
-                    <p className="text-sm text-gray-600">Accompagnement dédié tout au long du processus</p>
+                    <p className="font-medium text-gray-800">
+                      Suivi personnalisé
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Accompagnement dédié tout au long du processus
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <ShieldCheck className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Satisfaction garantie</p>
-                    <p className="text-sm text-gray-600">Engagement qualité sur chaque création d'âme</p>
+                    <p className="font-medium text-gray-800">
+                      Satisfaction garantie
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Engagement qualité sur chaque création d&apos;âme
+                    </p>
                   </div>
                 </div>
               </div>
@@ -507,8 +544,10 @@ export default function PortraitDame() {
                 Une expérience complète et authentique
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Votre portrait d&apos;âme est bien plus qu&apos;une œuvre d&apos;art : c&apos;est un voyage spirituel documenté et accompagné, 
-                livré avec tout ce qui vous permettra de comprendre et d&apos;intégrer pleinement votre création d&apos;âme.
+                Votre portrait d&apos;âme est bien plus qu&apos;une œuvre
+                d&apos;art : c&apos;est un voyage spirituel documenté et
+                accompagné, livré avec tout ce qui vous permettra de comprendre
+                et d&apos;intégrer pleinement votre création d&apos;âme.
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
@@ -521,7 +560,7 @@ export default function PortraitDame() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                  <span>Certificat d'authenticité</span>
+                  <span>Certificat d&apos;authenticité</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-amber-500 rounded-full"></div>

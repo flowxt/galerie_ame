@@ -173,7 +173,7 @@ export default async function AttrapesRevesPage() {
         </div>
       </section>
 
-      {/* Section Galerie d'Attrape-Rêves Uniques */}
+      {/* Section Galerie d&apos;Attrape-Rêves Uniques */}
       <section
         id="creations"
         className="py-20 bg-gradient-to-br from-blue-50 via-teal-50 to-blue-50"
@@ -201,7 +201,7 @@ export default async function AttrapesRevesPage() {
             </p>
           </div>
 
-          {/* Galerie d'inspiration */}
+          {/* Galerie d&apos;inspiration */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
             <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
               <div className="aspect-square relative">
@@ -258,7 +258,7 @@ export default async function AttrapesRevesPage() {
           <div className="text-center">
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
               Ces créations vous inspirent ? Partagez-nous vos souhaits et créons ensemble 
-              l'attrape-rêves qui vous ressemble.
+              l&apos;attrape-rêves qui vous ressemble.
             </p>
             
             <Link
@@ -294,7 +294,7 @@ export default async function AttrapesRevesPage() {
               </h2>
 
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Partagez-nous vos souhaits et vos intentions pour que nous puissions créer l'attrape-rêves qui vous correspond parfaitement.
+                Partagez-nous vos souhaits et vos intentions pour que nous puissions créer l&apos;attrape-rêves qui vous correspond parfaitement.
               </p>
             </div>
 
@@ -338,7 +338,7 @@ export default async function AttrapesRevesPage() {
                 {/* Message simple */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Décrivez-nous votre projet d'attrape-rêves *
+                    Décrivez-nous votre projet d&apos;attrape-rêves *
                   </label>
                   <textarea
                     rows="4"
@@ -356,7 +356,7 @@ export default async function AttrapesRevesPage() {
                     <p>• <strong>Étape 1</strong> : Vous nous envoyez votre demande</p>
                     <p>• <strong>Étape 2</strong> : Nous vous recontactons pour discuter des détails</p>
                     <p>• <strong>Étape 3</strong> : Création de votre attrape-rêves unique (2-3 semaines)</p>
-                    <p>• <strong>Étape 4</strong> : Livraison offerte avec guide d'utilisation</p>
+                    <p>• <strong>Étape 4</strong> : Livraison offerte avec guide d&apos;utilisation</p>
                   </div>
                 </div>
 

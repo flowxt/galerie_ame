@@ -95,7 +95,7 @@ export default async function Boutique() {
         </div>
       </section>
 
-      {/* Section Types d'Œuvres */}
+      {/* Section Types d&apos;Œuvres */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -175,7 +175,7 @@ export default async function Boutique() {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
               Offrez un moment magique à vos proches avec nos bons cadeaux. Une
               attention spirituelle qui leur permettra de choisir leur création
-              d'âme.
+              d&apos;âme.
             </p>
           </div>
 
@@ -201,8 +201,8 @@ export default async function Boutique() {
                   </div>
                 </div>
                 <p className="text-gray-600 leading-relaxed mb-6 text-sm">
-                  Parfait pour participer à un portrait d'âme ou découvrir nos
-                  créations spirituelles.
+                  Parfait pour participer à un portrait d&apos;âme ou découvrir
+                  nos créations spirituelles.
                 </p>
                 <button className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-3 rounded-full hover:from-amber-600 hover:to-orange-600 transition-all duration-300 font-medium">
                   Choisir ce montant
@@ -234,12 +234,12 @@ export default async function Boutique() {
                     200€
                   </div>
                   <div className="text-gray-600 text-sm">
-                    Idéal pour un portrait d'âme
+                    Idéal pour un portrait d&apos;âme
                   </div>
                 </div>
                 <p className="text-gray-600 leading-relaxed mb-6 text-sm">
-                  Montant parfait pour offrir un portrait d'âme format intime ou
-                  contribuer à un format plus grand.
+                  Montant parfait pour offrir un portrait d&apos;âme format
+                  intime ou contribuer à un format plus grand.
                 </p>
                 <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 font-medium">
                   Choisir ce montant
@@ -268,8 +268,8 @@ export default async function Boutique() {
                   </div>
                 </div>
                 <p className="text-gray-600 leading-relaxed mb-6 text-sm">
-                  Pour offrir une expérience complète : portrait d'âme grand
-                  format ou tableau de vie.
+                  Pour offrir une expérience complète : portrait d&apos;âme
+                  grand format ou tableau de vie.
                 </p>
                 <button className="w-full bg-gradient-to-r from-red-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-red-600 hover:to-pink-600 transition-all duration-300 font-medium">
                   Choisir ce montant
@@ -309,7 +309,7 @@ export default async function Boutique() {
                   </div>
                   <p className="font-medium mb-1">Utilisation libre</p>
                   <p className="text-xs text-center">
-                    Le bénéficiaire choisit sa création d'âme
+                    Le bénéficiaire choisit sa création d&apos;âme
                   </p>
                 </div>
               </div>
