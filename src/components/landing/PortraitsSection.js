@@ -22,8 +22,10 @@ export default function PortraitsSection() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
-            Chaque portrait d&apos;âme est une création unique qui capture votre
-            beauté intérieure, vos énergies et votre lumière spirituelle
+            Chaque portrait d&apos;âme est une œuvre unique, réalisée dans
+            l&apos;intuition et la sensibilité. Au-delà des traits physiques, il
+            révèle l&apos;essence intérieure, les couleurs vibratoires et la
+            lumière singulière de chaque être.
           </p>
         </div>
 
@@ -33,19 +35,23 @@ export default function PortraitsSection() {
           <div className="space-y-8">
             <div>
               <h3 className="text-3xl font-playfair font-light text-gray-800 mb-6">
-                Rencontrez{" "}
-                <span className="text-rose-600 font-medium">Véronique</span>
+                Présentation
               </h3>
               <p className="text-lg text-gray-600 leading-relaxed mb-6 font-crimson">
-                Artiste intuitive et passionnée, je crée depuis plus de 10 ans
-                des portraits d&apos;âme qui révèlent la beauté unique de chaque
-                être. Mon approche combine technique artistique et connexion
-                spirituelle profonde.
+                Artiste intuitive et passionnée, depuis l&apos;enfance la
+                création est mon langage. À travers Atelier Art&apos;âme, je
+                fais dialoguer couleurs, symboles et ressentis pour donner
+                naissance à des créations vibrantes et uniques.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8 font-crimson">
-                Chaque portrait naît d&apos;une méditation, d&apos;une
+              <p className="text-lg text-gray-600 leading-relaxed mb-6 font-crimson">
+                Chaque œuvre naît d&apos;une méditation, d&apos;une
                 contemplation de votre essence. Je laisse votre âme guider mes
                 pinceaux pour révéler votre véritable lumière.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8 font-crimson">
+                Mon approche combine expression artistique et connexion
+                spirituelle profonde, afin d&apos;offrir des œuvres porteuses de
+                sens, d&apos;énergie et d&apos;harmonie.
               </p>
 
               {/* Valeurs/approche */}
@@ -95,87 +101,6 @@ export default function PortraitsSection() {
               <div className="absolute bottom-6 left-6 text-white">
                 <p className="text-lg font-medium">Véronique</p>
                 <p className="text-sm opacity-90">Artiste créatrice</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Galerie de portraits réalisés */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-playfair font-light text-gray-800 text-center mb-12">
-            Quelques{" "}
-            <span className="text-rose-600 font-medium">
-              portraits d&apos;âme
-            </span>{" "}
-            réalisés
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Portrait 1 */}
-            <div className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              <Image
-                src="/images/portrait-dame.jpg"
-                alt="Portrait d'âme réalisé par Véronique"
-                width={300}
-                height={400}
-                className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 text-white">
-                  <p className="text-sm font-medium">Portrait d&apos;âme</p>
-                  <p className="text-xs opacity-90">Essence révélée</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Portrait 2 */}
-            <div className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              <Image
-                src="/images/portrait-dame2.jpg"
-                alt="Portrait d'âme réalisé par Véronique"
-                width={300}
-                height={400}
-                className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 text-white">
-                  <p className="text-sm font-medium">Portrait d&apos;âme</p>
-                  <p className="text-xs opacity-90">Lumière intérieure</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Portrait 3 */}
-            <div className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              <Image
-                src="/images/portrait-dame3.jpg"
-                alt="Portrait d'âme réalisé par Véronique"
-                width={300}
-                height={400}
-                className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 text-white">
-                  <p className="text-sm font-medium">Portrait d&apos;âme</p>
-                  <p className="text-xs opacity-90">Beauté authentique</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Portrait 4 */}
-            <div className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              <Image
-                src="/images/portrait.jpg"
-                alt="Portrait d'âme réalisé par Véronique"
-                width={300}
-                height={400}
-                className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 text-white">
-                  <p className="text-sm font-medium">Portrait d&apos;âme</p>
-                  <p className="text-xs opacity-90">Âme révélée</p>
-                </div>
               </div>
             </div>
           </div>

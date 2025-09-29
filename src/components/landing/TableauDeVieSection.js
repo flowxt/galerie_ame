@@ -39,9 +39,9 @@ export default function TableauDeVieSection() {
               </h2>
 
               <p className="text-xl text-gray-600 leading-relaxed font-crimson mb-8">
-                Découvrez votre parcours d&apos;âme à travers une création
-                intuitive qui révèle les énergies, les leçons et les potentiels
-                de votre chemin de vie.
+                Une œuvre unique co-créée avec vous. À partir de vos expériences
+                et de mon approche intuitive, il révèle les symboles et les
+                couleurs qui reflètent votre chemin intérieur.
               </p>
             </div>
 
@@ -53,11 +53,11 @@ export default function TableauDeVieSection() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    Analyse énergétique complète
+                    Introspection
                   </h3>
                   <p className="text-gray-600">
-                    Exploration approfondie de votre essence, vos défis, vos
-                    aspirations et votre mission d&apos;âme.
+                    Un questionnaire pour revisiter vos expériences, vos défis
+                    et vos aspirations profondes.
                   </p>
                 </div>
               </div>
@@ -68,26 +68,41 @@ export default function TableauDeVieSection() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    Création intuitive guidée
+                    Connexion intuitive
                   </h3>
                   <p className="text-gray-600">
-                    Œuvre channelée qui transcrit visuellement les informations
-                    reçues lors de votre consultation spirituelle.
+                    Un échange subtil qui permet de capter l'essence de votre
+                    parcours de vie.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    Création Méditative
+                  </h3>
+                  <p className="text-gray-600">
+                    Votre essence inspire couleurs et symboles, donnant
+                    naissance à une cartographie spirituelle unique.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0">
                   <BookOpen className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    Guide spirituel inclus
+                    Révélation & Transmission
                   </h3>
                   <p className="text-gray-600">
-                    Documentation complète avec significations, interprétations
-                    et conseils pour votre évolution personnelle.
+                    Votre tableau vous est remis comme une création unique,
+                    accompagnée d'une lecture symbolique claire et accessible.
                   </p>
                 </div>
               </div>
@@ -115,137 +130,50 @@ export default function TableauDeVieSection() {
             </div>
           </div>
 
-          {/* Galerie d'images */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-4">
-              <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                <div className="aspect-[4/5] relative">
-                  <Image
-                    src="/images/art.jpg"
-                    alt="Tableau de vie spirituel - Énergie créative"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-emerald-600/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <p className="text-sm font-medium">Essence Spirituelle</p>
-                      <div className="flex items-center space-x-1 mt-1">
-                        <Sparkles className="w-3 h-3" />
-                        <span className="text-xs">Énergie révélée</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                <div className="aspect-square relative">
-                  <Image
-                    src="/images/portrait-dame2.jpg"
-                    alt="Processus de création d'un tableau de vie"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-600/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <p className="text-sm font-medium">Création Intuitive</p>
-                      <div className="flex items-center space-x-1 mt-1">
-                        <TreePine className="w-3 h-3" />
-                        <span className="text-xs">Processus méditatif</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-4 pt-8">
-              <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                <div className="aspect-square relative">
-                  <Image
-                    src="/images/portrait-dame3.jpg"
-                    alt="Tableau de vie - Parcours d'âme révélé"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-600/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <p className="text-sm font-medium">Parcours d&apos;Âme</p>
-                      <div className="flex items-center space-x-1 mt-1">
-                        <Compass className="w-3 h-3" />
-                        <span className="text-xs">Mission révélée</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                <div className="aspect-[4/5] relative">
-                  <Image
-                    src="/images/portrait.jpg"
-                    alt="Connexion spirituelle - Tableau de vie"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-emerald-600/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <p className="text-sm font-medium">Connexion Profonde</p>
-                      <div className="flex items-center space-x-1 mt-1">
-                        <Eye className="w-3 h-3" />
-                        <span className="text-xs">Vision spirituelle</span>
-                      </div>
-                    </div>
-                  </div>
+          {/* Image d'un questionnaire ou placeholder */}
+          <div className="flex justify-center">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl max-w-md">
+              <div className="aspect-[4/5] relative bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center">
+                <div className="text-center p-8">
+                  <BookOpen className="w-16 h-16 text-emerald-600 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                    Questionnaire Introspectif
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Un voyage au cœur de votre être pour révéler votre essence
+                    unique
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Section informative */}
+        {/* Description complète */}
         <div className="mt-20 text-center">
           <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 border border-emerald-200/50 shadow-lg max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-              Une nouvelle approche spirituelle
+            <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+              Le Tableau de Vie Spirituel
             </h3>
             <p className="text-gray-600 leading-relaxed mb-6">
-              Les Tableaux de Vie représentent l&apos;évolution naturelle de
-              notre approche artistique. Ils offrent une perspective plus large
-              sur votre parcours spirituel, intégrant les différentes phases de
-              votre évolution et les leçons de votre âme.
+              Le Tableau de Vie Spirituel est une œuvre intime, un miroir sacré
+              qui reflète la danse de votre chemin intérieur. À travers un
+              questionnaire pensé comme une invitation à l'introspection, vous
+              ouvrez la porte à vos souvenirs, vos défis, vos rêves et vos
+              aspirations profondes.
             </p>
-            <div className="grid md:grid-cols-3 gap-6 text-sm">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-white font-bold">1</span>
-                </div>
-                <p className="font-medium text-gray-800">
-                  Questionnaire approfondi
-                </p>
-                <p className="text-gray-600 text-xs mt-1">
-                  Exploration complète de votre être
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-white font-bold">2</span>
-                </div>
-                <p className="font-medium text-gray-800">Création channelée</p>
-                <p className="text-gray-600 text-xs mt-1">
-                  4-6 semaines de processus intuitif
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-white font-bold">3</span>
-                </div>
-                <p className="font-medium text-gray-800">Guide complet</p>
-                <p className="text-gray-600 text-xs mt-1">
-                  Clé USB + certificat d&apos;authenticité
-                </p>
-              </div>
-            </div>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              De ces confidences naît une alchimie : je me relie à votre essence
+              et, guidée par l'intuition, je laisse émerger des couleurs, des
+              formes et des symboles porteurs de sens. Chaque geste traduit une
+              étape, une force, une lumière de votre histoire.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Ainsi s'ancre une création unique et vivante, co-créée avec vous.
+              Un tableau qui vous accompagne comme un compagnon d'âme, vous
+              inspire dans vos élans, et vous relie à la beauté de votre
+              parcours.
+            </p>
           </div>
         </div>
       </div>

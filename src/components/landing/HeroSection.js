@@ -8,11 +8,11 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-rose-50 to-purple-50">
       {/* Contenu principal centré */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        {/* Badge d'introduction */}
+        {/* Signature artistique */}
         <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm border border-rose-200 rounded-full px-8 py-4 mb-12 shadow-lg">
           <Sparkles className="w-5 h-5 text-rose-500" />
           <span className="text-gray-700 font-medium">
-            Créations spirituelles authentiques
+            Atelier Art'âme : l'art inspiré par l'âme
           </span>
         </div>
 
@@ -43,7 +43,7 @@ export default function HeroSection() {
                 </span>
               </span>
               <span className="block text-3xl md:text-4xl lg:text-5xl font-light text-gray-600">
-                Portraits d&apos;Âme • Attrape-rêves
+                Portraits d&apos;Âme • Tableau de vie • Attrape-rêves
               </span>
             </h1>
 
@@ -71,12 +71,12 @@ export default function HeroSection() {
           </Link>
 
           <Link
-            href="/attrape-reves"
+            href="/tableau-de-vie"
             className="group bg-white/80 backdrop-blur-sm border-2 border-purple-300 text-gray-700 hover:bg-purple-50 px-10 py-5 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-lg"
           >
             <span className="flex items-center space-x-3 justify-center">
               <Moon className="w-6 h-6" />
-              <span>Mes Attrape-rêves</span>
+              <span>Tableau de Vie</span>
               <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </span>
           </Link>
