@@ -71,8 +71,8 @@ export default function TableauDeVieSection() {
                     Connexion intuitive
                   </h3>
                   <p className="text-gray-600">
-                    Un échange subtil qui permet de capter l'essence de votre
-                    parcours de vie.
+                    Un échange subtil qui permet de capter l&apos;essence de
+                    votre parcours de vie.
                   </p>
                 </div>
               </div>
@@ -102,7 +102,8 @@ export default function TableauDeVieSection() {
                   </h3>
                   <p className="text-gray-600">
                     Votre tableau vous est remis comme une création unique,
-                    accompagnée d'une lecture symbolique claire et accessible.
+                    accompagnée d&apos;une lecture symbolique claire et
+                    accessible.
                   </p>
                 </div>
               </div>
@@ -158,21 +159,21 @@ export default function TableauDeVieSection() {
             <p className="text-gray-600 leading-relaxed mb-6">
               Le Tableau de Vie Spirituel est une œuvre intime, un miroir sacré
               qui reflète la danse de votre chemin intérieur. À travers un
-              questionnaire pensé comme une invitation à l'introspection, vous
-              ouvrez la porte à vos souvenirs, vos défis, vos rêves et vos
+              questionnaire pensé comme une invitation à l&apos;introspection,
+              vous ouvrez la porte à vos souvenirs, vos défis, vos rêves et vos
               aspirations profondes.
             </p>
             <p className="text-gray-600 leading-relaxed mb-6">
               De ces confidences naît une alchimie : je me relie à votre essence
-              et, guidée par l'intuition, je laisse émerger des couleurs, des
-              formes et des symboles porteurs de sens. Chaque geste traduit une
-              étape, une force, une lumière de votre histoire.
+              et, guidée par l&apos;intuition, je laisse émerger des couleurs,
+              des formes et des symboles porteurs de sens. Chaque geste traduit
+              une étape, une force, une lumière de votre histoire.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Ainsi s'ancre une création unique et vivante, co-créée avec vous.
-              Un tableau qui vous accompagne comme un compagnon d'âme, vous
-              inspire dans vos élans, et vous relie à la beauté de votre
-              parcours.
+              Ainsi s&apos;ancre une création unique et vivante, co-créée avec
+              vous. Un tableau qui vous accompagne comme un compagnon
+              d&apos;âme, vous inspire dans vos élans, et vous relie à la beauté
+              de votre parcours.
             </p>
           </div>
         </div>

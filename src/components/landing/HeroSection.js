@@ -12,7 +12,7 @@ export default function HeroSection() {
         <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm border border-rose-200 rounded-full px-8 py-4 mb-12 shadow-lg">
           <Sparkles className="w-5 h-5 text-rose-500" />
           <span className="text-gray-700 font-medium">
-            Atelier Art'âme : l'art inspiré par l'âme
+            Atelier Art&apos;âme : l&apos;art inspiré par l&apos;âme
           </span>
         </div>
 
