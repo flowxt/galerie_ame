@@ -168,7 +168,7 @@ export default function GaleriePage() {
             </h2>
 
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Chaque création porte une énergie unique et raconte l'histoire d'une âme. Laissez-vous inspirer pour votre propre commande personnalisée.
+              Chaque création porte une énergie unique et raconte l&apos;histoire d&apos;une âme. Laissez-vous inspirer pour votre propre commande personnalisée.
             </p>
           </div>
 
