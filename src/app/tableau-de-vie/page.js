@@ -139,18 +139,31 @@ export default function TableauDeVie() {
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl md:text-4xl font-playfair font-light text-gray-800 mb-6">
-                  Qu&apos;est-ce qu&apos;un
+                  Le Tableau de Vie
                   <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">
                     {" "}
-                    Tableau de Vie
-                  </span>{" "}
-                  ?
+                    Spirituel
+                  </span>
                 </h2>
                 <p className="text-gray-600 leading-relaxed text-lg mb-6 font-crimson">
-                  Un tableau de vie est une exploration artistique complète de
-                  votre parcours existentiel. Cette création révèle les moments
-                  clés, les défis surmontés, les leçons apprises et les
-                  aspirations qui dessinent la carte unique de votre existence.
+                  Le Tableau de Vie Spirituel est une œuvre intime, un miroir
+                  sacré qui reflète la danse de votre chemin intérieur. À
+                  travers un questionnaire pensé comme une invitation à
+                  l&apos;introspection, vous ouvrez la porte à vos souvenirs,
+                  vos défis, vos rêves et vos aspirations profondes.
+                </p>
+                <p className="text-gray-600 leading-relaxed text-lg mb-6 font-crimson">
+                  De ces confidences naît une alchimie : je me relie à votre
+                  essence et, guidée par l&apos;intuition, je laisse émerger des
+                  couleurs, des formes et des symboles porteurs de sens. Chaque
+                  geste traduit une étape, une force, une lumière de votre
+                  histoire.
+                </p>
+                <p className="text-gray-600 leading-relaxed text-lg mb-6 font-crimson">
+                  Ainsi s&apos;ancre une création unique et vivante, co-créée
+                  avec vous. Un tableau qui vous accompagne comme un compagnon
+                  d&apos;âme, vous inspire dans vos élans, et vous relie à la
+                  beauté de votre parcours.
                 </p>
               </div>
 
@@ -289,86 +302,6 @@ export default function TableauDeVie() {
                   Explication détaillée des symboles et guidance pour intégrer
                   les révélations dans votre évolution personnelle.
                 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section Galerie */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-indigo-100 rounded-full px-6 py-3 mb-6">
-              <Camera className="w-5 h-5 text-indigo-600" />
-              <span className="text-indigo-800 font-medium">Galerie</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
-              Tableaux de vie
-              <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent font-medium">
-                {" "}
-                réalisés
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
-              Découvrez quelques créations qui ont révélé la cartographie
-              spirituelle de leurs propriétaires
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              <div className="aspect-[4/5] relative">
-                <Image
-                  src="/images/vero-realisation.jpg"
-                  alt="Tableau de vie - Cartographie spirituelle"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="text-sm font-medium">Tableau de Vie</p>
-                    <p className="text-xs opacity-90">
-                      Cartographie existentielle
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              <div className="aspect-[4/5] relative">
-                <Image
-                  src="/images/vero-portrait2.jpg"
-                  alt="Tableau de vie - Évolution personnelle"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="text-sm font-medium">Tableau de Vie</p>
-                    <p className="text-xs opacity-90">
-                      Chemin d&apos;évolution
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              <div className="aspect-[4/5] relative">
-                <Image
-                  src="/images/regard-vero.jpg"
-                  alt="Tableau de vie - Essence révélée"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="text-sm font-medium">Tableau de Vie</p>
-                    <p className="text-xs opacity-90">Regard intérieur</p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -611,13 +544,19 @@ export default function TableauDeVie() {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 p-8 shadow-sm">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Quelle est la différence entre un Portrait d&apos;Âme et un
-                Tableau de Vie ?
+                Tableau de Vie Spirituel ?
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Le Portrait d&apos;Âme révèle votre essence profonde à un moment
-                donné, tandis que le Tableau de Vie explore votre parcours
-                complet : passé, présent et aspirations futures. C&apos;est une
-                cartographie plus complète de votre existence.
+                Le Portrait d&apos;Âme reflète votre essence profonde dans
+                l&apos;instant présent. C&apos;est une œuvre intuitive qui capte
+                vos vibrations et symbolise la lumière de votre être, telle
+                qu&apos;elle se manifeste aujourd&apos;hui.
+                <br />
+                <br />
+                Le Tableau de Vie Spirituel, lui, s&apos;ancre dans la globalité
+                de votre parcours. Il intègre vos expériences, vos défis et vos
+                aspirations, pour devenir un miroir vivant de votre chemin
+                intérieur et un guide pour vos élans à venir.
               </p>
             </div>
 
@@ -626,10 +565,13 @@ export default function TableauDeVie() {
                 Combien de temps prend la création d&apos;un Tableau de Vie ?
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Le processus complet s&apos;étend sur 4 à 6 semaines, incluant
-                le questionnaire approfondi, la consultation personnalisée, la
-                création méditative et la transmission des enseignements. Ce
-                délai permet une exploration en profondeur.
+                La réalisation d&apos;un Tableau de Vie Spirituel demande en
+                moyenne 4 à 6 semaines. Ce temps inclut l&apos;exploration
+                introspective via le questionnaire, la connexion intuitive, la
+                création méditative ainsi que la préparation du contenu associé.
+                Chaque tableau suit son propre rythme : ce délai est donc
+                indicatif et peut évoluer afin de respecter pleinement le
+                processus naturel et l&apos;émergence juste de votre œuvre.
               </p>
             </div>
 
@@ -638,10 +580,22 @@ export default function TableauDeVie() {
                 Comment se déroule la consultation personnalisée ?
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                La consultation peut se faire par visioconférence, téléphone ou
-                en personne selon vos préférences. C&apos;est un moment
-                d&apos;échange profond où nous explorons ensemble les thèmes
-                centraux de votre existence pour guider la création.
+                Après avoir complété le questionnaire, nous prenons un temps
+                d&apos;échange — en visioconférence, par téléphone ou en
+                personne. Cet entretien permet d&apos;approfondir certains
+                points, de préciser vos ressentis et de laisser émerger les
+                thèmes essentiels qui guideront la création.
+              </p>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 p-8 shadow-sm">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                Investissement pour votre Tableau de Vie
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                <strong>Format intime :</strong> 10-15h de travail
+                <br />
+                <strong>Format élégant :</strong> 15-20h de travail
               </p>
             </div>
           </div>

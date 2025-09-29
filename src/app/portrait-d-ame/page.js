@@ -31,7 +31,7 @@ export default function PortraitDame() {
         <div className="absolute inset-0">
           <Image
             src="/images/portrait-dame.jpg"
-            alt="Portrait d&apos;âme spirituel créé par l&apos;Atelier Art&apos;âme"
+            alt="Portrait d'âme spirituel créé par l'Atelier Art'âme"
             fill
             className="object-cover object-center"
             priority
@@ -99,8 +99,8 @@ export default function PortraitDame() {
               <div className="bg-gradient-to-br from-rose-100 to-purple-100 rounded-3xl p-6 transform hover:scale-105 transition-transform duration-300">
                 <div className="aspect-square relative overflow-hidden rounded-2xl shadow-2xl">
                   <Image
-                    src="/images/portrait-dame2.jpg"
-                    alt="Portrait d&apos;âme spirituel réalisé par Véronique"
+                    src="/images/vero-realisation.jpg"
+                    alt="Portrait d'âme spirituel réalisé par Véronique"
                     fill
                     style={{ objectFit: "cover" }}
                     className="rounded-2xl"
@@ -198,87 +198,6 @@ export default function PortraitDame() {
         </div>
       </section>
 
-      {/* Section Galerie de Portraits Réalisés */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-rose-100 rounded-full px-6 py-3 mb-6">
-              <Camera className="w-5 h-5 text-rose-600" />
-              <span className="text-rose-800 font-medium">Galerie</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
-              Portraits d&apos;âme
-              <span className="bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent font-medium">
-                {" "}
-                réalisés
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
-              Découvrez quelques-unes des créations qui ont révélé
-              l&apos;essence profonde de leurs propriétaires
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-            {/* Portrait 1 */}
-            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              <div className="aspect-[4/5] relative">
-                <Image
-                  src="/images/portrait-dame.jpg"
-                  alt="Portrait d&apos;âme - Essence féminine révélée"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="text-sm font-medium">Portrait d&apos;Âme</p>
-                    <p className="text-xs opacity-90">
-                      Essence féminine révélée
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Portrait 2 */}
-            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              <div className="aspect-[4/5] relative">
-                <Image
-                  src="/images/portrait-dame2.jpg"
-                  alt="Portrait d&apos;âme - Lumière intérieure"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="text-sm font-medium">Portrait d&apos;Âme</p>
-                    <p className="text-xs opacity-90">Lumière intérieure</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Portrait 3 */}
-            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              <div className="aspect-[4/5] relative">
-                <Image
-                  src="/images/portrait-dame3.jpg"
-                  alt="Portrait d&apos;âme - Beauté authentique"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="text-sm font-medium">Portrait d&apos;Âme</p>
-                    <p className="text-xs opacity-90">Beauté authentique</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Section Processus Créatif */}
       <section className="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50">
         <div className="container mx-auto px-4">
@@ -314,9 +233,10 @@ export default function PortraitDame() {
                   Connexion Spirituelle
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Nous explorons ensemble votre essence, vos rêves et les
-                  énergies qui vous habitent lors d&apos;une consultation
-                  personnalisée approfondie.
+                  Dans un espace sacré et bienveillant, je me relie à votre
+                  essence et aux énergies qui vous habitent. Ce temps de
+                  connexion intérieure ouvre la voie à la création de votre
+                  portrait d&apos;âme.
                 </p>
               </div>
             </div>
@@ -330,9 +250,9 @@ export default function PortraitDame() {
                   Création Méditative
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Dans un état méditatif, votre portrait prend forme de manière
-                  intuitive, laissant votre âme s&apos;exprimer à travers les
-                  couleurs et les formes.
+                  En état méditatif, je laisse les couleurs, les formes et les
+                  symboles émerger spontanément. Votre âme se révèle alors dans
+                  une œuvre intuitive et unique.
                 </p>
               </div>
             </div>
@@ -343,12 +263,13 @@ export default function PortraitDame() {
               </div>
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-blue-200/50 shadow-sm">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                  Révélation & Livraison
+                  Révélation & Transmission
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Votre portrait unique vous est remis avec une explication des
-                  symboles et énergies qui se sont manifestés durant la
-                  création.
+                  Votre portrait vous est remis avec une lecture des symboles et
+                  des énergies qui se sont manifestés au cours de la création.
+                  Une invitation à contempler et à vous reconnecter à votre être
+                  profond.
                 </p>
               </div>
             </div>
@@ -592,10 +513,15 @@ export default function PortraitDame() {
                 ?
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Le processus complet prend généralement entre 3 à 4 semaines,
-                incluant la consultation initiale, la création artistique
-                méditative et les finitions. Ce délai permet de respecter le
-                processus créatif naturel.
+                Le processus complet d&apos;un Portrait d&apos;Âme s&apos;étend
+                généralement sur 3 à 4 semaines. Ce temps inclut la consultation
+                initiale, la connexion intuitive, la création méditative ainsi
+                que la préparation d&apos;un contenu qui documente
+                l&apos;ensemble du travail réalisé autour de votre œuvre. Chaque
+                création suit son propre rythme : ce délai, indicatif, peut
+                évoluer afin de respecter pleinement le processus naturel et
+                d&apos;honorer l&apos;émergence juste et authentique de votre
+                portrait.
               </p>
             </div>
 
@@ -604,10 +530,10 @@ export default function PortraitDame() {
                 Faut-il poser physiquement pour le portrait ?
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Non, le portrait d&apos;âme se base sur votre essence plutôt que
-                sur votre apparence physique. Une consultation approfondie et
-                quelques photos de référence suffisent à capturer votre énergie
-                unique.
+                Non. Le Portrait d&apos;Âme ne cherche pas à reproduire vos
+                traits mais à révéler votre essence. Un court échange et, si
+                nécessaire, quelques photos suffisent pour que je capte votre
+                énergie et la transpose en couleurs, formes et symboles.
               </p>
             </div>
 
@@ -616,10 +542,13 @@ export default function PortraitDame() {
                 Quels matériaux et techniques sont utilisés ?
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Chaque portrait est unique et peut utiliser différents médiums
-                selon l&apos;inspiration : aquarelle, pastels, techniques
-                mixtes, avec parfois l&apos;ajout d&apos;éléments naturels comme
-                des paillettes dorées ou des pigments minéraux.
+                Les Portraits d&apos;Âme sont principalement réalisés à
+                l&apos;acrylique sur toile, pour offrir intensité et profondeur
+                aux couleurs. Selon l&apos;inspiration, j&apos;explore aussi
+                d&apos;autres médiums comme l&apos;aquarelle ou les pastels, et
+                j&apos;intègre parfois des éléments naturels tels que le bois,
+                les pierres, les végétaux pour enrichir l&apos;œuvre de leur
+                vibration.
               </p>
             </div>
           </div>
