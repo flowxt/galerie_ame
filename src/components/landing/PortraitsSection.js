@@ -54,23 +54,27 @@ export default function PortraitsSection() {
                 sens, d&apos;énergie et d&apos;harmonie.
               </p>
 
-              {/* Valeurs/approche */}
+              {/* Valeurs/approche avec glassmorphism amélioré */}
               <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-rose-200/50">
-                  <Heart className="w-6 h-6 text-rose-500 mb-2" />
-                  <h4 className="font-semibold text-gray-800 mb-1">
+                <div className="glass-card rounded-2xl p-5 border border-rose-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
+                  <div className="bg-gradient-to-br from-rose-500 to-pink-500 w-12 h-12 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-glow-rose">
+                    <Heart className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="font-semibold text-gray-800 mb-2 font-playfair">
                     Avec le cœur
                   </h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 font-crimson leading-relaxed">
                     Chaque création porte mon intention bienveillante
                   </p>
                 </div>
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-purple-200/50">
-                  <Eye className="w-6 h-6 text-purple-500 mb-2" />
-                  <h4 className="font-semibold text-gray-800 mb-1">
+                <div className="glass-card rounded-2xl p-5 border border-purple-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
+                  <div className="bg-gradient-to-br from-purple-500 to-blue-500 w-12 h-12 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-glow-purple">
+                    <Eye className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="font-semibold text-gray-800 mb-2 font-playfair">
                     Vision intuitive
                   </h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 font-crimson leading-relaxed">
                     Je perçois votre essence au-delà des apparences
                   </p>
                 </div>
@@ -78,11 +82,11 @@ export default function PortraitsSection() {
 
               <Link
                 href="/portrait-d-ame"
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-8 py-4 rounded-full hover:from-rose-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-8 py-4 rounded-full shadow-glow-rose hover:shadow-glow-purple transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 btn-spiritual overflow-hidden group"
               >
-                <Palette className="w-5 h-5" />
+                <Palette className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
                 <span>Commander votre Portrait</span>
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
               </Link>
             </div>
           </div>
@@ -106,28 +110,30 @@ export default function PortraitsSection() {
           </div>
         </div>
 
-        {/* CTA final */}
+        {/* CTA final amélioré */}
         <div className="text-center">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-12 border border-rose-200/50 shadow-lg max-w-2xl mx-auto">
-            <Sparkles className="w-12 h-12 text-rose-500 mx-auto mb-6" />
-            <h3 className="text-2xl font-light text-gray-800 mb-4">
+          <div className="glass-card rounded-3xl p-12 border border-rose-200/50 shadow-spiritual max-w-2xl mx-auto hover-lift transition-all duration-500 group">
+            <div className="bg-gradient-to-br from-rose-500 to-pink-500 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-glow-rose group-hover:scale-110 transition-transform duration-500">
+              <Sparkles className="w-10 h-10 text-white animate-pulse" />
+            </div>
+            <h3 className="text-3xl font-playfair font-light text-gray-800 mb-4">
               Prêt(e) à découvrir votre{" "}
-              <span className="text-rose-600 font-medium">
+              <span className="text-gradient-rose font-medium">
                 portrait d&apos;âme
               </span>{" "}
               ?
             </h3>
-            <p className="text-gray-600 mb-8 leading-relaxed">
+            <p className="text-gray-600 mb-8 leading-relaxed font-crimson text-lg">
               Laissez-moi révéler votre beauté intérieure à travers une création
               unique qui vous accompagnera toute votre vie.
             </p>
             <Link
               href="/portrait-d-ame"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-8 py-4 rounded-full hover:from-rose-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-10 py-5 rounded-full shadow-glow-rose hover:shadow-glow-purple transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-lg font-medium btn-spiritual overflow-hidden group/btn"
             >
-              <Heart className="w-5 h-5" />
+              <Heart className="w-5 h-5 animate-pulse group-hover/btn:scale-110 transition-transform duration-300" />
               <span>Commander mon Portrait d&apos;Âme</span>
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300" />
             </Link>
           </div>
         </div>
