@@ -13,12 +13,12 @@ import {
 
 export default function TableauDeVieSection() {
   return (
-    <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-teal-50/50 to-cyan-50/50 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-blue-50/50 via-violet-50/50 to-orange-50/50 relative overflow-hidden">
       {/* Patterns décoratifs améliorés */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-10 left-10 w-80 h-80 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl animate-float animation-delay-700"></div>
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl animate-float animation-delay-1000"></div>
+        <div className="absolute top-10 left-10 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-violet-200 rounded-full mix-blend-multiply filter blur-3xl animate-float animation-delay-700"></div>
+        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl animate-float animation-delay-1000"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -26,16 +26,16 @@ export default function TableauDeVieSection() {
           {/* Contenu textuel */}
           <div className="space-y-8">
             <div>
-              <div className="inline-flex items-center space-x-2 bg-emerald-100 rounded-full px-6 py-2 mb-6">
-                <Compass className="w-5 h-5 text-emerald-600" />
-                <span className="text-emerald-800 font-medium text-sm">
+              <div className="inline-flex items-center space-x-2 bg-blue-100 rounded-full px-6 py-2 mb-6">
+                <Compass className="w-5 h-5 text-blue-600" />
+                <span className="text-blue-800 font-medium text-sm">
                   Nouveau Service
                 </span>
               </div>
 
               <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6 leading-tight">
                 Tableaux de vie
-                <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent font-medium">
+                <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent font-medium">
                   {" "}
                   spirituels
                 </span>
@@ -50,9 +50,9 @@ export default function TableauDeVieSection() {
 
             {/* Points clés avec glassmorphism */}
             <div className="space-y-4">
-              <div className="glass-card rounded-2xl p-5 border border-emerald-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
+              <div className="glass-card rounded-2xl p-5 border border-blue-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
                 <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-glow-blue group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-glow-blue group-hover:scale-110 transition-transform duration-300">
                     <TreePine className="w-7 h-7 text-white" />
                   </div>
                   <div className="flex-1">
@@ -67,9 +67,9 @@ export default function TableauDeVieSection() {
                 </div>
               </div>
 
-              <div className="glass-card rounded-2xl p-5 border border-teal-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
+              <div className="glass-card rounded-2xl p-5 border border-violet-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
                 <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-glow-blue group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-purple-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-glow-purple group-hover:scale-110 transition-transform duration-300">
                     <Eye className="w-7 h-7 text-white" />
                   </div>
                   <div className="flex-1">
@@ -84,9 +84,9 @@ export default function TableauDeVieSection() {
                 </div>
               </div>
 
-              <div className="glass-card rounded-2xl p-5 border border-cyan-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
+              <div className="glass-card rounded-2xl p-5 border border-orange-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
                 <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-emerald-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-glow-blue group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-glow-blue group-hover:scale-110 transition-transform duration-300">
                     <Sparkles className="w-7 h-7 text-white" />
                   </div>
                   <div className="flex-1">
@@ -101,9 +101,9 @@ export default function TableauDeVieSection() {
                 </div>
               </div>
 
-              <div className="glass-card rounded-2xl p-5 border border-purple-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
+              <div className="glass-card rounded-2xl p-5 border border-indigo-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
                 <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-emerald-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-glow-purple group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-glow-purple group-hover:scale-110 transition-transform duration-300">
                     <BookOpen className="w-7 h-7 text-white" />
                   </div>
                   <div className="flex-1">
@@ -124,7 +124,7 @@ export default function TableauDeVieSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/tableau-de-vie"
-                className="group bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-8 py-4 rounded-full shadow-glow-blue hover:shadow-spiritual transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-base font-medium inline-flex items-center justify-center space-x-2 btn-spiritual overflow-hidden"
+                className="group bg-gradient-to-r from-blue-500 to-violet-500 text-white px-8 py-4 rounded-full shadow-glow-blue hover:shadow-glow-purple transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-base font-medium inline-flex items-center justify-center space-x-2 btn-spiritual overflow-hidden"
               >
                 <Compass className="w-5 h-5 group-hover:rotate-180 transition-transform duration-500" />
                 <span>Découvrir</span>
@@ -133,7 +133,7 @@ export default function TableauDeVieSection() {
 
               <Link
                 href="/tableau-de-vie/commande"
-                className="group glass-card border-2 border-emerald-300 text-emerald-700 hover:border-emerald-400 px-8 py-4 rounded-full transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-base font-medium shadow-elegant hover:shadow-spiritual inline-flex items-center justify-center space-x-2"
+                className="group glass-card border-2 border-orange-300 text-orange-700 hover:border-orange-400 px-8 py-4 rounded-full transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-base font-medium shadow-elegant hover:shadow-spiritual inline-flex items-center justify-center space-x-2"
               >
                 <Heart className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
                 <span>Commander</span>
@@ -144,51 +144,22 @@ export default function TableauDeVieSection() {
 
           {/* Image d'un questionnaire ou placeholder */}
           <div className="flex justify-center">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl max-w-md">
-              <div className="aspect-[4/5] relative bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center">
+            <div className="relative rounded-3xl overflow-hidden shadow-spiritual max-w-md hover-lift transition-all duration-500">
+              <div className="aspect-[4/5] relative bg-gradient-to-br from-blue-100 via-violet-100 to-orange-100 flex items-center justify-center">
                 <div className="text-center p-8">
-                  <BookOpen className="w-16 h-16 text-emerald-600 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  <div className="bg-gradient-to-br from-blue-500 to-violet-500 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-glow-blue">
+                    <BookOpen className="w-10 h-10 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-3 font-playfair">
                     Questionnaire Introspectif
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 leading-relaxed font-crimson">
                     Un voyage au cœur de votre être pour révéler votre essence
                     unique
                   </p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Description complète améliorée */}
-        <div className="mt-20 text-center">
-          <div className="glass-card rounded-3xl p-12 border border-emerald-200/50 shadow-spiritual max-w-4xl mx-auto hover-lift transition-all duration-500 group">
-            <div className="bg-gradient-to-br from-emerald-500 to-teal-500 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-glow-blue group-hover:scale-110 transition-transform duration-500">
-              <Compass className="w-10 h-10 text-white" />
-            </div>
-            <h3 className="text-3xl font-playfair font-semibold text-gray-800 mb-6">
-              Le Tableau de Vie Spirituel
-            </h3>
-            <p className="text-gray-600 leading-relaxed mb-6 font-crimson text-lg">
-              Le Tableau de Vie Spirituel est une œuvre intime, un miroir sacré
-              qui reflète la danse de votre chemin intérieur. À travers un
-              questionnaire pensé comme une invitation à l&apos;introspection,
-              vous ouvrez la porte à vos souvenirs, vos défis, vos rêves et vos
-              aspirations profondes.
-            </p>
-            <p className="text-gray-600 leading-relaxed mb-6 font-crimson text-lg">
-              De ces confidences naît une alchimie : je me relie à votre essence
-              et, guidée par l&apos;intuition, je laisse émerger des couleurs,
-              des formes et des symboles porteurs de sens. Chaque geste traduit
-              une étape, une force, une lumière de votre histoire.
-            </p>
-            <p className="text-gray-600 leading-relaxed font-crimson text-lg">
-              Ainsi s&apos;ancre une création unique et vivante, co-créée avec
-              vous. Un tableau qui vous accompagne comme un compagnon
-              d&apos;âme, vous inspire dans vos élans, et vous relie à la beauté
-              de votre parcours.
-            </p>
           </div>
         </div>
       </div>

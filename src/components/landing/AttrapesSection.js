@@ -134,7 +134,6 @@ export default function AttrapesSection() {
           </div>
         </div>
 
-
         {/* Section bienfaits et tradition */}
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-12 border border-purple-200/50 shadow-lg mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -176,28 +175,6 @@ export default function AttrapesSection() {
                 d&apos;amour bienveillant.
               </p>
             </div>
-          </div>
-        </div>
-
-        {/* CTA final */}
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-12 text-white max-w-2xl mx-auto">
-            <Moon className="w-12 h-12 mx-auto mb-6" />
-            <h3 className="text-2xl font-light mb-4">
-              Protégez vos <span className="font-medium">rêves sacrés</span>
-            </h3>
-            <p className="text-purple-100 mb-8 leading-relaxed">
-              Offrez-vous un attrape-rêve unique, créé spécialement pour vous
-              avec intention et bienveillance.
-            </p>
-            <Link
-              href="/attrape-reves"
-              className="inline-flex items-center space-x-2 bg-white text-purple-600 px-8 py-4 rounded-full hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
-            >
-              <Sparkles className="w-5 h-5" />
-              <span>Choisir mon Attrape-rêve</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
           </div>
         </div>
       </div>
