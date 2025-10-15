@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/client": "^6.8.6",
+    "@sanity/image-url": "^1.0.2",
     "clsx": "^2.1.1",
     "emailjs-com": "^3.2.0",
     "lucide-react": "^0.511.0",
