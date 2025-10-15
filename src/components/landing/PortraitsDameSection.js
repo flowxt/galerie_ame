@@ -1,9 +1,46 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Sparkles, Heart, ArrowRight, Palette, Eye, Brush } from "lucide-react";
+import {
+  Sparkles,
+  Heart,
+  ArrowRight,
+  Palette,
+  Eye,
+  Brush,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 export default function PortraitsDameSection() {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const images = [
+    {
+      src: "/images/portrait-ame1.jpg",
+      alt: "Portrait d'âme spirituel - Création 1",
+      color: "rose",
+    },
+    {
+      src: "/images/portrait-ame2.jpg",
+      alt: "Portrait d'âme spirituel - Création 2",
+      color: "purple",
+    },
+    {
+      src: "/images/portrait-ame3.jpg",
+      alt: "Portrait d'âme spirituel - Création 3",
+      color: "pink",
+    },
+  ];
+
+  const nextImage = () => {
+    setCurrentImage((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
+  };
   return (
     <section className="py-20 bg-gradient-to-br from-rose-50/50 via-purple-50/50 to-pink-50/50 relative overflow-hidden">
       {/* Patterns décoratifs améliorés */}
@@ -117,39 +154,59 @@ export default function PortraitsDameSection() {
             </div>
           </div>
 
-          {/* Galerie de 3 photos */}
-          <div className="grid grid-cols-1 gap-6">
-            <div className="group relative rounded-3xl overflow-hidden shadow-elegant hover:shadow-spiritual transition-all duration-500 hover-lift">
+          {/* Carrousel de photos */}
+          <div className="relative w-full max-w-2xl mx-auto lg:mx-0">
+            {/* Image principale */}
+            <div className="relative aspect-[3/4] max-h-[700px] rounded-3xl overflow-hidden shadow-spiritual">
               <Image
-                src="/images/portrait-ame1.jpg"
-                alt="Portrait d'âme spirituel - Création 1"
+                src={images[currentImage].src}
+                alt={images[currentImage].alt}
                 width={600}
-                height={400}
-                className="w-full h-[250px] object-cover group-hover:scale-105 transition-transform duration-500"
+                height={800}
+                className="w-full h-full object-cover transition-all duration-500"
+                priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-rose-600/60 via-rose-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
+
+              {/* Badge du numéro */}
+              <div className="absolute top-6 right-6 glass-card px-4 py-2 rounded-full border border-white/30">
+                <span className="text-white font-medium text-sm">
+                  {currentImage + 1} / {images.length}
+                </span>
+              </div>
+
+              {/* Boutons de navigation - À l'intérieur de l'image */}
+              <button
+                onClick={prevImage}
+                className="absolute left-4 top-1/2 -translate-y-1/2 glass-card w-12 h-12 rounded-full flex items-center justify-center border border-white/30 hover:bg-white/40 transition-all duration-300 group shadow-elegant hover:scale-110 z-10"
+                aria-label="Image précédente"
+              >
+                <ChevronLeft className="w-6 h-6 text-white group-hover:text-rose-500 transition-colors" />
+              </button>
+
+              <button
+                onClick={nextImage}
+                className="absolute right-4 top-1/2 -translate-y-1/2 glass-card w-12 h-12 rounded-full flex items-center justify-center border border-white/30 hover:bg-white/40 transition-all duration-300 group shadow-elegant hover:scale-110 z-10"
+                aria-label="Image suivante"
+              >
+                <ChevronRight className="w-6 h-6 text-white group-hover:text-rose-500 transition-colors" />
+              </button>
             </div>
 
-            <div className="group relative rounded-3xl overflow-hidden shadow-elegant hover:shadow-spiritual transition-all duration-500 hover-lift">
-              <Image
-                src="/images/portrait-ame2.jpg"
-                alt="Portrait d'âme spirituel - Création 2"
-                width={600}
-                height={400}
-                className="w-full h-[250px] object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-600/60 via-purple-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            </div>
-
-            <div className="group relative rounded-3xl overflow-hidden shadow-elegant hover:shadow-spiritual transition-all duration-500 hover-lift">
-              <Image
-                src="/images/portrait-ame3.jpg"
-                alt="Portrait d'âme spirituel - Création 3"
-                width={600}
-                height={400}
-                className="w-full h-[250px] object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-pink-600/60 via-pink-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            {/* Indicateurs de points */}
+            <div className="flex justify-center gap-3 mt-6">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImage(index)}
+                  className={`transition-all duration-300 rounded-full ${
+                    index === currentImage
+                      ? "w-8 h-3 bg-gradient-to-r from-rose-500 to-pink-500 shadow-glow-rose"
+                      : "w-3 h-3 bg-gray-300 hover:bg-rose-300"
+                  }`}
+                  aria-label={`Aller à l'image ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>
