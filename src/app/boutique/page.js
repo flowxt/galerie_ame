@@ -9,14 +9,9 @@ import {
   ShoppingBag,
   MessageCircle,
 } from "lucide-react";
-import { getArtworks } from "../../lib/sanity-queries";
-import ArtworkCard from "../../components/ArtworkCard";
 import Image from "next/image";
 
-export default async function Boutique() {
-  // Récupérer les œuvres depuis Sanity
-  const artworks = await getArtworks();
-
+export default function Boutique() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -100,86 +95,49 @@ export default async function Boutique() {
         className="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50"
       >
         <div className="container mx-auto px-4">
-          {artworks && artworks.length > 0 ? (
-            <div>
-              <div className="text-center mb-16">
-                <div className="inline-flex items-center space-x-2 bg-purple-100 rounded-full px-6 py-2 mb-6">
-                  <ShoppingBag className="w-5 h-5 text-purple-600" />
-                  <span className="text-purple-800 font-medium text-sm">
-                    Collection Disponible
-                  </span>
-                </div>
-
-                <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
-                  Nos
-                  <span className="bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent">
-                    {" "}
-                    œuvres d&apos;art
-                  </span>
-                </h2>
-
-                <div className="flex items-center justify-center space-x-2 text-gray-600">
-                  <Sparkles className="w-4 h-4" />
-                  <span className="text-lg">
-                    {artworks.length} œuvre{artworks.length > 1 ? "s" : ""}{" "}
-                    unique{artworks.length > 1 ? "s" : ""} disponible
-                    {artworks.length > 1 ? "s" : ""}
-                  </span>
-                  <Sparkles className="w-4 h-4" />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                {artworks.map((artwork) => (
-                  <ArtworkCard key={artwork._id} artwork={artwork} />
-                ))}
-              </div>
+          <div className="text-center py-16">
+            <div className="w-24 h-24 bg-gradient-to-r from-purple-400 to-rose-400 rounded-full flex items-center justify-center mx-auto mb-8">
+              <ShoppingBag className="w-12 h-12 text-white" />
             </div>
-          ) : (
-            <div className="text-center py-16">
-              <div className="w-24 h-24 bg-gradient-to-r from-purple-400 to-rose-400 rounded-full flex items-center justify-center mx-auto mb-8">
-                <Palette className="w-12 h-12 text-white" />
-              </div>
 
-              <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-6">
-                Nouvelles œuvres
-                <span className="bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent">
-                  {" "}
-                  en création
+            <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-6">
+              Boutique en ligne
+              <span className="bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent">
+                {" "}
+                bientôt disponible
+              </span>
+            </h2>
+
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Nous préparons notre boutique en ligne pour vous offrir une
+              sélection d&apos;œuvres spirituelles uniques. En attendant, vous
+              pouvez commander une création personnalisée.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/portrait-d-ame/commande"
+                className="group bg-gradient-to-r from-purple-500 to-rose-500 text-white px-8 py-4 rounded-full hover:from-purple-600 hover:to-rose-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
+              >
+                <span className="flex items-center justify-center space-x-2">
+                  <Heart className="w-5 h-5" />
+                  <span>Commander un Portrait d&apos;Âme</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
-              </h2>
+              </Link>
 
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Nous préparons de nouvelles créations spirituelles avec
-                intention et amour. En attendant, vous pouvez commander une
-                œuvre personnalisée.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/portrait-d-ame/commande"
-                  className="group bg-gradient-to-r from-purple-500 to-rose-500 text-white px-8 py-4 rounded-full hover:from-purple-600 hover:to-rose-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
-                >
-                  <span className="flex items-center justify-center space-x-2">
-                    <Heart className="w-5 h-5" />
-                    <span>Commander un Portrait d&apos;Âme</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-
-                <Link
-                  href="/contact"
-                  className="group bg-white/80 backdrop-blur-sm border-2 border-purple-300 text-purple-700 hover:bg-purple-50 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
-                >
-                  <span className="flex items-center justify-center space-x-2">
-                    <MessageCircle className="w-5 h-5" />
-                    <span>Discuter d&apos;un projet</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-              </div>
+              <Link
+                href="/contact"
+                className="group bg-white/80 backdrop-blur-sm border-2 border-purple-300 text-purple-700 hover:bg-purple-50 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
+              >
+                <span className="flex items-center justify-center space-x-2">
+                  <MessageCircle className="w-5 h-5" />
+                  <span>Discuter d&apos;un projet</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
             </div>
-          )}
+          </div>
         </div>
       </section>
 

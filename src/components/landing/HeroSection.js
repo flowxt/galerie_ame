@@ -14,12 +14,12 @@ export default function HeroSection() {
       </div>
 
       {/* Contenu principal centré */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        {/* Signature artistique avec animation */}
-        <div className="inline-flex items-center space-x-2 glass-card border border-rose-200/50 rounded-full px-8 py-4 mb-12 shadow-elegant hover-lift animate-fadeInUp">
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto py-12">
+        {/* Signature artistique avec animation - espace en haut pour éviter collision navbar */}
+        <div className="inline-flex items-center space-x-2 glass-card border border-rose-200/50 rounded-full px-8 py-4 mb-16 shadow-elegant hover-lift animate-fadeInUp">
           <Sparkles className="w-5 h-5 text-rose-500 animate-pulse" />
           <span className="text-gray-700 font-medium">
-            Atelier Art&apos;âme : l&apos;art inspiré par l&apos;âme
+            Atelier Art&apos;âme : L&apos;art comme boussole intérieure
           </span>
           <div className="w-2 h-2 bg-rose-400 rounded-full animate-pulse"></div>
         </div>
@@ -66,7 +66,7 @@ export default function HeroSection() {
             </h1>
 
             {/* Description avec animation */}
-            <p className="text-xl md:text-2xl text-gray-600 mb-16 max-w-4xl mx-auto leading-relaxed font-crimson animate-fadeInUp animation-delay-300">
+            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-crimson animate-fadeInUp animation-delay-300">
               Créations spirituelles personnalisées pour révéler votre âme et
               protéger vos rêves.
               <br />
@@ -75,56 +75,6 @@ export default function HeroSection() {
                 <Star className="w-5 h-5 text-gold-400 fill-gold-400 animate-pulse" />
               </span>
             </p>
-          </div>
-        </div>
-
-        {/* Boutons d'action améliorés */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20 animate-fadeInUp animation-delay-500">
-          <Link
-            href="/portrait-d-ame"
-            className="group relative bg-gradient-to-r from-rose-500 to-pink-500 text-white px-10 py-5 rounded-full shadow-glow-rose hover:shadow-glow-purple transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-lg font-medium btn-spiritual overflow-hidden"
-          >
-            <span className="flex items-center space-x-3 justify-center relative z-10">
-              <Sparkles className="w-6 h-6 animate-pulse" />
-              <span>Mes Portraits d&apos;Âme</span>
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
-            </span>
-          </Link>
-
-          <Link
-            href="/tableau-de-vie"
-            className="group glass-card border-2 border-purple-300 text-gray-700 hover:border-purple-400 px-10 py-5 rounded-full transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-lg font-medium shadow-elegant hover:shadow-spiritual"
-          >
-            <span className="flex items-center space-x-3 justify-center">
-              <Moon className="w-6 h-6 text-purple-500 group-hover:rotate-12 transition-transform duration-300" />
-              <span>Tableau de Vie</span>
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
-            </span>
-          </Link>
-        </div>
-
-        {/* Statistiques épurées avec animations */}
-        <div className="grid grid-cols-2 gap-12 max-w-xl mx-auto animate-fadeInUp animation-delay-700">
-          <div className="text-center group hover-lift cursor-default">
-            <div className="glass-card rounded-2xl p-6 border border-purple-200/50">
-              <div className="text-4xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent mb-2 font-playfair group-hover:scale-110 transition-transform duration-300">
-                100%
-              </div>
-              <div className="text-gray-600 font-crimson text-sm">
-                Fait main
-              </div>
-            </div>
-          </div>
-          <div className="text-center group hover-lift cursor-default">
-            <div className="glass-card rounded-2xl p-6 border border-gold-200/50">
-              <div className="text-4xl font-bold text-gold-500 mb-2 font-playfair flex items-center justify-center gap-1 group-hover:scale-110 transition-transform duration-300">
-                <Star className="w-6 h-6 fill-gold-500" />
-                5/5
-              </div>
-              <div className="text-gray-600 font-crimson text-sm">
-                Satisfaction
-              </div>
-            </div>
           </div>
         </div>
       </div>

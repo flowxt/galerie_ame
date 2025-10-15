@@ -1,140 +1,86 @@
 "use client";
-import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Sparkles, Heart, Eye, Palette } from "lucide-react";
+import { Sparkles, Heart } from "lucide-react";
 
 export default function PortraitsSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-rose-50">
+    <section className="py-20 bg-gradient-to-b from-white to-rose-50/30">
       <div className="max-w-7xl mx-auto px-4">
         {/* En-tête de section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 bg-rose-100 rounded-full px-6 py-3 mb-6">
-            <Sparkles className="w-5 h-5 text-rose-600" />
+            <Heart className="w-5 h-5 text-rose-600" />
             <span className="text-rose-800 font-medium">
-              Portraits d&apos;Âme
+              Présentation
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
-            Révélez votre{" "}
+            À propos de{" "}
             <span className="bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent font-medium">
-              essence profonde
+              Véronique
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
-            Chaque portrait d&apos;âme est une œuvre unique, réalisée dans
-            l&apos;intuition et la sensibilité. Au-delà des traits physiques, il
-            révèle l&apos;essence intérieure, les couleurs vibratoires et la
-            lumière singulière de chaque être.
-          </p>
         </div>
 
-        {/* Section principale avec Véronique et ses œuvres */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-          {/* Colonne gauche : À propos de Véronique */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-3xl font-playfair font-light text-gray-800 mb-6">
-                Présentation
-              </h3>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6 font-crimson">
-                Artiste intuitive et passionnée, depuis l&apos;enfance la
-                création est mon langage. À travers Atelier Art&apos;âme, je
-                fais dialoguer couleurs, symboles et ressentis pour donner
-                naissance à des créations vibrantes et uniques.
+        {/* Section texte de présentation */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="glass-card rounded-3xl p-10 md:p-12 border border-rose-200/50 shadow-elegant">
+            <div className="space-y-6 text-lg text-gray-700 leading-relaxed font-crimson">
+              <p>
+                Artiste intuitive et passionnée, la création fait partie de moi depuis toujours.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6 font-crimson">
-                Chaque œuvre naît d&apos;une méditation, d&apos;une
-                contemplation de votre essence. Je laisse votre âme guider mes
-                pinceaux pour révéler votre véritable lumière.
+              <p>
+                Après un passage de vie profond, elle a pris une autre dimension — plus libre, 
+                plus essentielle, plus en accord avec ce que je suis aujourd&apos;hui.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8 font-crimson">
-                Mon approche combine expression artistique et connexion
-                spirituelle profonde, afin d&apos;offrir des œuvres porteuses de
-                sens, d&apos;énergie et d&apos;harmonie.
+              <p>
+                De cet élan est né <span className="font-semibold text-rose-600">Atelier Art&apos;âme</span> : 
+                un espace où se rencontrent couleurs, matières, symboles et ressentis, 
+                dans une approche profondément authentique.
               </p>
-
-              {/* Valeurs/approche avec glassmorphism amélioré */}
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="glass-card rounded-2xl p-5 border border-rose-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
-                  <div className="bg-gradient-to-br from-rose-500 to-pink-500 w-12 h-12 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-glow-rose">
-                    <Heart className="w-6 h-6 text-white" />
-                  </div>
-                  <h4 className="font-semibold text-gray-800 mb-2 font-playfair">
-                    Avec le cœur
-                  </h4>
-                  <p className="text-sm text-gray-600 font-crimson leading-relaxed">
-                    Chaque création porte mon intention bienveillante
-                  </p>
-                </div>
-                <div className="glass-card rounded-2xl p-5 border border-purple-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
-                  <div className="bg-gradient-to-br from-purple-500 to-blue-500 w-12 h-12 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-glow-purple">
-                    <Eye className="w-6 h-6 text-white" />
-                  </div>
-                  <h4 className="font-semibold text-gray-800 mb-2 font-playfair">
-                    Vision intuitive
-                  </h4>
-                  <p className="text-sm text-gray-600 font-crimson leading-relaxed">
-                    Je perçois votre essence au-delà des apparences
-                  </p>
-                </div>
-              </div>
-
-              <Link
-                href="/portrait-d-ame"
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-8 py-4 rounded-full shadow-glow-rose hover:shadow-glow-purple transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 btn-spiritual overflow-hidden group"
-              >
-                <Palette className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-                <span>Commander votre Portrait</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Colonne droite : Une seule photo de Véronique */}
-          <div className="flex justify-center">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl max-w-md">
-              <Image
-                src="/images/vero-realisation.jpg"
-                alt="Véronique créant un portrait d'âme"
-                width={400}
-                height={500}
-                className="w-full h-[500px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 text-white">
-                <p className="text-lg font-medium">Véronique</p>
-                <p className="text-sm opacity-90">Artiste créatrice</p>
-              </div>
+              <p>
+                Ce que je cherche à travers mon travail, c&apos;est à faire vibrer l&apos;essentiel — 
+                ce fil invisible qui relie la beauté, la vie et l&apos;émotion.
+              </p>
+              <p>
+                <span className="font-semibold text-gray-800">One Life</span> : deux mots simples, 
+                mais qui portent pour moi tout un sens — vivre pleinement, avec sincérité, 
+                liberté et élan créatif.
+              </p>
+              <p>
+                Ma rose des vents, peinte à l&apos;aquarelle, incarne cette direction intérieure : 
+                celle du cœur, du partage et de la lumière.
+              </p>
+              <p className="italic text-gray-600">
+                Si mes créations parviennent à éveiller, ne serait-ce qu&apos;un instant, 
+                ce retour à soi et à l&apos;essentiel, alors tout prend sens…
+              </p>
             </div>
           </div>
         </div>
 
-        {/* CTA final amélioré */}
-        <div className="text-center">
-          <div className="glass-card rounded-3xl p-12 border border-rose-200/50 shadow-spiritual max-w-2xl mx-auto hover-lift transition-all duration-500 group">
-            <div className="bg-gradient-to-br from-rose-500 to-pink-500 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-glow-rose group-hover:scale-110 transition-transform duration-500">
-              <Sparkles className="w-10 h-10 text-white animate-pulse" />
-            </div>
-            <h3 className="text-3xl font-playfair font-light text-gray-800 mb-4">
-              Prêt(e) à découvrir votre{" "}
-              <span className="text-gradient-rose font-medium">
-                portrait d&apos;âme
-              </span>{" "}
-              ?
-            </h3>
-            <p className="text-gray-600 mb-8 leading-relaxed font-crimson text-lg">
-              Laissez-moi révéler votre beauté intérieure à travers une création
-              unique qui vous accompagnera toute votre vie.
-            </p>
-            <Link
-              href="/portrait-d-ame"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-10 py-5 rounded-full shadow-glow-rose hover:shadow-glow-purple transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-lg font-medium btn-spiritual overflow-hidden group/btn"
-            >
-              <Heart className="w-5 h-5 animate-pulse group-hover/btn:scale-110 transition-transform duration-300" />
-              <span>Commander mon Portrait d&apos;Âme</span>
-              <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300" />
-            </Link>
+        {/* Section photos */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="group relative rounded-3xl overflow-hidden shadow-elegant hover:shadow-spiritual transition-all duration-500 hover-lift">
+            <Image
+              src="/images/presentation.jpg"
+              alt="Véronique - Artiste créatrice"
+              width={600}
+              height={700}
+              className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+
+          <div className="group relative rounded-3xl overflow-hidden shadow-elegant hover:shadow-spiritual transition-all duration-500 hover-lift">
+            <Image
+              src="/images/presentation2.jpg"
+              alt="Rose des vents - Aquarelle de Véronique"
+              width={600}
+              height={700}
+              className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
         </div>
       </div>

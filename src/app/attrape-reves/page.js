@@ -15,12 +15,8 @@ import {
   Clock,
   CheckCircle,
 } from "lucide-react";
-import { getDreamCatchers } from "../../lib/sanity-queries";
-import ArtworkCard from "../../components/ArtworkCard";
 
-export default async function AttrapesRevesPage() {
-  const dreamCatchers = await getDreamCatchers();
-
+export default function AttrapesRevesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
