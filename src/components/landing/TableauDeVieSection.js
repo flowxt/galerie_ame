@@ -10,10 +10,15 @@ import {
   Eye,
   BookOpen,
 } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function TableauDeVieSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-50/50 via-violet-50/50 to-orange-50/50 relative overflow-hidden">
+    <section ref={ref} className="py-20 bg-gradient-to-br from-blue-50/50 via-violet-50/50 to-orange-50/50 relative overflow-hidden">
       {/* Patterns décoratifs améliorés */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-10 left-10 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
@@ -50,7 +55,12 @@ export default function TableauDeVieSection() {
 
             {/* Points clés avec glassmorphism */}
             <div className="space-y-4">
-              <div className="glass-card rounded-2xl p-5 border border-blue-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="glass-card rounded-2xl p-5 border border-blue-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300"
+              >
                 <div className="flex items-start space-x-4">
                   <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-glow-blue group-hover:scale-110 transition-transform duration-300">
                     <TreePine className="w-7 h-7 text-white" />
@@ -65,9 +75,14 @@ export default function TableauDeVieSection() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="glass-card rounded-2xl p-5 border border-violet-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="glass-card rounded-2xl p-5 border border-violet-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300"
+              >
                 <div className="flex items-start space-x-4">
                   <div className="w-14 h-14 bg-gradient-to-br from-violet-500 to-purple-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-glow-purple group-hover:scale-110 transition-transform duration-300">
                     <Eye className="w-7 h-7 text-white" />
@@ -82,9 +97,14 @@ export default function TableauDeVieSection() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="glass-card rounded-2xl p-5 border border-orange-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="glass-card rounded-2xl p-5 border border-orange-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300"
+              >
                 <div className="flex items-start space-x-4">
                   <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-glow-blue group-hover:scale-110 transition-transform duration-300">
                     <Sparkles className="w-7 h-7 text-white" />
@@ -99,9 +119,14 @@ export default function TableauDeVieSection() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="glass-card rounded-2xl p-5 border border-indigo-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="glass-card rounded-2xl p-5 border border-indigo-200/50 hover-lift group shadow-soft hover:shadow-elegant transition-all duration-300"
+              >
                 <div className="flex items-start space-x-4">
                   <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-glow-purple group-hover:scale-110 transition-transform duration-300">
                     <BookOpen className="w-7 h-7 text-white" />
@@ -117,11 +142,16 @@ export default function TableauDeVieSection() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* CTA amélioré */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
               <Link
                 href="/tableau-de-vie"
                 className="group bg-gradient-to-r from-blue-500 to-violet-500 text-white px-8 py-4 rounded-full shadow-glow-blue hover:shadow-glow-purple transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-base font-medium inline-flex items-center justify-center space-x-2 btn-spiritual overflow-hidden"
@@ -139,11 +169,16 @@ export default function TableauDeVieSection() {
                 <span>Commander</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
               </Link>
-            </div>
+            </motion.div>
           </div>
 
           {/* Galerie avec les photos et le questionnaire */}
-          <div className="space-y-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="space-y-6"
+          >
             {/* Photos des tableaux de vie */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="relative rounded-3xl overflow-hidden shadow-spiritual hover-lift transition-all duration-500">
@@ -192,7 +227,7 @@ export default function TableauDeVieSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

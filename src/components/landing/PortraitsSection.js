@@ -1,13 +1,24 @@
 "use client";
 import Image from "next/image";
 import { Sparkles, Heart } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function PortraitsSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-rose-50/30">
+    <section ref={ref} className="py-20 bg-gradient-to-b from-white to-rose-50/30">
       <div className="max-w-7xl mx-auto px-4">
         {/* En-tête de section */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
           <div className="inline-flex items-center space-x-2 bg-rose-100 rounded-full px-6 py-3 mb-6">
             <Heart className="w-5 h-5 text-rose-600" />
             <span className="text-rose-800 font-medium">
@@ -20,10 +31,15 @@ export default function PortraitsSection() {
               Véronique
             </span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* Section texte de présentation */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="max-w-4xl mx-auto mb-16"
+        >
           <div className="glass-card rounded-3xl p-10 md:p-12 border border-rose-200/50 shadow-elegant">
             <div className="space-y-6 text-lg text-gray-700 leading-relaxed font-crimson">
               <p>
@@ -57,11 +73,16 @@ export default function PortraitsSection() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Section photos */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          <div className="group relative rounded-3xl overflow-hidden shadow-elegant hover:shadow-spiritual transition-all duration-500 hover-lift">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="group relative rounded-3xl overflow-hidden shadow-elegant hover:shadow-spiritual transition-all duration-500 hover-lift"
+          >
             <Image
               src="/images/presentation.jpg"
               alt="Véronique - Artiste créatrice"
@@ -70,9 +91,14 @@ export default function PortraitsSection() {
               className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          </div>
+          </motion.div>
 
-          <div className="group relative rounded-3xl overflow-hidden shadow-elegant hover:shadow-spiritual transition-all duration-500 hover-lift">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            className="group relative rounded-3xl overflow-hidden shadow-elegant hover:shadow-spiritual transition-all duration-500 hover-lift"
+          >
             <Image
               src="/images/presentation2.jpg"
               alt="Rose des vents - Aquarelle de Véronique"
@@ -81,7 +107,7 @@ export default function PortraitsSection() {
               className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

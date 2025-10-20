@@ -2,27 +2,48 @@
 import Link from "next/link";
 import { ArrowRight, Sparkles, Moon, Heart, Star } from "lucide-react";
 import { Vortex } from "../ui/Vortex";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-rose-50/50 to-purple-50/50">
-      {/* Patterns décoratifs subtils */}
+      {/* Patterns décoratifs subtils avec animation */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-rose-200 rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl animate-float animation-delay-700"></div>
-        <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl animate-float animation-delay-1000"></div>
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+          className="absolute top-20 left-10 w-72 h-72 bg-rose-200 rounded-full mix-blend-multiply filter blur-3xl animate-float"
+        />
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 2, delay: 0.3, ease: "easeOut" }}
+          className="absolute top-40 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl animate-float animation-delay-700"
+        />
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 2, delay: 0.6, ease: "easeOut" }}
+          className="absolute bottom-20 left-1/3 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl animate-float animation-delay-1000"
+        />
       </div>
 
       {/* Contenu principal centré */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto py-12">
         {/* Signature artistique avec animation - espace en haut pour éviter collision navbar */}
-        <div className="inline-flex items-center space-x-2 glass-card border border-rose-200/50 rounded-full px-8 py-4 mb-16 shadow-elegant hover-lift animate-fadeInUp">
+        <motion.div
+          initial={{ opacity: 0, y: -50, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="inline-flex items-center space-x-2 glass-card border border-rose-200/50 rounded-full px-8 py-4 mb-16 shadow-elegant hover-lift"
+        >
           <Sparkles className="w-5 h-5 text-rose-500 animate-pulse" />
           <span className="text-gray-700 font-medium">
             Atelier Art&apos;âme : L&apos;art comme boussole intérieure
           </span>
           <div className="w-2 h-2 bg-rose-400 rounded-full animate-pulse"></div>
-        </div>
+        </motion.div>
 
         {/* Zone avec vortex pour titre + description */}
         <div className="relative w-full">
@@ -43,30 +64,68 @@ export default function HeroSection() {
 
           {/* Titre principal avec animation */}
           <div className="relative z-10">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair font-light mb-8 leading-tight text-center animate-fadeInUp animation-delay-200">
-              <span className="block text-gray-800 mb-6">Révélez votre</span>
-              <span className="block mb-6">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair font-light mb-8 leading-tight text-center">
+              <motion.span
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                className="block text-gray-800 mb-6"
+              >
+                Révélez votre
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                className="block mb-6"
+              >
                 <span className="bg-gradient-to-r from-rose-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-medium animate-shimmer">
                   Essence Spirituelle
                 </span>
-              </span>
-              <div className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-600 flex items-center justify-center gap-4 flex-wrap">
-                <span className="inline-flex items-center gap-2">
+              </motion.span>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-600 flex items-center justify-center gap-4 flex-wrap"
+              >
+                <motion.span
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 1 }}
+                  className="inline-flex items-center gap-2"
+                >
                   <Heart className="w-8 h-8 text-rose-400 animate-pulse" />
                   Portraits d&apos;Âme
-                </span>
+                </motion.span>
                 <span className="text-gray-400">•</span>
-                <span>Tableau de vie</span>
+                <motion.span
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
+                >
+                  Tableau de vie
+                </motion.span>
                 <span className="text-gray-400">•</span>
-                <span className="inline-flex items-center gap-2">
+                <motion.span
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 1.4 }}
+                  className="inline-flex items-center gap-2"
+                >
                   <Moon className="w-8 h-8 text-purple-400 animate-pulse animation-delay-500" />
                   Attrape-rêves
-                </span>
-              </div>
+                </motion.span>
+              </motion.div>
             </h1>
 
             {/* Description avec animation */}
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-crimson animate-fadeInUp animation-delay-300">
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.6 }}
+              className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-crimson"
+            >
               Créations spirituelles personnalisées pour révéler votre âme et
               protéger vos rêves.
               <br />
@@ -74,7 +133,7 @@ export default function HeroSection() {
                 Chaque œuvre est unique et porte une intention pure
                 <Star className="w-5 h-5 text-gold-400 fill-gold-400 animate-pulse" />
               </span>
-            </p>
+            </motion.p>
           </div>
         </div>
       </div>

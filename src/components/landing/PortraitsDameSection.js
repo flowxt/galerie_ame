@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,9 +12,12 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 export default function PortraitsDameSection() {
   const [currentImage, setCurrentImage] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const images = [
     {
@@ -42,7 +45,10 @@ export default function PortraitsDameSection() {
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
   };
   return (
-    <section className="py-20 bg-gradient-to-br from-rose-50/50 via-purple-50/50 to-pink-50/50 relative overflow-hidden">
+    <section
+      ref={ref}
+      className="py-20 bg-gradient-to-br from-rose-50/50 via-purple-50/50 to-pink-50/50 relative overflow-hidden"
+    >
       {/* Patterns décoratifs améliorés */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-10 left-10 w-80 h-80 bg-rose-200 rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
@@ -155,18 +161,34 @@ export default function PortraitsDameSection() {
           </div>
 
           {/* Carrousel de photos */}
-          <div className="relative w-full max-w-2xl mx-auto lg:mx-0">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative w-full max-w-2xl mx-auto lg:mx-0"
+          >
             {/* Image principale */}
             <div className="relative aspect-[3/4] max-h-[700px] rounded-3xl overflow-hidden shadow-spiritual">
-              <Image
-                src={images[currentImage].src}
-                alt={images[currentImage].alt}
-                width={600}
-                height={800}
-                className="w-full h-full object-cover transition-all duration-500"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentImage}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={images[currentImage].src}
+                    alt={images[currentImage].alt}
+                    width={600}
+                    height={800}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
+                </motion.div>
+              </AnimatePresence>
 
               {/* Badge du numéro */}
               <div className="absolute top-6 right-6 glass-card px-4 py-2 rounded-full border border-white/30">
@@ -208,7 +230,7 @@ export default function PortraitsDameSection() {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
