@@ -142,21 +142,53 @@ export default function TableauDeVieSection() {
             </div>
           </div>
 
-          {/* Image d'un questionnaire ou placeholder */}
-          <div className="flex justify-center">
-            <div className="relative rounded-3xl overflow-hidden shadow-spiritual max-w-md hover-lift transition-all duration-500">
-              <div className="aspect-[4/5] relative bg-gradient-to-br from-blue-100 via-violet-100 to-orange-100 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="bg-gradient-to-br from-blue-500 to-violet-500 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-glow-blue">
-                    <BookOpen className="w-10 h-10 text-white" />
+          {/* Galerie avec les photos et le questionnaire */}
+          <div className="space-y-6">
+            {/* Photos des tableaux de vie */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="relative rounded-3xl overflow-hidden shadow-spiritual hover-lift transition-all duration-500">
+                <div className="aspect-[4/5] relative">
+                  <Image
+                    src="/images/vie-1.jpeg"
+                    alt="Tableau de vie spirituel - Exemple 1"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+              </div>
+
+              <div className="relative rounded-3xl overflow-hidden shadow-spiritual hover-lift transition-all duration-500">
+                <div className="aspect-[4/5] relative">
+                  <Image
+                    src="/images/vie-2.jpeg"
+                    alt="Tableau de vie spirituel - Exemple 2"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Questionnaire introspectif */}
+            <div className="flex justify-center">
+              <div className="relative rounded-3xl overflow-hidden shadow-spiritual max-w-md hover-lift transition-all duration-500">
+                <div className="aspect-[4/5] relative bg-gradient-to-br from-blue-100 via-violet-100 to-orange-100 flex items-center justify-center">
+                  <div className="text-center p-8">
+                    <div className="bg-gradient-to-br from-blue-500 to-violet-500 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-glow-blue">
+                      <BookOpen className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-gray-800 mb-3 font-playfair">
+                      Questionnaire Introspectif
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed font-crimson">
+                      Un voyage au cœur de votre être pour révéler votre essence
+                      unique
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-semibold text-gray-800 mb-3 font-playfair">
-                    Questionnaire Introspectif
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed font-crimson">
-                    Un voyage au cœur de votre être pour révéler votre essence
-                    unique
-                  </p>
                 </div>
               </div>
             </div>
