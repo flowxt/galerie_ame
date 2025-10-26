@@ -52,9 +52,9 @@ export default function SiteLoader({ onLoadingComplete }) {
           <Image
             src="/images/logo-sansfond.png"
             alt="Atelier Art'âme"
-            width={280}
-            height={280}
-            className="h-80 w-auto drop-shadow-xl"
+            width={400}
+            height={400}
+            className="h-auto w-[350px] md:w-[400px] drop-shadow-2xl"
             priority
           />
         </div>

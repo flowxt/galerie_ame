@@ -21,8 +21,29 @@ import {
 } from "lucide-react";
 import PortraitOrderButton from "../../components/PortraitOrderButton";
 import { Vortex } from "../../components/ui/Vortex";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function PortraitDame() {
+  const whatIsRef = useRef(null);
+  const whatIsInView = useInView(whatIsRef, { once: true, amount: 0.2 });
+
+  const processRef = useRef(null);
+  const processInView = useInView(processRef, { once: true, amount: 0.2 });
+
+  const inclusionsRef = useRef(null);
+  const inclusionsInView = useInView(inclusionsRef, { once: true, amount: 0.2 });
+
+  const faqRef = useRef(null);
+  const faqInView = useInView(faqRef, { once: true, amount: 0.2 });
+
+  const pricingRef = useRef(null);
+  const pricingInView = useInView(pricingRef, { once: true, amount: 0.2 });
+
+  const ctaRef = useRef(null);
+  const ctaInView = useInView(ctaRef, { once: true, amount: 0.2 });
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -42,39 +63,74 @@ export default function PortraitDame() {
 
         {/* Éléments spirituels flottants */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 text-white/20 animate-float">
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+            className="absolute top-1/4 left-1/4 text-white/20 animate-float"
+          >
             <Sparkles className="w-5 h-5" />
-          </div>
-          <div className="absolute bottom-1/3 right-1/4 text-purple-300/30 animate-float animation-delay-700">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
+            className="absolute bottom-1/3 right-1/4 text-purple-300/30 animate-float animation-delay-700"
+          >
             <Star className="w-6 h-6" />
-          </div>
-          <div className="absolute top-1/2 right-1/6 text-pink-300/20 animate-float animation-delay-1000">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.9, ease: "easeOut" }}
+            className="absolute top-1/2 right-1/6 text-pink-300/20 animate-float animation-delay-1000"
+          >
             <Heart className="w-4 h-4" />
-          </div>
+          </motion.div>
         </div>
 
         {/* Contenu principal */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8 shadow-lg">
+          <motion.div
+            initial={{ opacity: 0, y: -30, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8 shadow-lg"
+          >
             <Sparkles className="w-4 h-4 text-rose-300" />
             <span className="text-white text-sm font-medium">
               Art spirituel personnalisé
             </span>
-          </div>
+          </motion.div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-light mb-8 leading-tight text-white">
-            <span className="block bg-gradient-to-r from-rose-300 to-pink-300 bg-clip-text text-transparent font-medium">
+            <motion.span
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="block bg-gradient-to-r from-rose-300 to-pink-300 bg-clip-text text-transparent font-medium"
+            >
               Portraits d&apos;âme spirituels
-            </span>
+            </motion.span>
           </h1>
 
-          <p className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-crimson">
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-crimson"
+          >
             Révélez votre essence profonde à travers l&apos;art spirituel.
             Chaque portrait capture votre beauté intérieure et accompagne votre
             évolution personnelle.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
             <PortraitOrderButton />
             <Link
               href="/boutique"
@@ -86,61 +142,106 @@ export default function PortraitDame() {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Section Qu&apos;est-ce qu&apos;un Portrait d&apos;Âme */}
-      <section className="relative py-32 overflow-hidden bg-gradient-to-br from-white via-rose-50/30 to-purple-50/30">
+      <section ref={whatIsRef} className="relative py-32 overflow-hidden bg-gradient-to-br from-white via-rose-50/30 to-purple-50/30">
         {/* Éléments décoratifs spirituels en arrière-plan */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-20 left-10 text-rose-200/40 animate-float">
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={whatIsInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="absolute top-20 left-10 text-rose-200/40 animate-float"
+          >
             <Sparkles className="w-16 h-16" />
-          </div>
-          <div className="absolute bottom-32 right-20 text-purple-200/40 animate-float animation-delay-700">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={whatIsInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
+            className="absolute bottom-32 right-20 text-purple-200/40 animate-float animation-delay-700"
+          >
             <Star className="w-20 h-20" />
-          </div>
-          <div className="absolute top-1/2 left-1/4 text-pink-200/30 animate-float animation-delay-1000">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={whatIsInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
+            className="absolute top-1/2 left-1/4 text-pink-200/30 animate-float animation-delay-1000"
+          >
             <Heart className="w-12 h-12" />
-          </div>
-          <div className="absolute bottom-1/4 left-1/3 text-purple-200/30 animate-float">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={whatIsInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
+            className="absolute bottom-1/4 left-1/3 text-purple-200/30 animate-float"
+          >
             <Moon className="w-14 h-14" />
-          </div>
+          </motion.div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
           {/* En-tête de section centré */}
           <div className="text-center mb-20">
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-100 to-purple-100 backdrop-blur-sm border border-rose-200/50 rounded-full px-6 py-3 mb-8 shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, y: -30, scale: 0.8 }}
+              animate={whatIsInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-100 to-purple-100 backdrop-blur-sm border border-rose-200/50 rounded-full px-6 py-3 mb-8 shadow-lg"
+            >
               <Sparkles className="w-5 h-5 text-rose-600" />
               <span className="text-gray-800 text-sm font-semibold">
                 Découvrez l&apos;Art de l&apos;Âme
               </span>
-            </div>
+            </motion.div>
 
-            <h2 className="text-4xl md:text-6xl font-playfair font-light text-gray-800 mb-8 leading-tight">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              animate={whatIsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-4xl md:text-6xl font-playfair font-light text-gray-800 mb-8 leading-tight"
+            >
               Qu&apos;est-ce qu&apos;un
               <span className="block mt-2 bg-gradient-to-r from-rose-600 via-purple-600 to-blue-600 bg-clip-text text-transparent font-medium">
                 Portrait d&apos;Âme
               </span>
               ?
-            </h2>
+            </motion.h2>
 
-            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-crimson">
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={whatIsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-crimson"
+            >
               Un portrait d&apos;âme va bien au-delà de la simple représentation
               physique. C&apos;est une exploration artistique profonde qui capture
               l&apos;essence unique de votre être, vos émotions cachées et votre
               personnalité authentique à travers l&apos;art spirituel.
-            </p>
+            </motion.p>
           </div>
 
           {/* Grille principale avec images et caractéristiques */}
           <div className="grid lg:grid-cols-2 gap-16 xl:gap-24 items-center max-w-7xl mx-auto mb-20">
             {/* Colonne gauche : Galerie artistique */}
-            <div className="relative order-2 lg:order-1">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={whatIsInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              className="relative order-2 lg:order-1"
+            >
               <div className="relative grid grid-cols-2 gap-6">
                 {/* Grande image principale */}
-                <div className="col-span-2 group">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={whatIsInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                  className="col-span-2 group"
+                >
                   <div className="relative bg-gradient-to-br from-rose-100 via-purple-100 to-pink-100 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-500">
                     <div className="aspect-[3/4] relative overflow-hidden rounded-2xl shadow-2xl">
                       <Image
@@ -167,10 +268,15 @@ export default function PortraitDame() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Deuxième image - plus petite */}
-                <div className="group">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={whatIsInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+                  className="group"
+                >
                   <div className="bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl p-4 shadow-xl transform hover:scale-[1.02] transition-all duration-500">
                     <div className="aspect-square relative overflow-hidden rounded-xl shadow-lg">
                       <Image
@@ -183,10 +289,15 @@ export default function PortraitDame() {
                       <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-blue-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Badge créations uniques */}
-                <div className="flex items-center justify-center">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={whatIsInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+                  className="flex items-center justify-center"
+                >
                   <div className="bg-white/90 backdrop-blur-md border-2 border-rose-200 rounded-2xl p-6 shadow-xl text-center transform hover:scale-105 transition-all duration-300">
                     <Palette className="w-10 h-10 text-rose-600 mx-auto mb-3" />
                     <p className="font-semibold text-gray-800 text-lg mb-1">
@@ -194,19 +305,29 @@ export default function PortraitDame() {
                     </p>
                     <p className="text-rose-600 font-bold text-xl">Uniques</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               {/* Badge flottant */}
-              <div className="absolute -top-6 -right-6 bg-gradient-to-r from-rose-500 via-purple-500 to-blue-500 text-white px-6 py-3 rounded-2xl text-base font-bold shadow-2xl transform rotate-6 hover:rotate-3 transition-transform duration-300">
+              <motion.div
+                initial={{ opacity: 0, rotate: -10, scale: 0.5 }}
+                animate={whatIsInView ? { opacity: 1, rotate: 6, scale: 1 } : {}}
+                transition={{ duration: 0.8, delay: 1.4, ease: "easeOut" }}
+                className="absolute -top-6 -right-6 bg-gradient-to-r from-rose-500 via-purple-500 to-blue-500 text-white px-6 py-3 rounded-2xl text-base font-bold shadow-2xl transform hover:rotate-3 transition-transform duration-300"
+              >
                 ✨ Art Spirituel
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Colonne droite : Caractéristiques */}
             <div className="space-y-8 order-1 lg:order-2">
               {/* Vision Spirituelle */}
-              <div className="group bg-white/80 backdrop-blur-md rounded-3xl p-8 border-2 border-rose-100 shadow-xl hover:shadow-2xl hover:border-rose-200 transition-all duration-500 transform hover:-translate-y-2">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={whatIsInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                className="group bg-white/80 backdrop-blur-md rounded-3xl p-8 border-2 border-rose-100 shadow-xl hover:shadow-2xl hover:border-rose-200 transition-all duration-500 transform hover:-translate-y-2"
+              >
                 <div className="flex items-start space-x-6">
                   <div className="flex-shrink-0">
                     <div className="bg-gradient-to-br from-rose-500 to-pink-500 p-4 rounded-2xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
@@ -224,10 +345,15 @@ export default function PortraitDame() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Création Méditative */}
-              <div className="group bg-white/80 backdrop-blur-md rounded-3xl p-8 border-2 border-purple-100 shadow-xl hover:shadow-2xl hover:border-purple-200 transition-all duration-500 transform hover:-translate-y-2">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={whatIsInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+                className="group bg-white/80 backdrop-blur-md rounded-3xl p-8 border-2 border-purple-100 shadow-xl hover:shadow-2xl hover:border-purple-200 transition-all duration-500 transform hover:-translate-y-2"
+              >
                 <div className="flex items-start space-x-6">
                   <div className="flex-shrink-0">
                     <div className="bg-gradient-to-br from-purple-500 to-blue-500 p-4 rounded-2xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
@@ -245,10 +371,15 @@ export default function PortraitDame() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Accompagnement Personnel */}
-              <div className="group bg-white/80 backdrop-blur-md rounded-3xl p-8 border-2 border-blue-100 shadow-xl hover:shadow-2xl hover:border-blue-200 transition-all duration-500 transform hover:-translate-y-2">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={whatIsInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+                className="group bg-white/80 backdrop-blur-md rounded-3xl p-8 border-2 border-blue-100 shadow-xl hover:shadow-2xl hover:border-blue-200 transition-all duration-500 transform hover:-translate-y-2"
+              >
                 <div className="flex items-start space-x-6">
                   <div className="flex-shrink-0">
                     <div className="bg-gradient-to-br from-blue-500 to-teal-500 p-4 rounded-2xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
@@ -266,18 +397,28 @@ export default function PortraitDame() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
 
           {/* Bande de citation inspirante */}
-          <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={whatIsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 1.4, ease: "easeOut" }}
+            className="max-w-5xl mx-auto"
+          >
             <div className="bg-gradient-to-r from-rose-500/10 via-purple-500/10 to-blue-500/10 backdrop-blur-lg border border-white/50 rounded-3xl p-12 shadow-2xl text-center">
-              <div className="flex justify-center mb-6">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={whatIsInView ? { scale: 1 } : {}}
+                transition={{ duration: 0.6, delay: 1.6, ease: "easeOut" }}
+                className="flex justify-center mb-6"
+              >
                 <div className="bg-gradient-to-r from-rose-500 to-purple-500 p-4 rounded-full">
                   <Sparkles className="w-8 h-8 text-white" />
                 </div>
-              </div>
+              </motion.div>
               <blockquote className="text-2xl md:text-3xl font-light text-gray-800 italic mb-6 leading-relaxed font-crimson">
                 &ldquo;Chaque portrait d&apos;âme est une fenêtre ouverte sur
                 l&apos;invisible, une célébration de votre lumière intérieure et de
@@ -287,40 +428,65 @@ export default function PortraitDame() {
                 - Véronique, Artiste spirituelle
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Section Processus Créatif */}
-      <section className="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50">
+      <section ref={processRef} className="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-purple-100 rounded-full px-6 py-2 mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: -30, scale: 0.8 }}
+              animate={processInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="inline-flex items-center space-x-2 bg-purple-100 rounded-full px-6 py-2 mb-6"
+            >
               <Brush className="w-5 h-5 text-purple-600" />
               <span className="text-purple-800 font-medium text-sm">
                 Processus Créatif
               </span>
-            </div>
+            </motion.div>
 
-            <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              animate={processInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-4xl md:text-5xl font-light text-gray-800 mb-6"
+            >
               Le Voyage de Votre
               <span className="bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent">
                 {" "}
                 Portrait d&apos;Âme
               </span>
-            </h2>
+            </motion.h2>
 
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={processInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            >
               Un processus en trois étapes qui honore votre unicité et révèle la
               beauté profonde de votre être intérieur.
-            </p>
+            </motion.p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="bg-gradient-to-r from-rose-500 to-pink-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={processInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              className="text-center"
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={processInView ? { scale: 1 } : {}}
+                transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+                className="bg-gradient-to-r from-rose-500 to-pink-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+              >
                 <span className="text-white text-2xl font-bold">1</span>
-              </div>
+              </motion.div>
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-rose-200/50 shadow-sm">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">
                   Connexion Spirituelle
@@ -332,12 +498,22 @@ export default function PortraitDame() {
                   portrait d&apos;âme.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="text-center">
-              <div className="bg-gradient-to-r from-purple-500 to-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={processInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+              className="text-center"
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={processInView ? { scale: 1 } : {}}
+                transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
+                className="bg-gradient-to-r from-purple-500 to-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+              >
                 <span className="text-white text-2xl font-bold">2</span>
-              </div>
+              </motion.div>
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-purple-200/50 shadow-sm">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">
                   Création Méditative
@@ -348,12 +524,22 @@ export default function PortraitDame() {
                   une œuvre intuitive et unique.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="text-center">
-              <div className="bg-gradient-to-r from-blue-500 to-teal-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={processInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+              className="text-center"
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={processInView ? { scale: 1 } : {}}
+                transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
+                className="bg-gradient-to-r from-blue-500 to-teal-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+              >
                 <span className="text-white text-2xl font-bold">3</span>
-              </div>
+              </motion.div>
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-blue-200/50 shadow-sm">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">
                   Révélation & Transmission
@@ -365,39 +551,59 @@ export default function PortraitDame() {
                   profond.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Section Inclusions & Authenticité */}
-      <section className="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50">
+      <section ref={inclusionsRef} className="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-amber-100 rounded-full px-6 py-2 mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: -30, scale: 0.8 }}
+              animate={inclusionsInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="inline-flex items-center space-x-2 bg-amber-100 rounded-full px-6 py-2 mb-6"
+            >
               <Gift className="w-5 h-5 text-amber-600" />
               <span className="text-amber-800 font-medium text-sm">
                 Inclusions Premium
               </span>
-            </div>
+            </motion.div>
 
-            <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              animate={inclusionsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6"
+            >
               Votre portrait d&apos;âme
               <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
                 {" "}
                 complet
               </span>
-            </h2>
+            </motion.h2>
 
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={inclusionsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson"
+            >
               Chaque portrait d&apos;âme est accompagné d&apos;éléments
               exclusifs qui enrichissent votre expérience spirituelle.
-            </p>
+            </motion.p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Clé USB & Contenu Digital */}
-            <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-amber-200/50 shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={inclusionsInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-amber-200/50 shadow-lg"
+            >
               <div className="flex items-center space-x-4 mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
                   <Archive className="w-8 h-8 text-white" />
@@ -472,10 +678,15 @@ export default function PortraitDame() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Certificat & Garanties */}
-            <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-orange-200/50 shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={inclusionsInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+              className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-orange-200/50 shadow-lg"
+            >
               <div className="flex items-center space-x-4 mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg">
                   <Award className="w-8 h-8 text-white" />
@@ -548,11 +759,16 @@ export default function PortraitDame() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* CTA Final */}
-          <div className="text-center mt-16">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={inclusionsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+            className="text-center mt-16"
+          >
             <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-amber-200/50 shadow-sm max-w-4xl mx-auto">
               <h3 className="text-2xl font-semibold text-gray-800 mb-4">
                 Une expérience complète et authentique
@@ -582,25 +798,35 @@ export default function PortraitDame() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Section FAQ */}
-      <section className="py-20 bg-white">
+      <section ref={faqRef} className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              animate={faqInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-4xl md:text-5xl font-light text-gray-800 mb-6"
+            >
               Questions
               <span className="bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent">
                 {" "}
                 Fréquentes
               </span>
-            </h2>
+            </motion.h2>
           </div>
 
           <div className="max-w-4xl mx-auto space-y-6">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={faqInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 p-8 shadow-sm"
+            >
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Combien de temps prend la création d&apos;un portrait d&apos;âme
                 ?
@@ -616,9 +842,14 @@ export default function PortraitDame() {
                 d&apos;honorer l&apos;émergence juste et authentique de votre
                 portrait.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={faqInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 p-8 shadow-sm"
+            >
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Faut-il poser physiquement pour le portrait ?
               </h3>
@@ -628,9 +859,14 @@ export default function PortraitDame() {
                 nécessaire, quelques photos suffisent pour que je capte votre
                 énergie et la transpose en couleurs, formes et symboles.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={faqInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 p-8 shadow-sm"
+            >
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Quels matériaux et techniques sont utilisés ?
               </h3>
@@ -643,40 +879,60 @@ export default function PortraitDame() {
                 les pierres, les végétaux pour enrichir l&apos;œuvre de leur
                 vibration.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Section Tarifs */}
-      <section className="py-20 bg-gradient-to-br from-rose-50 via-purple-50 to-pink-50">
+      <section ref={pricingRef} className="py-20 bg-gradient-to-br from-rose-50 via-purple-50 to-pink-50">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center space-x-2 bg-rose-100 rounded-full px-6 py-2 mb-6">
+              <motion.div
+                initial={{ opacity: 0, y: -30, scale: 0.8 }}
+                animate={pricingInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="inline-flex items-center space-x-2 bg-rose-100 rounded-full px-6 py-2 mb-6"
+              >
                 <Palette className="w-5 h-5 text-rose-600" />
                 <span className="text-rose-800 font-medium text-sm">
                   Tarifs Portraits d&apos;Âme
                 </span>
-              </div>
+              </motion.div>
 
-              <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+              <motion.h2
+                initial={{ opacity: 0, y: 50 }}
+                animate={pricingInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                className="text-4xl md:text-5xl font-light text-gray-800 mb-6"
+              >
                 Investissement pour votre
                 <span className="bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent">
                   {" "}
                   Portrait d&apos;Âme
                 </span>
-              </h2>
+              </motion.h2>
 
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={pricingInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+              >
                 Chaque œuvre est créée avec amour et intention, incluant
                 consultation personnalisée et accompagnement complet.
-              </p>
+              </motion.p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               {/* Format 30x40cm */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-rose-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={pricingInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-rose-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              >
                 <div className="text-center">
                   <div className="bg-gradient-to-r from-rose-500 to-pink-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                     <Brush className="w-8 h-8 text-white" />
@@ -705,10 +961,15 @@ export default function PortraitDame() {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Format 50x70cm */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-purple-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={pricingInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-purple-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative"
+              >
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                     Le plus choisi
@@ -746,10 +1007,15 @@ export default function PortraitDame() {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Duo 60x80cm */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-blue-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={pricingInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+                className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-blue-200/50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              >
                 <div className="text-center">
                   <div className="bg-gradient-to-r from-blue-500 to-teal-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                     <Star className="w-8 h-8 text-white" />
@@ -782,11 +1048,16 @@ export default function PortraitDame() {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Note personnalisée */}
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-sm text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={pricingInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+              className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-sm text-center"
+            >
               <div className="flex items-center justify-center space-x-2 mb-4">
                 <Palette className="w-6 h-6 text-gray-600" />
                 <h3 className="text-xl font-semibold text-gray-800">
@@ -806,24 +1077,39 @@ export default function PortraitDame() {
                 <span>Demande personnalisée</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-rose-600 via-purple-600 to-blue-600">
+      <section ref={ctaRef} className="py-20 bg-gradient-to-br from-rose-600 via-purple-600 to-blue-600">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-4xl md:text-5xl font-light text-white mb-6"
+            >
               Prêt à Découvrir Votre Essence ?
-            </h2>
-            <p className="text-xl text-purple-100 mb-8 leading-relaxed">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-xl text-purple-100 mb-8 leading-relaxed"
+            >
               Commencez votre voyage vers la découverte de votre âme véritable à
               travers l&apos;art spirituel personnalisé.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
               <PortraitOrderButton />
               <Link
                 href="/contact"
@@ -835,7 +1121,7 @@ export default function PortraitDame() {
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
