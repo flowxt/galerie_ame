@@ -18,7 +18,7 @@ export default function PortraitOrderButton({ onClick = null }) {
       onClick={handlePortraitOrder}
       className="bg-white text-gray-800 px-8 py-3 rounded-lg hover:bg-gray-100 transition font-medium flex items-center justify-center mx-auto"
     >
-      Commander mon portrait d'âme
+      Commander mon portrait d&apos;âme
     </button>
   );
 }
