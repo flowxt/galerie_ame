@@ -38,7 +38,7 @@ export default function TableauDeVieOrderForm() {
     significantMoments: "",
     emotionalState: "",
     spiritualPath: "",
-    
+
     // Questions spécifiques au Tableau de Vie
     lifeTransitions: "",
     learnings: "",
@@ -94,8 +94,7 @@ export default function TableauDeVieOrderForm() {
         newErrors.firstName = "Le prénom est obligatoire";
       if (!formData.lastName.trim())
         newErrors.lastName = "Le nom est obligatoire";
-      if (!formData.email.trim())
-        newErrors.email = "L'email est obligatoire";
+      if (!formData.email.trim()) newErrors.email = "L'email est obligatoire";
       if (!formData.phone.trim())
         newErrors.phone = "Le téléphone est obligatoire";
       if (!formData.age.trim()) newErrors.age = "L'âge est obligatoire";
@@ -445,7 +444,8 @@ export default function TableauDeVieOrderForm() {
               Votre essence profonde
             </h3>
             <p className="text-gray-600 mb-6">
-              Ces questions nous aident à comprendre qui vous êtes vraiment pour créer votre tableau de vie authentique.
+              Ces questions nous aident à comprendre qui vous êtes vraiment pour
+              créer votre tableau de vie authentique.
             </p>
 
             <div>
@@ -550,7 +550,8 @@ export default function TableauDeVieOrderForm() {
               Votre parcours de vie
             </h3>
             <p className="text-gray-600 mb-6">
-              Explorons ensemble les moments marquants et les transitions qui ont façonné votre existence.
+              Explorons ensemble les moments marquants et les transitions qui
+              ont façonné votre existence.
             </p>
 
             <div>
@@ -567,7 +568,9 @@ export default function TableauDeVieOrderForm() {
                 value={formData.significantMoments}
                 onChange={handleChange}
                 className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent ${
-                  errors.significantMoments ? "border-red-500" : "border-gray-300"
+                  errors.significantMoments
+                    ? "border-red-500"
+                    : "border-gray-300"
                 }`}
                 placeholder="Événements qui vous ont transformé, révélations, tournants..."
               />
@@ -594,7 +597,7 @@ export default function TableauDeVieOrderForm() {
                 className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent ${
                   errors.lifeTransitions ? "border-red-500" : "border-gray-300"
                 }`}
-                placeholder="Changements de carrière, déménagements, relations, perte d&apos;un proche..."
+                placeholder="Changements de carrière, déménagements, relations, perte d'un proche..."
               />
               {errors.lifeTransitions && (
                 <p className="text-red-500 text-sm mt-1">
@@ -735,13 +738,12 @@ export default function TableauDeVieOrderForm() {
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               >
                 <option value="">Sélectionnez...</option>
-                <option value="connaissance-soi">Mieux me connaître</option>
                 <option value="bilan-vie">Faire un bilan de ma vie</option>
-                <option value="transition">Marquer une transition importante</option>
+                <option value="transition">
+                  Marquer une transition importante
+                </option>
                 <option value="cadeau">Cadeau pour un proche</option>
                 <option value="healing">Processus de guérison</option>
-                <option value="celebration">Célébrer mon parcours</option>
-                <option value="guidance">Recevoir des guidances</option>
                 <option value="autre">Autre raison</option>
               </select>
             </div>
@@ -811,12 +813,16 @@ export default function TableauDeVieOrderForm() {
               >
                 <option value="450">450€ - Tableau de vie standard</option>
                 <option value="650">650€ - Tableau de vie approfondi</option>
-                <option value="850">850€ - Tableau de vie premium avec suivi</option>
+                <option value="850">
+                  850€ - Tableau de vie premium avec suivi
+                </option>
               </select>
             </div>
 
             <div className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg p-6">
-              <h4 className="text-lg font-medium text-gray-800 mb-3">Inclus avec votre Tableau de Vie</h4>
+              <h4 className="text-lg font-medium text-gray-800 mb-3">
+                Inclus avec votre Tableau de Vie
+              </h4>
               <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
                 <div className="flex items-center">
                   <span className="w-2 h-2 bg-teal-500 rounded-full mr-2"></span>
@@ -859,7 +865,7 @@ export default function TableauDeVieOrderForm() {
                 value={formData.message}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                placeholder="Tout ce que vous souhaitez nous partager d&apos;autre..."
+                placeholder="Tout ce que vous souhaitez nous partager d'autre..."
               />
             </div>
 
@@ -877,7 +883,8 @@ export default function TableauDeVieOrderForm() {
                   htmlFor="newsletter"
                   className="ml-2 text-sm text-gray-600"
                 >
-                  Je souhaite recevoir des nouvelles de l&apos;atelier et des témoignages
+                  Je souhaite recevoir des nouvelles de l&apos;atelier et des
+                  témoignages
                 </label>
               </div>
 
@@ -896,7 +903,8 @@ export default function TableauDeVieOrderForm() {
                   htmlFor="dataConsent"
                   className="ml-2 text-sm text-gray-600"
                 >
-                  J&apos;autorise l&apos;utilisation de mes informations pour la création de mon tableau de vie *
+                  J&apos;autorise l&apos;utilisation de mes informations pour la
+                  création de mon tableau de vie *
                 </label>
               </div>
               {errors.dataConsent && (
@@ -962,7 +970,8 @@ export default function TableauDeVieOrderForm() {
           </h1>
 
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Embarquons ensemble dans cette exploration profonde de votre parcours existentiel
+            Embarquons ensemble dans cette exploration profonde de votre
+            parcours existentiel
           </p>
         </div>
 
@@ -998,30 +1007,44 @@ export default function TableauDeVieOrderForm() {
                     )}
                   </div>
                   {step < 6 && (
-                    <div className={`w-12 h-0.5 ml-2 ${
-                      step < currentStep ? "bg-green-500" : "bg-gray-300"
-                    }`} />
+                    <div
+                      className={`w-12 h-0.5 ml-2 ${
+                        step < currentStep ? "bg-green-500" : "bg-gray-300"
+                      }`}
+                    />
                   )}
                 </div>
               ))}
             </div>
             <div className="flex justify-center mt-4 text-sm text-gray-600 space-x-4">
-              <span className={currentStep === 1 ? "font-medium text-teal-600" : ""}>
+              <span
+                className={currentStep === 1 ? "font-medium text-teal-600" : ""}
+              >
                 Contact
               </span>
-              <span className={currentStep === 2 ? "font-medium text-teal-600" : ""}>
+              <span
+                className={currentStep === 2 ? "font-medium text-teal-600" : ""}
+              >
                 Livraison
               </span>
-              <span className={currentStep === 3 ? "font-medium text-teal-600" : ""}>
+              <span
+                className={currentStep === 3 ? "font-medium text-teal-600" : ""}
+              >
                 Essence
               </span>
-              <span className={currentStep === 4 ? "font-medium text-teal-600" : ""}>
+              <span
+                className={currentStep === 4 ? "font-medium text-teal-600" : ""}
+              >
                 Parcours
               </span>
-              <span className={currentStep === 5 ? "font-medium text-teal-600" : ""}>
+              <span
+                className={currentStep === 5 ? "font-medium text-teal-600" : ""}
+              >
                 Créatif
               </span>
-              <span className={currentStep === 6 ? "font-medium text-teal-600" : ""}>
+              <span
+                className={currentStep === 6 ? "font-medium text-teal-600" : ""}
+              >
                 Finalisation
               </span>
             </div>

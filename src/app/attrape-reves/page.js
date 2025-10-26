@@ -1,3 +1,6 @@
+"use client";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -17,6 +20,16 @@ import {
 } from "lucide-react";
 
 export default function AttrapesRevesPage() {
+  // Refs pour les animations
+  const philosophyRef = useRef(null);
+  const galleryRef = useRef(null);
+  const questionnaireRef = useRef(null);
+
+  // InView hooks
+  const philosophyInView = useInView(philosophyRef, { once: true, margin: "-100px" });
+  const galleryInView = useInView(galleryRef, { once: true, margin: "-100px" });
+  const questionnaireInView = useInView(questionnaireRef, { once: true, margin: "-100px" });
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -95,32 +108,52 @@ export default function AttrapesRevesPage() {
       </section>
 
       {/* Section Philosophie */}
-      <section className="py-20 bg-white">
+      <section ref={philosophyRef} className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-teal-100 rounded-full px-6 py-2 mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: -30, scale: 0.8 }}
+              animate={philosophyInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="inline-flex items-center space-x-2 bg-teal-100 rounded-full px-6 py-2 mb-6"
+            >
               <TreePine className="w-5 h-5 text-teal-600" />
               <span className="text-teal-800 font-medium text-sm">
                 Art Ancestral Revisité
               </span>
-            </div>
+            </motion.div>
 
-            <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              animate={philosophyInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6"
+            >
               L&apos;essence de nos
               <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
                 {" "}
                 créations
               </span>
-            </h2>
+            </motion.h2>
 
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson">
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={philosophyInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-crimson"
+            >
               Chaque attrape-rêves naît d&apos;une méditation profonde et porte
               une intention particulière pour votre protection et bien-être.
-            </p>
+            </motion.p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={philosophyInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              className="text-center"
+            >
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-blue-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-teal-400 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Feather className="w-8 h-8 text-white" />
@@ -133,9 +166,14 @@ export default function AttrapesRevesPage() {
                   biologique et éléments récoltés en conscience et respect.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={philosophyInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+              className="text-center"
+            >
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-teal-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-blue-400 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Heart className="w-8 h-8 text-white" />
@@ -149,9 +187,14 @@ export default function AttrapesRevesPage() {
                   spirituelle.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={philosophyInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+              className="text-center"
+            >
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-blue-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Sparkles className="w-8 h-8 text-white" />
@@ -164,39 +207,60 @@ export default function AttrapesRevesPage() {
                   d&apos;art unique qui vous accompagne dans vos rêves.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Section Galerie d&apos;Attrape-Rêves Uniques */}
       <section
+        ref={galleryRef}
         id="creations"
         className="py-20 bg-gradient-to-br from-blue-50 via-teal-50 to-blue-50"
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-blue-100 rounded-full px-6 py-2 mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: -30, scale: 0.8 }}
+              animate={galleryInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="inline-flex items-center space-x-2 bg-blue-100 rounded-full px-6 py-2 mb-6"
+            >
               <Shield className="w-5 h-5 text-blue-600" />
               <span className="text-blue-800 font-medium text-sm">
                 Créations Uniques
               </span>
-            </div>
+            </motion.div>
 
-            <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              animate={galleryInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-4xl md:text-5xl font-light text-gray-800 mb-6"
+            >
               Nos
               <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
                 {" "}
                 attrape-rêves uniques
               </span>
-            </h2>
+            </motion.h2>
 
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={galleryInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8"
+            >
               Créations artisanales uniques qui protègent vos nuits et filtrent
               les énergies négatives pour des rêves apaisants.
-            </p>
+            </motion.p>
 
-            <div className="text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={galleryInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              className="text-center"
+            >
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Partagez-nous vos souhaits et créons ensemble
                 l&apos;attrape-rêves qui vous ressemble.
@@ -210,39 +274,59 @@ export default function AttrapesRevesPage() {
                 <span>Commander le mien</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Section Questionnaire */}
-      <section id="questionnaire" className="py-20 bg-white">
+      <section ref={questionnaireRef} id="questionnaire" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center space-x-2 bg-purple-100 rounded-full px-6 py-2 mb-6">
+              <motion.div
+                initial={{ opacity: 0, y: -30, scale: 0.8 }}
+                animate={questionnaireInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="inline-flex items-center space-x-2 bg-purple-100 rounded-full px-6 py-2 mb-6"
+              >
                 <MessageCircle className="w-5 h-5 text-purple-600" />
                 <span className="text-purple-800 font-medium text-sm">
                   Questionnaire Personnalisé
                 </span>
-              </div>
+              </motion.div>
 
-              <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+              <motion.h2
+                initial={{ opacity: 0, y: 50 }}
+                animate={questionnaireInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                className="text-4xl md:text-5xl font-light text-gray-800 mb-6"
+              >
                 Créons ensemble votre
                 <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                   {" "}
                   attrape-rêves unique
                 </span>
-              </h2>
+              </motion.h2>
 
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={questionnaireInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+              >
                 Partagez-nous vos souhaits et vos intentions pour que nous
                 puissions créer l&apos;attrape-rêves qui vous correspond
                 parfaitement.
-              </p>
+              </motion.p>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-50 to-teal-50 rounded-3xl p-8 shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={questionnaireInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              className="bg-gradient-to-r from-blue-50 to-teal-50 rounded-3xl p-8 shadow-lg"
+            >
               <form className="space-y-6">
                 {/* Informations de contact */}
                 <div className="grid md:grid-cols-2 gap-4">
@@ -333,78 +417,7 @@ export default function AttrapesRevesPage() {
                   </p>
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section Témoignages */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-teal-50/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-gray-100 rounded-full px-6 py-2 mb-6">
-              <Heart className="w-5 h-5 text-gray-600" />
-              <span className="text-gray-800 font-medium text-sm">
-                Témoignages
-              </span>
-            </div>
-
-            <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
-              L&apos;expérience de nos
-              <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-                {" "}
-                clients
-              </span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-100 shadow-sm">
-              <div className="flex justify-center mb-4">
-                <div className="flex space-x-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <blockquote className="text-gray-700 italic mb-6 leading-relaxed text-center">
-                &quot;Mon attrape-rêves est magnifique ! Depuis que je l&apos;ai
-                installé, mes nuits sont plus paisibles et mes rêves plus
-                inspirants. Une création qui porte vraiment une belle
-                énergie.&quot;
-              </blockquote>
-
-              <div className="text-center">
-                <cite className="text-gray-600 font-medium">- Sarah M.</cite>
-              </div>
-            </div>
-
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-100 shadow-sm">
-              <div className="flex justify-center mb-4">
-                <div className="flex space-x-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <blockquote className="text-gray-700 italic mb-6 leading-relaxed text-center">
-                &quot;Une création sur mesure qui dépasse toutes mes attentes.
-                L&apos;artiste a vraiment capturé l&apos;essence de ma demande
-                et créé quelque chose d&apos;unique et de puissant.&quot;
-              </blockquote>
-
-              <div className="text-center">
-                <cite className="text-gray-600 font-medium">- Thomas L.</cite>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
