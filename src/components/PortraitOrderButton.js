@@ -2,11 +2,15 @@
 
 import { useState } from "react";
 
-export default function PortraitOrderButton() {
+export default function PortraitOrderButton({ onClick = null }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const handlePortraitOrder = () => {
-    window.location.href = "/portrait-d-ame/commande";
+    if (onClick) {
+      onClick();
+    } else {
+      window.location.href = "/portrait-d-ame#tarifs";
+    }
   };
 
   return (
@@ -14,7 +18,7 @@ export default function PortraitOrderButton() {
       onClick={handlePortraitOrder}
       className="bg-white text-gray-800 px-8 py-3 rounded-lg hover:bg-gray-100 transition font-medium flex items-center justify-center mx-auto"
     >
-      Commander Mon Portrait d&apos;Âme
+      Commander mon portrait d'âme
     </button>
   );
 }

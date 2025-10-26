@@ -1,8 +1,9 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import TableauDeVieOrderModal from "../../components/TableauDeVieOrderModal";
 import {
   Sparkles,
   Heart,
@@ -26,6 +27,9 @@ import {
 } from "lucide-react";
 
 export default function TableauDeVie() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedFormat, setSelectedFormat] = useState("intime");
+
   // Refs pour les animations
   const explanationRef = useRef(null);
   const processRef = useRef(null);
@@ -35,12 +39,23 @@ export default function TableauDeVie() {
   const ctaRef = useRef(null);
 
   // InView hooks
-  const explanationInView = useInView(explanationRef, { once: true, margin: "-100px" });
+  const explanationInView = useInView(explanationRef, {
+    once: true,
+    margin: "-100px",
+  });
   const processInView = useInView(processRef, { once: true, margin: "-100px" });
-  const inclusionsInView = useInView(inclusionsRef, { once: true, margin: "-100px" });
+  const inclusionsInView = useInView(inclusionsRef, {
+    once: true,
+    margin: "-100px",
+  });
   const pricingInView = useInView(pricingRef, { once: true, margin: "-100px" });
   const faqInView = useInView(faqRef, { once: true, margin: "-100px" });
   const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
+
+  const openModal = (format) => {
+    setSelectedFormat(format);
+    setIsModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen">
@@ -95,7 +110,7 @@ export default function TableauDeVie() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href="/tableau-de-vie/commande"
+              href="/tableau-de-vie#tarifs"
               className="group bg-gradient-to-r from-orange-500 via-purple-500 to-blue-500 text-white px-8 py-4 rounded-full hover:from-orange-600 hover:via-purple-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
             >
               <span className="flex items-center space-x-2">
@@ -248,7 +263,10 @@ export default function TableauDeVie() {
       </section>
 
       {/* Section Processus Créatif */}
-      <section ref={processRef} className="py-20 bg-gradient-to-br from-orange-50 via-purple-50 to-blue-50">
+      <section
+        ref={processRef}
+        className="py-20 bg-gradient-to-br from-orange-50 via-purple-50 to-blue-50"
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <motion.div
@@ -372,7 +390,10 @@ export default function TableauDeVie() {
       </section>
 
       {/* Section Inclusions & Authenticité */}
-      <section ref={inclusionsRef} className="py-20 bg-gradient-to-br from-orange-50 via-purple-50 to-blue-50">
+      <section
+        ref={inclusionsRef}
+        className="py-20 bg-gradient-to-br from-orange-50 via-purple-50 to-blue-50"
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <motion.div
@@ -671,7 +692,11 @@ export default function TableauDeVie() {
       </section>
 
       {/* Section Tarifs */}
-      <section ref={pricingRef} className="py-20 bg-gradient-to-br from-orange-50 via-purple-50 to-blue-50">
+      <section
+        id="tarifs"
+        ref={pricingRef}
+        className="py-20 bg-gradient-to-br from-orange-50 via-purple-50 to-blue-50"
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
@@ -717,6 +742,7 @@ export default function TableauDeVie() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={pricingInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                onClick={() => openModal("intime")}
                 className="group relative bg-white/60 backdrop-blur-md rounded-3xl p-8 border-2 border-orange-200/50 shadow-lg hover:shadow-[0_20px_60px_-15px_rgba(249,115,22,0.5)] transition-all duration-500 transform hover:scale-110 hover:border-orange-400 hover:bg-white/90 hover:backdrop-blur-xl cursor-pointer hover:z-10 overflow-hidden"
               >
                 {/* Effet de brillance qui passe au hover */}
@@ -760,6 +786,7 @@ export default function TableauDeVie() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={pricingInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                onClick={() => openModal("elegant")}
                 className="group relative bg-white/60 backdrop-blur-md rounded-3xl p-8 border-2 border-purple-200/50 shadow-lg hover:shadow-[0_20px_60px_-15px_rgba(168,85,247,0.6)] transition-all duration-500 transform hover:scale-110 hover:border-purple-400 hover:bg-white/90 hover:backdrop-blur-xl cursor-pointer hover:z-10 overflow-hidden"
               >
                 {/* Effet de brillance qui passe au hover */}
@@ -807,6 +834,7 @@ export default function TableauDeVie() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={pricingInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+                onClick={() => openModal("premium")}
                 className="group relative bg-white/60 backdrop-blur-md rounded-3xl p-8 border-2 border-blue-200/50 shadow-lg hover:shadow-[0_20px_60px_-15px_rgba(59,130,246,0.5)] transition-all duration-500 transform hover:scale-110 hover:border-blue-400 hover:bg-white/90 hover:backdrop-blur-xl cursor-pointer hover:z-10 overflow-hidden"
               >
                 {/* Effet de brillance qui passe au hover */}
@@ -958,7 +986,10 @@ export default function TableauDeVie() {
       </section>
 
       {/* CTA Section */}
-      <section ref={ctaRef} className="py-20 bg-gradient-to-br from-orange-600 via-purple-600 to-blue-600">
+      <section
+        ref={ctaRef}
+        className="py-20 bg-gradient-to-br from-orange-600 via-purple-600 to-blue-600"
+      >
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -994,7 +1025,7 @@ export default function TableauDeVie() {
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               >
                 <Link
-                  href="/tableau-de-vie/commande"
+                  href="/tableau-de-vie#tarifs"
                   className="group bg-white text-orange-600 px-8 py-3 rounded-full hover:bg-gray-50 transition-all duration-300 text-base font-medium shadow-lg"
                 >
                   <span className="flex items-center justify-center space-x-2">
@@ -1018,6 +1049,13 @@ export default function TableauDeVie() {
           </div>
         </div>
       </section>
+
+      {/* Modale de commande */}
+      <TableauDeVieOrderModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        selectedFormat={selectedFormat}
+      />
 
       <style jsx>{`
         @keyframes float {

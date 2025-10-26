@@ -1,76 +1,133 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-// Configuration Stripe avec gestion des clés fictives
-const stripe = process.env.STRIPE_SECRET_KEY?.startsWith("sk_test_XXXXXX")
-  ? null // Clé fictive - on simule
-  : new Stripe(process.env.STRIPE_SECRET_KEY, {
+// Configuration Stripe
+const stripe = process.env.STRIPE_SECRET_KEY
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, {
       apiVersion: "2023-10-16",
-    });
+    })
+  : null;
 
 export async function POST(request) {
   try {
-    const { artwork } = await request.json();
+    const { productId, customerData, successUrl, cancelUrl } = await request.json();
 
     // Validation des données
-    if (!artwork || !artwork.title || !artwork.price) {
+    if (!productId) {
       return NextResponse.json(
-        { error: "Données d'œuvre manquantes" },
+        { error: "ID de produit manquant" },
         { status: 400 }
       );
     }
 
-    // Si on utilise des clés fictives, on simule une réponse
+    // Vérifier que Stripe est configuré
     if (!stripe) {
-      // Simulation pour le développement
-      console.log("🎨 Simulation Stripe Checkout pour:", artwork.title);
-      return NextResponse.json({
-        url:
-          "/checkout/success?session_id=cs_test_simulation_" +
-          Date.now() +
-          "&artwork_id=" +
-          artwork._id,
-        isSimulation: true,
-      });
+      return NextResponse.json(
+        { error: "Stripe n'est pas configuré. Vérifiez vos variables d'environnement." },
+        { status: 500 }
+      );
     }
 
-    // Créer la session Stripe Checkout (code réel)
-    const session = await stripe.checkout.sessions.create({
+    // Récupérer les prix associés au produit
+    const prices = await stripe.prices.list({
+      product: productId,
+      active: true,
+      limit: 1,
+    });
+
+    if (prices.data.length === 0) {
+      return NextResponse.json(
+        { error: "Aucun prix trouvé pour ce produit" },
+        { status: 400 }
+      );
+    }
+
+    const priceId = prices.data[0].id;
+
+    // Préparer les métadonnées client
+    const metadata = {
+      orderType: customerData?.orderType || "portrait",
+      customerName: `${customerData?.firstName || ""} ${customerData?.lastName || ""}`.trim(),
+      customerEmail: customerData?.email || "",
+      customerPhone: customerData?.phone || "",
+    };
+
+    // Si c'est un portrait d'âme, ajouter les données spécifiques
+    if (customerData?.birthDate) {
+      metadata.birthDate = customerData.birthDate;
+      metadata.birthPlace = customerData.birthPlace || "";
+      metadata.maidenName = customerData.maidenName || "";
+    }
+
+    // Préparer l'adresse de livraison
+    const shippingOptions = customerData?.address
+      ? [
+          {
+            shipping_rate_data: {
+              type: "fixed_amount",
+              fixed_amount: {
+                amount: 0, // Livraison offerte
+                currency: "eur",
+              },
+              display_name: "Livraison offerte",
+              delivery_estimate: {
+                minimum: {
+                  unit: "business_day",
+                  value: 14,
+                },
+                maximum: {
+                  unit: "business_day",
+                  value: 21,
+                },
+              },
+            },
+          },
+        ]
+      : [];
+
+    // Créer la session Stripe Checkout
+    const sessionConfig = {
       payment_method_types: ["card"],
       line_items: [
         {
-          price_data: {
-            currency: "eur",
-            product_data: {
-              name: artwork.title,
-              description: artwork.description,
-              images: artwork.image ? [artwork.image] : [],
-            },
-            unit_amount: Math.round(artwork.price * 100), // Convertir en centimes
-          },
+          price: priceId,
           quantity: 1,
         },
       ],
       mode: "payment",
-      success_url: `${
-        process.env.NEXTAUTH_URL || "http://localhost:3000"
-      }/checkout/success?session_id={CHECKOUT_SESSION_ID}&artwork_id=${
-        artwork._id
-      }`,
-      cancel_url: `${
-        process.env.NEXTAUTH_URL || "http://localhost:3000"
-      }/boutique`,
-      metadata: {
-        artworkId: artwork._id || artwork.id,
-        artworkTitle: artwork.title,
-      },
-    });
+      success_url: successUrl || `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: cancelUrl || `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/portrait-d-ame#tarifs`,
+      metadata: metadata,
+      locale: "fr",
+      billing_address_collection: "auto",
+    };
 
-    return NextResponse.json({ url: session.url });
+    // Ajouter l'adresse de livraison si disponible
+    if (customerData?.address) {
+      sessionConfig.shipping_address_collection = {
+        allowed_countries: ["FR", "BE", "CH", "LU", "MC"],
+      };
+      sessionConfig.shipping_options = shippingOptions;
+    }
+
+    // Pré-remplir l'email du client si disponible
+    if (customerData?.email) {
+      sessionConfig.customer_email = customerData.email;
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionConfig);
+
+    return NextResponse.json({ 
+      url: session.url,
+      sessionId: session.id 
+    });
   } catch (error) {
     console.error("Erreur Stripe:", error);
     return NextResponse.json(
-      { error: "Erreur lors de la création de la session de paiement" },
+      { 
+        error: "Erreur lors de la création de la session de paiement",
+        details: error.message 
+      },
       { status: 500 }
     );
   }

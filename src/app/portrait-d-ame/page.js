@@ -20,12 +20,16 @@ import {
   Camera,
 } from "lucide-react";
 import PortraitOrderButton from "../../components/PortraitOrderButton";
+import PortraitOrderModal from "../../components/PortraitOrderModal";
 import { Vortex } from "../../components/ui/Vortex";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function PortraitDame() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedFormat, setSelectedFormat] = useState("intime");
+
   const whatIsRef = useRef(null);
   const whatIsInView = useInView(whatIsRef, { once: true, amount: 0.2 });
 
@@ -46,6 +50,11 @@ export default function PortraitDame() {
 
   const ctaRef = useRef(null);
   const ctaInView = useInView(ctaRef, { once: true, amount: 0.2 });
+
+  const openModal = (format) => {
+    setSelectedFormat(format);
+    setIsModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen">
@@ -134,7 +143,7 @@ export default function PortraitDame() {
             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <PortraitOrderButton />
+            <PortraitOrderButton onClick={() => openModal("intime")} />
             <Link
               href="/boutique"
               className="group bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/30 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-lg"
@@ -869,6 +878,7 @@ export default function PortraitDame() {
 
       {/* Section Tarifs */}
       <section
+        id="tarifs"
         ref={pricingRef}
         className="py-20 bg-gradient-to-br from-rose-50 via-purple-50 to-pink-50"
       >
@@ -917,6 +927,7 @@ export default function PortraitDame() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={pricingInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                onClick={() => openModal("intime")}
                 className="group relative bg-white/60 backdrop-blur-md rounded-3xl p-8 border-2 border-rose-200/50 shadow-lg hover:shadow-[0_20px_60px_-15px_rgba(244,63,94,0.5)] transition-all duration-500 transform hover:scale-110 hover:border-rose-400 hover:bg-white/90 hover:backdrop-blur-xl cursor-pointer hover:z-10 overflow-hidden"
               >
                 {/* Effet de brillance qui passe au hover */}
@@ -960,6 +971,7 @@ export default function PortraitDame() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={pricingInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                onClick={() => openModal("elegant")}
                 className="group relative bg-white/60 backdrop-blur-md rounded-3xl p-8 border-2 border-purple-200/50 shadow-lg hover:shadow-[0_20px_60px_-15px_rgba(168,85,247,0.6)] transition-all duration-500 transform hover:scale-110 hover:border-purple-400 hover:bg-white/90 hover:backdrop-blur-xl cursor-pointer hover:z-10 overflow-hidden"
               >
                 {/* Effet de brillance qui passe au hover */}
@@ -1007,6 +1019,7 @@ export default function PortraitDame() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={pricingInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+                onClick={() => openModal("duo")}
                 className="group relative bg-white/60 backdrop-blur-md rounded-3xl p-8 border-2 border-blue-200/50 shadow-lg hover:shadow-[0_20px_60px_-15px_rgba(59,130,246,0.5)] transition-all duration-500 transform hover:scale-110 hover:border-blue-400 hover:bg-white/90 hover:backdrop-blur-xl cursor-pointer hover:z-10 overflow-hidden"
               >
                 {/* Effet de brillance qui passe au hover */}
@@ -1201,7 +1214,7 @@ export default function PortraitDame() {
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               >
-                <PortraitOrderButton />
+                <PortraitOrderButton onClick={() => openModal("intime")} />
                 <Link
                   href="/contact"
                   className="group bg-white/20 backdrop-blur-sm border border-white/40 text-white hover:bg-white/30 hover:border-white/60 px-8 py-3 rounded-full transition-all duration-300 text-base font-medium shadow-lg"
@@ -1217,6 +1230,13 @@ export default function PortraitDame() {
           </div>
         </div>
       </section>
+
+      {/* Modale de commande */}
+      <PortraitOrderModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        selectedFormat={selectedFormat}
+      />
 
       <style jsx>{`
         @keyframes float {

@@ -480,7 +480,7 @@ export default function Contact() {
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link
-                href="/portrait-d-ame/commande"
+                href="/portrait-d-ame#tarifs"
                 className="group bg-gradient-to-r from-indigo-500 to-pink-500 text-white px-10 py-5 rounded-full hover:from-indigo-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-xl text-lg font-medium"
               >
                 <span className="flex items-center space-x-3">

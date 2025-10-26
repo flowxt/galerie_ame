@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function PortraitOrderForm() {
+export default function PortraitOrderForm({ preselectedFormat = null }) {
+  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -36,12 +38,47 @@ export default function PortraitOrderForm() {
 
   const [errors, setErrors] = useState({});
 
+  // Présélectionner le format depuis l'URL ou les props
+  useEffect(() => {
+    const formatBudgetMap = {
+      intime: "240",
+      elegant: "340",
+      duo: "500",
+    };
+
+    // Priorité au prop preselectedFormat, sinon regarder l'URL
+    const formatToUse = preselectedFormat || searchParams?.get("format");
+
+    if (formatToUse && formatBudgetMap[formatToUse]) {
+      setFormData((prev) => ({
+        ...prev,
+        format: formatToUse,
+        budget: formatBudgetMap[formatToUse],
+      }));
+    }
+  }, [searchParams, preselectedFormat]);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+
+    // Si on change le format, mettre à jour le budget automatiquement
+    if (name === "format") {
+      const formatBudgetMap = {
+        intime: "240",
+        elegant: "340",
+        duo: "500",
+      };
+      setFormData((prev) => ({
+        ...prev,
+        format: value,
+        budget: formatBudgetMap[value] || "240",
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: type === "checkbox" ? checked : value,
+      }));
+    }
 
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
@@ -105,6 +142,16 @@ export default function PortraitOrderForm() {
     setCurrentStep((prev) => Math.max(prev - 1, 1));
   };
 
+  // Mapper les formats aux IDs de produits Stripe
+  const getStripeProductId = (format) => {
+    const productIds = {
+      intime: process.env.NEXT_PUBLIC_STRIPE_PRODUCT_PORTRAIT_INTIME,
+      elegant: process.env.NEXT_PUBLIC_STRIPE_PRODUCT_PORTRAIT_ELEGANT,
+      duo: process.env.NEXT_PUBLIC_STRIPE_PRODUCT_PORTRAIT_DUO,
+    };
+    return productIds[format];
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -113,32 +160,51 @@ export default function PortraitOrderForm() {
     setIsLoading(true);
 
     try {
-      // Pour les portraits d&apos;âme, on traite d&apos;abord la demande sans paiement immédiat
-      const orderData = {
-        orderType: "portrait",
-        customer: formData,
-        artwork: {
-          _id: "portrait-ame-custom",
-          title: "Portrait d&apos;Âme personnalisé",
-          description: "Commande d&apos;un portrait d&apos;âme unique",
-          price: parseInt(formData.budget),
+      // Récupérer l'ID du produit Stripe en fonction du format choisi
+      const productId = getStripeProductId(formData.format);
+
+      if (!productId) {
+        alert("Erreur : format de portrait non reconnu");
+        setIsLoading(false);
+        return;
+      }
+
+      // Appeler l'API pour créer une session Stripe Checkout
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      };
+        body: JSON.stringify({
+          productId: productId,
+          customerData: {
+            ...formData,
+            orderType: "portrait-ame",
+          },
+          successUrl: `${window.location.origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancelUrl: `${window.location.origin}/portrait-d-ame#tarifs`,
+        }),
+      });
 
-      // Ici on pourrait envoyer les données à un service de gestion des demandes
-      // Pour l&apos;instant, on simule et redirige vers une page de confirmation
+      const data = await response.json();
 
-      // Simuler un délai de traitement
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      if (!response.ok) {
+        throw new Error(
+          data.error || "Erreur lors de la création de la session"
+        );
+      }
 
-      // Rediriger vers une page de confirmation spéciale pour les portraits d&apos;âme
-      window.location.href = "/portrait-d-ame/demande-recue";
+      // Rediriger vers Stripe Checkout
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error("URL de paiement non reçue");
+      }
     } catch (error) {
       console.error("Erreur lors de l&apos;envoi:", error);
       alert(
-        "Erreur lors de l&apos;envoi de votre demande. Veuillez réessayer."
+        "Erreur lors de la création du paiement. Veuillez réessayer ou contacter le support."
       );
-    } finally {
       setIsLoading(false);
     }
   };
@@ -152,7 +218,8 @@ export default function PortraitOrderForm() {
               Informations personnelles
             </h3>
             <p className="text-gray-600 mb-6">
-              Ces informations essentielles nous permettent de créer votre portrait d&apos;âme personnalisé.
+              Ces informations essentielles nous permettent de créer votre
+              portrait d&apos;âme personnalisé.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -240,7 +307,9 @@ export default function PortraitOrderForm() {
                   }`}
                 />
                 {errors.birthDate && (
-                  <p className="text-red-500 text-sm mt-1">{errors.birthDate}</p>
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.birthDate}
+                  </p>
                 )}
               </div>
 
@@ -263,7 +332,9 @@ export default function PortraitOrderForm() {
                   placeholder="Ville, pays"
                 />
                 {errors.birthPlace && (
-                  <p className="text-red-500 text-sm mt-1">{errors.birthPlace}</p>
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.birthPlace}
+                  </p>
                 )}
               </div>
             </div>
@@ -423,7 +494,8 @@ export default function PortraitOrderForm() {
               Format et finalisation
             </h3>
             <p className="text-gray-600 mb-6">
-              Choisissez le format de votre portrait d&apos;âme et finalisez votre commande.
+              Choisissez le format de votre portrait d&apos;âme et finalisez
+              votre commande.
             </p>
 
             <div>
@@ -431,52 +503,96 @@ export default function PortraitOrderForm() {
                 Format de votre Portrait d&apos;Âme
               </label>
               <div className="grid md:grid-cols-3 gap-4">
-                <div className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
-                  formData.format === 'intime' 
-                    ? 'border-rose-500 bg-rose-50' 
-                    : 'border-gray-300 hover:border-rose-300'
-                }`} 
-                onClick={() => setFormData(prev => ({ ...prev, format: 'intime', budget: '240' }))}>
+                <div
+                  className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
+                    formData.format === "intime"
+                      ? "border-rose-500 bg-rose-50"
+                      : "border-gray-300 hover:border-rose-300"
+                  }`}
+                  onClick={() =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      format: "intime",
+                      budget: "240",
+                    }))
+                  }
+                >
                   <div className="text-center">
-                    <div className="text-lg font-semibold text-gray-800">Format Intime</div>
+                    <div className="text-lg font-semibold text-gray-800">
+                      Format Intime
+                    </div>
                     <div className="text-sm text-gray-600 mb-2">30 x 40 cm</div>
-                    <div className="text-2xl font-bold text-rose-600 mb-2">240€</div>
-                    <div className="text-xs text-gray-500">15-20h de travail</div>
+                    <div className="text-2xl font-bold text-rose-600 mb-2">
+                      240€
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      15-20h de travail
+                    </div>
                   </div>
                 </div>
 
-                <div className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
-                  formData.format === 'elegant' 
-                    ? 'border-rose-500 bg-rose-50' 
-                    : 'border-gray-300 hover:border-rose-300'
-                }`} 
-                onClick={() => setFormData(prev => ({ ...prev, format: 'elegant', budget: '340' }))}>
+                <div
+                  className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
+                    formData.format === "elegant"
+                      ? "border-rose-500 bg-rose-50"
+                      : "border-gray-300 hover:border-rose-300"
+                  }`}
+                  onClick={() =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      format: "elegant",
+                      budget: "340",
+                    }))
+                  }
+                >
                   <div className="text-center">
-                    <div className="text-lg font-semibold text-gray-800">Format Élégant</div>
+                    <div className="text-lg font-semibold text-gray-800">
+                      Format Élégant
+                    </div>
                     <div className="text-sm text-gray-600 mb-2">50 x 70 cm</div>
-                    <div className="text-2xl font-bold text-purple-600 mb-2">340€</div>
-                    <div className="text-xs text-gray-500">20-25h de travail</div>
+                    <div className="text-2xl font-bold text-purple-600 mb-2">
+                      340€
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      20-25h de travail
+                    </div>
                   </div>
                 </div>
 
-                <div className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
-                  formData.format === 'duo' 
-                    ? 'border-rose-500 bg-rose-50' 
-                    : 'border-gray-300 hover:border-rose-300'
-                }`} 
-                onClick={() => setFormData(prev => ({ ...prev, format: 'duo', budget: '500' }))}>
+                <div
+                  className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
+                    formData.format === "duo"
+                      ? "border-rose-500 bg-rose-50"
+                      : "border-gray-300 hover:border-rose-300"
+                  }`}
+                  onClick={() =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      format: "duo",
+                      budget: "500",
+                    }))
+                  }
+                >
                   <div className="text-center">
-                    <div className="text-lg font-semibold text-gray-800">Format Duo</div>
+                    <div className="text-lg font-semibold text-gray-800">
+                      Format Duo
+                    </div>
                     <div className="text-sm text-gray-600 mb-2">60 x 80 cm</div>
-                    <div className="text-2xl font-bold text-blue-600 mb-2">500€</div>
-                    <div className="text-xs text-gray-500">30-40h de travail</div>
+                    <div className="text-2xl font-bold text-blue-600 mb-2">
+                      500€
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      30-40h de travail
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="bg-gradient-to-r from-purple-50 to-rose-50 rounded-lg p-6">
-              <h4 className="text-lg font-medium text-gray-800 mb-3">Inclus avec votre Portrait d&apos;Âme</h4>
+              <h4 className="text-lg font-medium text-gray-800 mb-3">
+                Inclus avec votre Portrait d&apos;Âme
+              </h4>
               <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
                 <div className="flex items-center">
                   <span className="w-2 h-2 bg-rose-500 rounded-full mr-2"></span>
@@ -537,7 +653,8 @@ export default function PortraitOrderForm() {
                   htmlFor="newsletter"
                   className="ml-2 text-sm text-gray-600"
                 >
-                  Je souhaite recevoir des nouvelles de l&apos;atelier et des témoignages
+                  Je souhaite recevoir des nouvelles de l&apos;atelier et des
+                  témoignages
                 </label>
               </div>
 
@@ -556,7 +673,8 @@ export default function PortraitOrderForm() {
                   htmlFor="dataConsent"
                   className="ml-2 text-sm text-gray-600"
                 >
-                  J&apos;autorise l&apos;utilisation de mes informations pour la création de mon portrait d&apos;âme *
+                  J&apos;autorise l&apos;utilisation de mes informations pour la
+                  création de mon portrait d&apos;âme *
                 </label>
               </div>
               {errors.dataConsent && (
@@ -636,21 +754,29 @@ export default function PortraitOrderForm() {
                 )}
               </div>
               {step < 3 && (
-                <div className={`w-12 h-0.5 ml-4 ${
-                  step < currentStep ? "bg-green-500" : "bg-gray-300"
-                }`} />
+                <div
+                  className={`w-12 h-0.5 ml-4 ${
+                    step < currentStep ? "bg-green-500" : "bg-gray-300"
+                  }`}
+                />
               )}
             </div>
           ))}
         </div>
         <div className="flex justify-center mt-4 text-sm text-gray-600 space-x-8">
-          <span className={currentStep === 1 ? "font-medium text-rose-600" : ""}>
+          <span
+            className={currentStep === 1 ? "font-medium text-rose-600" : ""}
+          >
             Informations
           </span>
-          <span className={currentStep === 2 ? "font-medium text-rose-600" : ""}>
+          <span
+            className={currentStep === 2 ? "font-medium text-rose-600" : ""}
+          >
             Livraison
           </span>
-          <span className={currentStep === 3 ? "font-medium text-rose-600" : ""}>
+          <span
+            className={currentStep === 3 ? "font-medium text-rose-600" : ""}
+          >
             Format
           </span>
         </div>
@@ -711,7 +837,7 @@ export default function PortraitOrderForm() {
                     Envoi en cours...
                   </>
                 ) : (
-                  "Commander mon Portrait d&apos;Âme"
+                  "Commander mon portrait d'âme"
                 )}
               </button>
             )}

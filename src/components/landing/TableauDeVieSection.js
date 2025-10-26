@@ -18,7 +18,10 @@ export default function TableauDeVieSection() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section ref={ref} className="py-20 bg-gradient-to-br from-blue-50/50 via-violet-50/50 to-orange-50/50 relative overflow-hidden">
+    <section
+      ref={ref}
+      className="py-20 bg-gradient-to-br from-blue-50/50 via-violet-50/50 to-orange-50/50 relative overflow-hidden"
+    >
       {/* Patterns décoratifs améliorés */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-10 left-10 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
@@ -162,7 +165,7 @@ export default function TableauDeVieSection() {
               </Link>
 
               <Link
-                href="/tableau-de-vie/commande"
+                href="/tableau-de-vie#tarifs"
                 className="group glass-card border-2 border-orange-300 text-orange-700 hover:border-orange-400 px-8 py-4 rounded-full transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-base font-medium shadow-elegant hover:shadow-spiritual inline-flex items-center justify-center space-x-2"
               >
                 <Heart className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />

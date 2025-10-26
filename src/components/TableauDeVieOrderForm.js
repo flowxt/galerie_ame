@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
   Compass,
@@ -11,7 +12,8 @@ import {
   Star,
 } from "lucide-react";
 
-export default function TableauDeVieOrderForm() {
+export default function TableauDeVieOrderForm({ preselectedFormat = null }) {
+  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -58,7 +60,8 @@ export default function TableauDeVieOrderForm() {
     portraitPurpose: "",
     shareWithOthers: "",
     timeline: "",
-    budget: "450",
+    format: "intime",
+    budget: "240",
 
     // Communication
     consultationPreference: "",
@@ -73,6 +76,26 @@ export default function TableauDeVieOrderForm() {
   });
 
   const [errors, setErrors] = useState({});
+
+  // Présélectionner le format depuis l'URL ou les props
+  useEffect(() => {
+    const formatBudgetMap = {
+      intime: "240",
+      elegant: "340",
+      premium: "500",
+    };
+
+    // Priorité au prop preselectedFormat, sinon regarder l'URL
+    const formatToUse = preselectedFormat || searchParams?.get("format");
+
+    if (formatToUse && formatBudgetMap[formatToUse]) {
+      setFormData((prev) => ({
+        ...prev,
+        format: formatToUse,
+        budget: formatBudgetMap[formatToUse],
+      }));
+    }
+  }, [searchParams, preselectedFormat]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -156,6 +179,16 @@ export default function TableauDeVieOrderForm() {
     setCurrentStep((prev) => Math.max(prev - 1, 1));
   };
 
+  // Mapper les formats aux IDs de produits Stripe
+  const getStripeProductId = (format) => {
+    const productIds = {
+      intime: process.env.NEXT_PUBLIC_STRIPE_PRODUCT_TABLEAU_INTIME,
+      elegant: process.env.NEXT_PUBLIC_STRIPE_PRODUCT_TABLEAU_ELEGANT,
+      premium: process.env.NEXT_PUBLIC_STRIPE_PRODUCT_TABLEAU_PREMIUM,
+    };
+    return productIds[format];
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -164,26 +197,51 @@ export default function TableauDeVieOrderForm() {
     setIsLoading(true);
 
     try {
-      const orderData = {
-        orderType: "tableau-de-vie",
-        customer: formData,
-        artwork: {
-          _id: "tableau-de-vie-custom",
-          title: "Tableau de Vie personnalisé",
-          description: "Commande d&apos;un tableau de vie unique",
-          price: parseInt(formData.budget),
+      // Récupérer l'ID du produit Stripe en fonction du format choisi
+      const productId = getStripeProductId(formData.format);
+
+      if (!productId) {
+        alert("Erreur : format de tableau non reconnu");
+        setIsLoading(false);
+        return;
+      }
+
+      // Appeler l'API pour créer une session Stripe Checkout
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      };
+        body: JSON.stringify({
+          productId: productId,
+          customerData: {
+            ...formData,
+            orderType: "tableau-de-vie",
+          },
+          successUrl: `${window.location.origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancelUrl: `${window.location.origin}/tableau-de-vie#tarifs`,
+        }),
+      });
 
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const data = await response.json();
 
-      window.location.href = "/tableau-de-vie/demande-recue";
+      if (!response.ok) {
+        throw new Error(
+          data.error || "Erreur lors de la création de la session"
+        );
+      }
+
+      // Rediriger vers Stripe Checkout
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error("URL de paiement non reçue");
+      }
     } catch (error) {
-      console.error("Erreur lors de l&apos;envoi:", error);
+      console.error("Erreur lors de l'envoi:", error);
       alert(
-        "Erreur lors de l&apos;envoi de votre demande. Veuillez réessayer."
+        "Erreur lors de la création du paiement. Veuillez réessayer ou contacter le support."
       );
-    } finally {
       setIsLoading(false);
     }
   };
@@ -799,24 +857,84 @@ export default function TableauDeVieOrderForm() {
 
             <div>
               <label
-                htmlFor="budget"
+                htmlFor="format"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
                 Formule souhaitée
               </label>
-              <select
-                id="budget"
-                name="budget"
-                value={formData.budget}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-              >
-                <option value="450">450€ - Tableau de vie standard</option>
-                <option value="650">650€ - Tableau de vie approfondi</option>
-                <option value="850">
-                  850€ - Tableau de vie premium avec suivi
-                </option>
-              </select>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div
+                  className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
+                    formData.format === "intime"
+                      ? "border-orange-500 bg-orange-50"
+                      : "border-gray-300 hover:border-orange-300"
+                  }`}
+                  onClick={() =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      format: "intime",
+                      budget: "240",
+                    }))
+                  }
+                >
+                  <div className="text-center">
+                    <div className="text-lg font-semibold text-gray-800">
+                      Format Intime
+                    </div>
+                    <div className="text-2xl font-bold text-orange-600 mb-2">
+                      240€
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
+                    formData.format === "elegant"
+                      ? "border-purple-500 bg-purple-50"
+                      : "border-gray-300 hover:border-purple-300"
+                  }`}
+                  onClick={() =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      format: "elegant",
+                      budget: "340",
+                    }))
+                  }
+                >
+                  <div className="text-center">
+                    <div className="text-lg font-semibold text-gray-800">
+                      Format Élégant
+                    </div>
+                    <div className="text-2xl font-bold text-purple-600 mb-2">
+                      340€
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
+                    formData.format === "premium"
+                      ? "border-blue-500 bg-blue-50"
+                      : "border-gray-300 hover:border-blue-300"
+                  }`}
+                  onClick={() =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      format: "premium",
+                      budget: "500",
+                    }))
+                  }
+                >
+                  <div className="text-center">
+                    <div className="text-lg font-semibold text-gray-800">
+                      Format Premium
+                    </div>
+                    <div className="text-2xl font-bold text-blue-600 mb-2">
+                      500€
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg p-6">

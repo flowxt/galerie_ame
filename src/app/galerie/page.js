@@ -135,7 +135,7 @@ export default function GaleriePage() {
             </Link>
 
             <Link
-              href="/portrait-d-ame/commande"
+              href="/portrait-d-ame#tarifs"
               className="group bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/30 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-lg"
             >
               <span className="flex items-center space-x-2">
@@ -315,7 +315,7 @@ export default function GaleriePage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/portrait-d-ame/commande"
+                href="/portrait-d-ame#tarifs"
                 className="group bg-white text-purple-600 px-8 py-4 rounded-full hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-lg"
               >
                 <span className="flex items-center justify-center space-x-2">

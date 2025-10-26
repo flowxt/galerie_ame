@@ -150,7 +150,7 @@ export default function PortraitsDameSection() {
               </Link>
 
               <Link
-                href="/portrait-d-ame/commande"
+                href="/portrait-d-ame#tarifs"
                 className="group glass-card border-2 border-rose-300 text-rose-700 hover:border-rose-400 px-8 py-4 rounded-full transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 text-base font-medium shadow-elegant hover:shadow-spiritual inline-flex items-center justify-center space-x-2"
               >
                 <Heart className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />

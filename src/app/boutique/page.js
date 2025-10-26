@@ -76,7 +76,7 @@ export default function Boutique() {
             </Link>
 
             <Link
-              href="/portrait-d-ame/commande"
+              href="/portrait-d-ame#tarifs"
               className="group bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/30 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-lg"
             >
               <span className="flex items-center space-x-2">
@@ -116,7 +116,7 @@ export default function Boutique() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/portrait-d-ame/commande"
+                href="/portrait-d-ame#tarifs"
                 className="group bg-gradient-to-r from-purple-500 to-rose-500 text-white px-8 py-4 rounded-full hover:from-purple-600 hover:to-rose-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
               >
                 <span className="flex items-center justify-center space-x-2">
@@ -167,7 +167,7 @@ export default function Boutique() {
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link
-                href="/portrait-d-ame/commande"
+                href="/portrait-d-ame#tarifs"
                 className="group bg-gradient-to-r from-rose-500 to-purple-500 text-white px-10 py-5 rounded-full hover:from-rose-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-xl text-lg font-medium"
               >
                 <span className="flex items-center space-x-3">
