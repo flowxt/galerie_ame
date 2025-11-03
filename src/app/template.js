@@ -5,65 +5,25 @@ import { motion } from "framer-motion";
 export default function Template({ children }) {
   return (
     <>
-      {/* Effet de rideau qui descend lors du changement de page */}
+      {/* Overlay de transition élégant */}
       <motion.div
-        className="fixed inset-0 z-[60] pointer-events-none"
-        initial={{ scaleY: 1, originY: 0 }}
-        animate={{ scaleY: 0, originY: 0 }}
+        className="fixed inset-0 z-[60] pointer-events-none bg-white"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
         transition={{
-          duration: 0.6,
-          ease: [0.22, 1, 0.36, 1],
+          duration: 0.5,
+          ease: [0.43, 0.13, 0.23, 0.96],
         }}
-        style={{
-          background: "linear-gradient(135deg, rgba(249, 168, 212, 0.95) 0%, rgba(216, 180, 254, 0.95) 50%, rgba(191, 219, 254, 0.95) 100%)",
-          backdropFilter: "blur(10px)",
-        }}
-      >
-        {/* Étoiles scintillantes pendant la transition */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            className="absolute top-1/4 left-1/4 text-4xl"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: [0, 1, 0], scale: [0, 1.2, 0] }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            ✨
-          </motion.div>
-          <motion.div
-            className="absolute top-1/3 right-1/3 text-3xl"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: [0, 1, 0], scale: [0, 1.2, 0] }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          >
-            ⭐
-          </motion.div>
-          <motion.div
-            className="absolute bottom-1/3 left-1/3 text-3xl"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: [0, 1, 0], scale: [0, 1.2, 0] }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          >
-            💫
-          </motion.div>
-          <motion.div
-            className="absolute bottom-1/4 right-1/4 text-4xl"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: [0, 1, 0], scale: [0, 1.2, 0] }}
-            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-          >
-            ✨
-          </motion.div>
-        </div>
-      </motion.div>
+      />
 
-      {/* Contenu de la page avec animation */}
+      {/* Contenu de la page avec animation fluide */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{
-          duration: 0.6,
-          delay: 0.3,
-          ease: [0.22, 1, 0.36, 1],
+          duration: 0.5,
+          delay: 0.1,
+          ease: [0.43, 0.13, 0.23, 0.96],
         }}
       >
         {children}

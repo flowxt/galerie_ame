@@ -83,7 +83,7 @@ export default function AttrapesRevesPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href="#creations"
+              href="/boutique"
               className="group bg-gradient-to-r from-blue-500 to-teal-500 text-white px-8 py-4 rounded-full hover:from-blue-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
             >
               <span className="flex items-center space-x-2">

@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   MessageCircle,
   Heart,
@@ -19,6 +20,10 @@ import {
   Palette,
   ChevronDown,
   ChevronUp,
+  MapPin,
+  Phone,
+  Facebook,
+  Instagram,
 } from "lucide-react";
 
 export default function Contact() {
@@ -32,42 +37,53 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState(null);
   const [openFAQ, setOpenFAQ] = useState(null);
 
+  // Refs pour les animations
+  const formRef = useRef(null);
+  const faqRef = useRef(null);
+  const ctaRef = useRef(null);
+
+  // InView hooks
+  const formInView = useInView(formRef, { once: true, margin: "-100px" });
+  const faqInView = useInView(faqRef, { once: true, margin: "-100px" });
+  const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
+
   const faqData = [
     {
       id: 1,
-      question: "Comment fonctionne le processus de création ?",
+      question:
+        "Quelle est la différence entre un Portrait d'Âme et un Tableau de Vie ?",
       answer:
-        "Le processus commence par un échange personnalisé pour comprendre votre essence. Ensuite, je crée intuitivement votre portrait d'âme en utilisant différentes techniques artistiques. Le processus prend généralement 2-3 semaines et inclut des photos d'étapes pour vous tenir informé.",
+        "Le Portrait d'Âme est une \"photographie énergétique\" de votre essence au présent : il montre la vibration de votre Être. Le Tableau de Vie, lui, est co-créé avec vous ; il retrace votre parcours intérieur, vos clés de transformation, vos cycles, vos ressources et vos aspirations profondes. Là où le Portrait révèle l'Être, le Tableau raconte le chemin.",
     },
     {
       id: 2,
-      question: "Combien de temps prend la réalisation ?",
+      question: "Est-ce que tout peut se faire à distance ?",
       answer:
-        "Un portrait d'âme prend entre 15 à 21 jours ouvrés. Les attrape-rêves personnalisés nécessitent 7 à 10 jours. Pour les commandes urgentes, contactez-nous pour étudier les possibilités.",
+        "La connexion énergétique ne dépend pas du lieu physique. Que vous soyez près de moi ou à l'autre bout du monde, l'œuvre est réalisée de la même manière : je me relie à votre essence, puis l'expression picturale se manifeste. Si vous le souhaitez, un échange par téléphone ou visio peut accompagner la démarche.",
     },
     {
       id: 3,
-      question: "Quels sont les tarifs des créations ?",
+      question: "Est-ce qu'il faut avoir une croyance particulière ?",
       answer:
-        "Les portraits d'âme commencent à partir de 150€. Les attrape-rêves personnalisés débutent à 80€. Les tarifs varient selon la taille, la complexité et les matériaux choisis. Contactez-nous pour un devis personnalisé.",
+        "Cette démarche n'appartient à aucune religion, ni à un système de croyances. Elle s'adresse autant aux personnes spirituelles qu'aux personnes simplement en recherche d'alignement, de douceur ou de sens. Il ne s'agit pas de croire \"quelque chose\", mais de se relier à sa propre présence intérieure.",
     },
     {
       id: 4,
-      question: "Puis-je personnaliser un attrape-rêves ?",
+      question: "En quoi cela peut-il m'aider sur mon chemin ?",
       answer:
-        "Absolument ! Nous créons des attrape-rêves sur-mesure selon vos intentions, couleurs préférées, et éléments symboliques. Chaque création est unique et adaptée à votre énergie personnelle.",
+        "Le Portrait d'Âme ou le Tableau de Vie peut devenir un repère intérieur, un ancrage. Il rappelle votre lumière quand vous traversez des zones d'ombre, met en évidence vos ressources et soutient vos transitions. Beaucoup de personnes témoignent d'un sentiment de reconnexion, de clarification, ou même d'un regain d'élan créateur.",
     },
     {
       id: 5,
-      question: "Livrez-vous partout en France ?",
+      question: "Est-il possible d'offrir un Portrait d'Âme en cadeau ?",
       answer:
-        "Oui, nous livrons dans toute la France via Colissimo avec suivi. Les œuvres sont soigneusement emballées pour garantir leur protection. La livraison est gratuite à partir de 100€ d'achat.",
+        "Un Portrait d'Âme ne peut pas être commandé « pour » quelqu'un : dans ma démarche, l'élan doit venir de la personne elle-même. Il est toutefois possible d'offrir un bon cadeau, afin que la personne soit libre de choisir le moment juste pour elle, lorsque l'appel intérieur se présente. Par choix, je ne réalise pas de Portraits d'Âme pour les enfants pour le moment : leur essence est encore en plein déploiement, et je souhaite honorer ce temps de maturation intérieure sans projeter une lecture spirituelle avant qu'elle ne naisse d'elle-même.",
     },
     {
       id: 6,
-      question: "Que faire si je ne suis pas satisfait ?",
+      question: "Que trouve-t-on dans ta boutique ?",
       answer:
-        "Votre satisfaction est notre priorité. Si l'œuvre ne correspond pas à vos attentes, nous proposons des ajustements ou un remboursement dans les 14 jours. Chaque création étant unique, nous privilégions le dialogue pour trouver une solution.",
+        "Dans la boutique, vous trouverez mes tableaux intuitifs, mes attrape-rêves et les bons cadeaux. Un tableau intuitif est une œuvre créée sans modèle et sans intention définie à l'avance : je me laisse guider par le ressenti du moment, les couleurs, les formes et l'élan intérieur. Ce ne sont pas des créations reliées à une personne en particulier, mais l'expression d'une énergie, d'une ambiance ou d'une émotion, qui prend forme naturellement et spontanément.",
     },
   ];
 
@@ -104,7 +120,7 @@ export default function Contact() {
         {/* Image de fond */}
         <div className="absolute inset-0">
           <Image
-            src="/images/vero-bw.jpg"
+            src="/images/fond-contact.jpeg"
             alt="Véronique artiste - Contactez-nous"
             fill
             className="object-cover object-center"
@@ -129,26 +145,46 @@ export default function Contact() {
 
         {/* Contenu principal */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8 shadow-lg">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8 shadow-lg"
+          >
             <MessageCircle className="w-4 h-4 text-indigo-300" />
             <span className="text-white text-sm font-medium">
               Échangeons ensemble
             </span>
-          </div>
+          </motion.div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-light mb-8 leading-tight text-white">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-4xl md:text-6xl lg:text-7xl font-playfair font-light mb-8 leading-tight text-white"
+          >
             <span className="block bg-gradient-to-r from-indigo-300 to-pink-300 bg-clip-text text-transparent font-medium">
               Contactez-nous
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-crimson">
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-crimson"
+          >
             Vous avez des questions sur nos créations spirituelles ou souhaitez
             commencer votre parcours artistique ? Nous serions ravis
             d&apos;échanger avec vous.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
             <Link
               href="#formulaire"
               className="group bg-gradient-to-r from-indigo-500 to-pink-500 text-white px-8 py-4 rounded-full hover:from-indigo-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
@@ -170,17 +206,21 @@ export default function Contact() {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Section Formulaire et Informations */}
-      <section id="formulaire" className="py-20 bg-white">
+      <section ref={formRef} id="formulaire" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16">
               {/* Formulaire de Contact */}
-              <div>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={formInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
                 <div className="inline-flex items-center space-x-2 bg-indigo-100 rounded-full px-6 py-2 mb-6">
                   <Send className="w-5 h-5 text-indigo-600" />
                   <span className="text-indigo-800 font-medium text-sm">
@@ -316,18 +356,23 @@ export default function Contact() {
                     </span>
                   </button>
                 </form>
-              </div>
+              </motion.div>
 
               {/* Informations de Contact */}
-              <div id="informations">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={formInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                id="informations"
+              >
                 <div className="inline-flex items-center space-x-2 bg-pink-100 rounded-full px-6 py-2 mb-6">
                   <HelpCircle className="w-5 h-5 text-pink-600" />
                   <span className="text-pink-800 font-medium text-sm">
-                    Informations Pratiques
+                    Informations de contact
                   </span>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-8">
+                <h2 className="text-4xl md:text-5xl font-playfair font-light text-gray-800 mb-6">
                   Informations de
                   <span className="bg-gradient-to-r from-pink-600 to-indigo-600 bg-clip-text text-transparent">
                     {" "}
@@ -335,66 +380,122 @@ export default function Contact() {
                   </span>
                 </h2>
 
-                <div className="space-y-8">
+                <p className="text-lg text-gray-600 mb-8 italic">
+                  Je suis à votre écoute pour toute demande, projet ou question
+                </p>
+
+                <div className="space-y-6">
+                  {/* Atelier Art'âme */}
                   <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-indigo-200/50 shadow-sm">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className="bg-gradient-to-r from-indigo-500 to-pink-500 p-3 rounded-xl">
-                        <Clock className="w-6 h-6 text-white" />
+                    <h3 className="text-2xl font-playfair font-semibold text-gray-800 mb-6">
+                      Atelier Art&apos;âme
+                    </h3>
+
+                    <div className="space-y-4">
+                      {/* Email */}
+                      <div className="flex items-center space-x-3">
+                        <div className="bg-gradient-to-r from-indigo-500 to-pink-500 p-2 rounded-lg">
+                          <Mail className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-500">Email</p>
+                          <a
+                            href="mailto:contact@atelierartame.com"
+                            className="text-gray-800 hover:text-indigo-600 transition-colors font-medium"
+                          >
+                            contact@atelierartame.com
+                          </a>
+                        </div>
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-800">
-                        Réponse Rapide
-                      </h3>
+
+                      {/* Téléphone */}
+                      <div className="flex items-center space-x-3">
+                        <div className="bg-gradient-to-r from-pink-500 to-indigo-500 p-2 rounded-lg">
+                          <Phone className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-500">Téléphone</p>
+                          <a
+                            href="tel:+33632215288"
+                            className="text-gray-800 hover:text-indigo-600 transition-colors font-medium"
+                          >
+                            06 32 21 52 88
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Localisation */}
+                      <div className="flex items-center space-x-3">
+                        <div className="bg-gradient-to-r from-indigo-600 to-pink-600 p-2 rounded-lg">
+                          <MapPin className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-500">Localisation</p>
+                          <p className="text-gray-800 font-medium">
+                            Saint Sixt, France
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Délai de réponse */}
+                      <div className="flex items-center space-x-3">
+                        <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-2 rounded-lg">
+                          <Clock className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-500">
+                            Délai de réponse
+                          </p>
+                          <p className="text-gray-800 font-medium">24 à 48h</p>
+                        </div>
+                      </div>
                     </div>
-                    <p className="text-gray-600 leading-relaxed">
-                      Nous répondons généralement dans les 24 heures. Pour les
-                      commandes urgentes, n&apos;hésitez pas à le mentionner
-                      dans votre message.
-                    </p>
                   </div>
 
+                  {/* Réseaux Sociaux */}
                   <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-pink-200/50 shadow-sm">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className="bg-gradient-to-r from-pink-500 to-indigo-500 p-3 rounded-xl">
-                        <Users className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-gray-800">
-                        Consultation Gratuite
-                      </h3>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-6">
+                      Suivez-nous
+                    </h3>
+                    <div className="flex space-x-4">
+                      <a
+                        href="https://facebook.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group bg-gradient-to-r from-indigo-500 to-pink-500 p-4 rounded-xl hover:from-indigo-600 hover:to-pink-600 transition-all transform hover:scale-110 shadow-lg"
+                      >
+                        <Facebook className="w-6 h-6 text-white" />
+                      </a>
+                      <a
+                        href="https://instagram.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group bg-gradient-to-r from-pink-500 to-purple-500 p-4 rounded-xl hover:from-pink-600 hover:to-purple-600 transition-all transform hover:scale-110 shadow-lg"
+                      >
+                        <Instagram className="w-6 h-6 text-white" />
+                      </a>
                     </div>
-                    <p className="text-gray-600 leading-relaxed">
-                      Nous proposons une consultation gratuite de 30 minutes
-                      pour discuter de votre projet de portrait d&apos;âme et
-                      répondre à vos questions.
-                    </p>
-                  </div>
-
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-indigo-200/50 shadow-sm">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className="bg-gradient-to-r from-indigo-600 to-pink-600 p-3 rounded-xl">
-                        <Heart className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-gray-800">
-                        Suivi Personnalisé
-                      </h3>
-                    </div>
-                    <p className="text-gray-600 leading-relaxed">
-                      Chaque client bénéficie d&apos;un suivi personnalisé tout
-                      au long du processus créatif, de la commande à la
-                      livraison.
-                    </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Section FAQ */}
-      <section className="py-20 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+      <section
+        ref={faqRef}
+        className="py-20 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50"
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={faqInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center mb-16"
+            >
               <div className="inline-flex items-center space-x-2 bg-purple-100 rounded-full px-6 py-2 mb-6">
                 <HelpCircle className="w-5 h-5 text-purple-600" />
                 <span className="text-purple-800 font-medium text-sm">
@@ -414,9 +515,14 @@ export default function Contact() {
                 Trouvez rapidement les réponses aux questions les plus courantes
                 sur nos créations spirituelles.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-purple-200/50 shadow-sm">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={faqInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-purple-200/50 shadow-sm"
+            >
               <h3 className="text-xl font-semibold text-gray-800 mb-6">
                 Questions les plus fréquentes
               </h3>
@@ -449,15 +555,20 @@ export default function Contact() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Section CTA */}
-      <section className="py-20 bg-white">
+      <section ref={ctaRef} className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-4xl mx-auto text-center"
+          >
             <div className="inline-flex items-center space-x-2 bg-indigo-100 rounded-full px-6 py-2 mb-6">
               <Palette className="w-5 h-5 text-indigo-600" />
               <span className="text-indigo-800 font-medium text-sm">
@@ -474,25 +585,14 @@ export default function Contact() {
             </h2>
 
             <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Explorez nos créations ou commandez votre œuvre personnalisée pour
-              commencer votre voyage artistique et spirituel.
+              Explorez nos créations pour commencer votre voyage artistique et
+              spirituel.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link
-                href="/portrait-d-ame#tarifs"
-                className="group bg-gradient-to-r from-indigo-500 to-pink-500 text-white px-10 py-5 rounded-full hover:from-indigo-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-xl text-lg font-medium"
-              >
-                <span className="flex items-center space-x-3">
-                  <Heart className="w-6 h-6" />
-                  <span>Commander un Portrait d&apos;Âme</span>
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-
+            <div className="flex justify-center">
               <Link
                 href="/boutique"
-                className="group bg-white border-2 border-indigo-300 text-indigo-700 hover:bg-indigo-50 px-10 py-5 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
+                className="group bg-gradient-to-r from-indigo-500 to-pink-500 text-white px-10 py-5 rounded-full hover:from-indigo-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-xl text-lg font-medium"
               >
                 <span className="flex items-center space-x-3">
                   <Sparkles className="w-6 h-6" />
@@ -501,7 +601,7 @@ export default function Contact() {
                 </span>
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

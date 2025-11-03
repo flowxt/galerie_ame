@@ -1,3 +1,7 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import {
   Sparkles,
@@ -12,6 +16,14 @@ import {
 import Image from "next/image";
 
 export default function Boutique() {
+  // Refs pour les animations
+  const collectionRef = useRef(null);
+  const customRef = useRef(null);
+
+  // InView hooks
+  const collectionInView = useInView(collectionRef, { once: true, margin: "-100px" });
+  const customInView = useInView(customRef, { once: true, margin: "-100px" });
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -44,26 +56,46 @@ export default function Boutique() {
 
         {/* Contenu principal */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8 shadow-lg">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8 shadow-lg"
+          >
             <ShoppingBag className="w-4 h-4 text-purple-300" />
             <span className="text-white text-sm font-medium">
               Œuvres d&apos;art spirituelles
             </span>
-          </div>
+          </motion.div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-light mb-8 leading-tight text-white">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-4xl md:text-6xl lg:text-7xl font-playfair font-light mb-8 leading-tight text-white"
+          >
             <span className="block bg-gradient-to-r from-purple-300 to-rose-300 bg-clip-text text-transparent font-medium">
               Boutique d&apos;Art Spirituel
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-crimson">
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-crimson"
+          >
             Découvrez notre collection d&apos;œuvres uniques. Chaque création
             porte en elle une énergie particulière et une intention spirituelle
             profonde.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
             <Link
               href="#collection"
               className="group bg-gradient-to-r from-purple-500 to-rose-500 text-white px-8 py-4 rounded-full hover:from-purple-600 hover:to-rose-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
@@ -85,17 +117,23 @@ export default function Boutique() {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Section Collection */}
       <section
+        ref={collectionRef}
         id="collection"
         className="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50"
       >
         <div className="container mx-auto px-4">
-          <div className="text-center py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={collectionInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center py-16"
+          >
             <div className="w-24 h-24 bg-gradient-to-r from-purple-400 to-rose-400 rounded-full flex items-center justify-center mx-auto mb-8">
               <ShoppingBag className="w-12 h-12 text-white" />
             </div>
@@ -137,14 +175,19 @@ export default function Boutique() {
                 </span>
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Section Création Sur Mesure */}
-      <section className="py-20 bg-white">
+      <section ref={customRef} className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={customInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-4xl mx-auto text-center"
+          >
             <div className="inline-flex items-center space-x-2 bg-rose-100 rounded-full px-6 py-2 mb-6">
               <Palette className="w-5 h-5 text-rose-600" />
               <span className="text-rose-800 font-medium text-sm">
@@ -188,7 +231,7 @@ export default function Boutique() {
                 </span>
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
