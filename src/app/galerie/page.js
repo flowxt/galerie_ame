@@ -138,7 +138,7 @@ export default function GaleriePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex justify-center items-center"
           >
             <Link
               href="#galerie"
@@ -147,17 +147,6 @@ export default function GaleriePage() {
               <span className="flex items-center space-x-2">
                 <Eye className="w-5 h-5" />
                 <span>Découvrir la Galerie</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Link>
-
-            <Link
-              href="/portrait-d-ame#tarifs"
-              className="group bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white hover:bg-white/30 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-lg"
-            >
-              <span className="flex items-center space-x-2">
-                <Palette className="w-5 h-5" />
-                <span>M&apos;Inspirer pour ma Commande</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
