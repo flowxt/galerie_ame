@@ -169,6 +169,20 @@ export default function PortraitOrderForm({ preselectedFormat = null }) {
         return;
       }
 
+      // Envoyer l'email de notification avant la redirection vers Stripe
+      try {
+        await fetch("/api/send-portrait-order-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ formData }),
+        });
+      } catch (emailError) {
+        console.error("Erreur lors de l'envoi de l'email:", emailError);
+        // On continue même si l'email échoue
+      }
+
       // Appeler l'API pour créer une session Stripe Checkout
       const response = await fetch("/api/checkout", {
         method: "POST",
