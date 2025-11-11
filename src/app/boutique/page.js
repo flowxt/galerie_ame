@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import {
@@ -12,10 +12,16 @@ import {
   Eye,
   ShoppingBag,
   MessageCircle,
+  Loader2,
 } from "lucide-react";
 import Image from "next/image";
 
 export default function Boutique() {
+  // État
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   // Refs pour les animations
   const collectionRef = useRef(null);
   const customRef = useRef(null);
@@ -23,6 +29,56 @@ export default function Boutique() {
   // InView hooks
   const collectionInView = useInView(collectionRef, { once: true, margin: "-100px" });
   const customInView = useInView(customRef, { once: true, margin: "-100px" });
+
+  // Récupérer les produits au chargement
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        setLoading(true);
+        const response = await fetch("/api/products");
+        const data = await response.json();
+
+        if (data.success) {
+          setProducts(data.products);
+        } else {
+          setError("Impossible de charger les produits");
+        }
+      } catch (err) {
+        console.error("Erreur:", err);
+        setError("Une erreur est survenue");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProducts();
+  }, []);
+
+  // Fonction pour acheter un produit
+  const handleBuyProduct = async (productId) => {
+    try {
+      const response = await fetch("/api/checkout-product", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productId,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Erreur lors de la création du paiement");
+      }
+    } catch (error) {
+      console.error("Erreur:", error);
+      alert("Une erreur est survenue");
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -132,50 +188,177 @@ export default function Boutique() {
             initial={{ opacity: 0, y: 50 }}
             animate={collectionInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center py-16"
+            className="text-center mb-16"
           >
-            <div className="w-24 h-24 bg-gradient-to-r from-purple-400 to-rose-400 rounded-full flex items-center justify-center mx-auto mb-8">
-              <ShoppingBag className="w-12 h-12 text-white" />
+            <div className="inline-flex items-center space-x-2 bg-purple-100 rounded-full px-6 py-2 mb-6">
+              <ShoppingBag className="w-5 h-5 text-purple-600" />
+              <span className="text-purple-800 font-medium text-sm">
+                Notre Collection
+              </span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-6">
-              Boutique en ligne
+            <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">
+              Œuvres
               <span className="bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent">
                 {" "}
-                bientôt disponible
+                Disponibles
               </span>
             </h2>
 
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Nous préparons notre boutique en ligne pour vous offrir une
-              sélection d&apos;œuvres spirituelles uniques. En attendant, vous
-              pouvez commander une création personnalisée.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Découvrez notre sélection d&apos;œuvres spirituelles uniques,
+              créées avec intention et amour.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/portrait-d-ame#tarifs"
-                className="group bg-gradient-to-r from-purple-500 to-rose-500 text-white px-8 py-4 rounded-full hover:from-purple-600 hover:to-rose-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
-              >
-                <span className="flex items-center justify-center space-x-2">
-                  <Heart className="w-5 h-5" />
-                  <span>Commander un Portrait d&apos;Âme</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-
-              <Link
-                href="/contact"
-                className="group bg-white/80 backdrop-blur-sm border-2 border-purple-300 text-purple-700 hover:bg-purple-50 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
-              >
-                <span className="flex items-center justify-center space-x-2">
-                  <MessageCircle className="w-5 h-5" />
-                  <span>Discuter d&apos;un projet</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-            </div>
           </motion.div>
+
+          {/* Chargement */}
+          {loading && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex flex-col items-center justify-center py-20"
+            >
+              <Loader2 className="w-12 h-12 text-purple-600 animate-spin mb-4" />
+              <p className="text-gray-600 text-lg">
+                Chargement des œuvres...
+              </p>
+            </motion.div>
+          )}
+
+          {/* Erreur */}
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-20"
+            >
+              <p className="text-red-600 text-lg mb-8">{error}</p>
+              <button
+                onClick={() => window.location.reload()}
+                className="bg-gradient-to-r from-purple-500 to-rose-500 text-white px-8 py-4 rounded-full hover:from-purple-600 hover:to-rose-600 transition-all duration-300"
+              >
+                Réessayer
+              </button>
+            </motion.div>
+          )}
+
+          {/* Grille de produits */}
+          {!loading && !error && products.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={collectionInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+            >
+              {products.map((product, index) => (
+                <motion.div
+                  key={product.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={collectionInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.1 * index,
+                    ease: "easeOut",
+                  }}
+                  className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                >
+                  {/* Image */}
+                  <div className="relative h-80 overflow-hidden bg-gray-100">
+                    {product.images && product.images[0] ? (
+                      <Image
+                        src={product.images[0]}
+                        alt={product.name}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-100 to-rose-100">
+                        <Palette className="w-20 h-20 text-purple-300" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Contenu */}
+                  <div className="p-6">
+                    <h3 className="text-2xl font-playfair font-medium text-gray-800 mb-3">
+                      {product.name}
+                    </h3>
+
+                    {product.description && (
+                      <p className="text-gray-600 mb-4 leading-relaxed line-clamp-2">
+                        {product.description}
+                      </p>
+                    )}
+
+                    <div className="flex items-center justify-between">
+                      {product.price && (
+                        <span className="text-3xl font-light text-purple-600">
+                          {product.price.formatted}
+                        </span>
+                      )}
+
+                      <button
+                        onClick={() => handleBuyProduct(product.id)}
+                        className="group/btn bg-gradient-to-r from-purple-500 to-rose-500 text-white px-6 py-3 rounded-full hover:from-purple-600 hover:to-rose-600 transition-all duration-300 transform hover:scale-105 shadow-md"
+                      >
+                        <span className="flex items-center space-x-2">
+                          <ShoppingBag className="w-4 h-4" />
+                          <span>Acheter</span>
+                          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+
+          {/* Aucun produit */}
+          {!loading && !error && products.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-20"
+            >
+              <div className="w-24 h-24 bg-gradient-to-r from-purple-400 to-rose-400 rounded-full flex items-center justify-center mx-auto mb-8">
+                <ShoppingBag className="w-12 h-12 text-white" />
+              </div>
+
+              <h3 className="text-2xl font-light text-gray-800 mb-4">
+                Aucune œuvre disponible pour le moment
+              </h3>
+
+              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Revenez bientôt pour découvrir nos nouvelles créations, ou
+                commandez une œuvre personnalisée.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/portrait-d-ame#tarifs"
+                  className="group bg-gradient-to-r from-purple-500 to-rose-500 text-white px-8 py-4 rounded-full hover:from-purple-600 hover:to-rose-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg font-medium"
+                >
+                  <span className="flex items-center justify-center space-x-2">
+                    <Heart className="w-5 h-5" />
+                    <span>Commander un Portrait d&apos;Âme</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="group bg-white/80 backdrop-blur-sm border-2 border-purple-300 text-purple-700 hover:bg-purple-50 px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
+                >
+                  <span className="flex items-center justify-center space-x-2">
+                    <MessageCircle className="w-5 h-5" />
+                    <span>Nous Contacter</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
+              </div>
+            </motion.div>
+          )}
         </div>
       </section>
 
