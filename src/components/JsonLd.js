@@ -30,9 +30,9 @@ export default function JsonLd() {
     },
     priceRange: "€€",
     sameAs: [
-      // Ajoute les liens réseaux sociaux quand disponibles
+      "https://www.instagram.com/atelierartame/",
+      // Facebook en attente
       // "https://www.facebook.com/atelierartame",
-      // "https://www.instagram.com/atelierartame",
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
