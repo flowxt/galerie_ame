@@ -14,12 +14,14 @@
   --gold-spiritual: #f59e0b;
 }
 
+/* Mode sombre désactivé - toujours en mode clair
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
+*/
 
 * {
   scroll-behavior: smooth;

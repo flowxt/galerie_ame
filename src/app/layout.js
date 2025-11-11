@@ -87,6 +87,9 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "nCI6GIs7AQSq6l7WRzNvFmODJ8VIqMEc3jHMVCeAcDo",
+  },
   alternates: {
     canonical: "https://atelierartame.com",
   },
