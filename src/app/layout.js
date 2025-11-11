@@ -3,6 +3,7 @@ import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import ClientLoader from "@/components/ui/ClientLoader";
+import { Analytics } from "@vercel/analytics/next";
 
 // Police principale élégante
 const inter = Inter({ subsets: ["latin"] });
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
         <Navigation />
         <main className="pt-20">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
