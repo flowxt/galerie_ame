@@ -195,8 +195,8 @@ export default function PortraitOrderForm({ preselectedFormat = null }) {
             ...formData,
             orderType: "portrait-ame",
           },
-          successUrl: `${window.location.origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-          cancelUrl: `${window.location.origin}/portrait-d-ame#tarifs`,
+          successUrl: `${process.env.NEXT_PUBLIC_BASE_URL || window.location.origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancelUrl: `${process.env.NEXT_PUBLIC_BASE_URL || window.location.origin}/portrait-d-ame#tarifs`,
         }),
       });
 

@@ -3,6 +3,7 @@ import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import ClientLoader from "@/components/ui/ClientLoader";
+import JsonLd from "@/components/JsonLd";
 import { Analytics } from "@vercel/analytics/next";
 
 // Police principale élégante
@@ -22,17 +23,81 @@ const crimson = Crimson_Text({
 });
 
 export const metadata = {
-  title:
-    "Atelier Art'âme - Portraits d'âme spirituels et Attrape-rêves artisanaux",
+  metadataBase: new URL("https://atelierartame.com"),
+  title: {
+    default: "Atelier Art'âme - Portraits d'Âme & Tableaux de Vie Spirituels",
+    template: "%s | Atelier Art'âme",
+  },
   description:
-    "Découvrez l'art spirituel unique de l'Atelier Art'âme. Portraits d'âme personnalisés et attrape-rêves artisanaux créés avec intention et matériaux naturels.",
-  keywords:
-    "portrait d'âme, attrape-rêves, art spirituel, création artisanale, développement personnel",
+    "Créations spirituelles uniques par Véronique : Portraits d'Âme, Tableaux de Vie et Attrape-rêves artisanaux. Art intuitif pour révéler votre essence et accompagner votre chemin de vie. Livraison partout en France.",
+  keywords: [
+    "portrait d'âme",
+    "tableau de vie",
+    "attrape-rêves",
+    "art spirituel",
+    "création artisanale",
+    "développement personnel",
+    "coaching spirituel",
+    "art intuitif",
+    "peinture énergétique",
+    "guidance spirituelle",
+    "Saint Sixt",
+    "Haute-Savoie",
+  ],
+  authors: [{ name: "Véronique - Atelier Art'âme" }],
+  creator: "Atelier Art'âme",
+  publisher: "Atelier Art'âme",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: "https://atelierartame.com",
+    siteName: "Atelier Art'âme",
+    title: "Atelier Art'âme - Portraits d'Âme & Tableaux de Vie Spirituels",
+    description:
+      "Créations spirituelles uniques : Portraits d'Âme, Tableaux de Vie et Attrape-rêves artisanaux. Art intuitif pour révéler votre essence.",
+    images: [
+      {
+        url: "/images/art.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Atelier Art'âme - Créations spirituelles",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Atelier Art'âme - Portraits d'Âme & Tableaux de Vie Spirituels",
+    description:
+      "Créations spirituelles uniques : Portraits d'Âme, Tableaux de Vie et Attrape-rêves artisanaux.",
+    images: ["/images/art.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://atelierartame.com",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
+      <head>
+        <JsonLd />
+      </head>
       <body
         className={`${inter.className} ${playfair.variable} ${crimson.variable}`}
       >

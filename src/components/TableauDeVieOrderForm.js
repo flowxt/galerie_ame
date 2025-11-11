@@ -232,8 +232,8 @@ export default function TableauDeVieOrderForm({ preselectedFormat = null }) {
             ...formData,
             orderType: "tableau-de-vie",
           },
-          successUrl: `${window.location.origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-          cancelUrl: `${window.location.origin}/tableau-de-vie#tarifs`,
+          successUrl: `${process.env.NEXT_PUBLIC_BASE_URL || window.location.origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancelUrl: `${process.env.NEXT_PUBLIC_BASE_URL || window.location.origin}/tableau-de-vie#tarifs`,
         }),
       });
 
