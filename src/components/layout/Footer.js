@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Heart, Mail, Phone, MapPin } from "lucide-react";
+import { Heart, Mail, Phone, MapPin, Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -139,6 +139,35 @@ export default function Footer() {
                 <Mail className="w-4 h-4 mr-2" />
                 Nous écrire
               </Link>
+            </div>
+
+            {/* Réseaux sociaux */}
+            <div className="mt-6">
+              <h5 className="text-sm font-semibold text-gray-700 mb-3">
+                Suivez-nous
+              </h5>
+              <div className="flex items-center space-x-3">
+                <a
+                  href="https://www.instagram.com/atelierartame/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 text-white hover:from-purple-500 hover:to-pink-500 transition-all duration-300 transform hover:scale-110 shadow-md"
+                  aria-label="Instagram Atelier Art'âme"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+                {/* Facebook en attente
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 text-white hover:from-blue-500 hover:to-blue-600 transition-all duration-300 transform hover:scale-110 shadow-md"
+                  aria-label="Facebook Atelier Art'âme"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+                */}
+              </div>
             </div>
           </div>
         </div>
