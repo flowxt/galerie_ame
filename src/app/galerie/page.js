@@ -42,7 +42,7 @@ export default function GaleriePage() {
       id: 3,
       src: "/images/portrait-dame3.jpg",
       title: "Beauté Authentique",
-      category: "Portrait d'Âme",
+      category: "Création Intuitive",
       description: "Expression de la vérité intérieure",
     },
     {
