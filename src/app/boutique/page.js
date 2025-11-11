@@ -387,33 +387,18 @@ export default function Boutique() {
             </h2>
 
             <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Commandez votre portrait d&apos;âme personnalisé ou contactez-nous
-              pour discuter d&apos;une création sur mesure qui vous ressemble.
+              Contactez-nous pour discuter d&apos;une création sur mesure qui
+              vous ressemble.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link
-                href="/portrait-d-ame#tarifs"
-                className="group bg-gradient-to-r from-rose-500 to-purple-500 text-white px-10 py-5 rounded-full hover:from-rose-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-xl text-lg font-medium"
-              >
-                <span className="flex items-center space-x-3">
-                  <Heart className="w-6 h-6" />
-                  <span>Commander un Portrait d&apos;Âme</span>
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-
-              <Link
-                href="/contact"
-                className="group bg-white border-2 border-rose-300 text-rose-700 hover:bg-rose-50 px-10 py-5 rounded-full transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-sm"
-              >
-                <span className="flex items-center space-x-3">
-                  <MessageCircle className="w-6 h-6" />
-                  <span>Nous Contacter</span>
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-            </div>
+            <Link
+              href="/contact"
+              className="group bg-gradient-to-r from-rose-500 to-purple-500 text-white px-10 py-5 rounded-full hover:from-rose-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 text-lg font-medium shadow-xl inline-flex items-center space-x-3"
+            >
+              <MessageCircle className="w-6 h-6" />
+              <span>Nous Contacter</span>
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </motion.div>
         </div>
       </section>

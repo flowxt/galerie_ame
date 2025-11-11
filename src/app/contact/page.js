@@ -135,7 +135,7 @@ export default function Contact() {
         {/* Image de fond */}
         <div className="absolute inset-0">
           <Image
-            src="/images/fond-contact.jpeg"
+            src="/images/vero-bw.jpg"
             alt="Véronique artiste - Contactez-nous"
             fill
             className="object-cover object-center"
