@@ -474,18 +474,20 @@ export default function Contact() {
                     </h3>
                     <div className="flex space-x-4">
                       <a
-                        href="https://facebook.com"
+                        href="https://www.facebook.com/profile.php?id=61581605606918"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group bg-gradient-to-r from-indigo-500 to-pink-500 p-4 rounded-xl hover:from-indigo-600 hover:to-pink-600 transition-all transform hover:scale-110 shadow-lg"
+                        aria-label="Facebook Atelier Art'âme"
                       >
                         <Facebook className="w-6 h-6 text-white" />
                       </a>
                       <a
-                        href="https://instagram.com"
+                        href="https://www.instagram.com/atelierartame/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group bg-gradient-to-r from-pink-500 to-purple-500 p-4 rounded-xl hover:from-pink-600 hover:to-purple-600 transition-all transform hover:scale-110 shadow-lg"
+                        aria-label="Instagram Atelier Art'âme"
                       >
                         <Instagram className="w-6 h-6 text-white" />
                       </a>
