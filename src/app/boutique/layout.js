@@ -33,4 +33,3 @@ export const metadata = {
 export default function BoutiqueLayout({ children }) {
   return children;
 }
-
