@@ -19,7 +19,7 @@ export const metadata = {
     url: "https://atelierartame.com/attrape-reves",
     images: [
       {
-        url: "/images/attrape-reve-bleu.jpg",
+        url: "https://atelierartame.com/images/attrape-reve-bleu.jpg",
         width: 1200,
         height: 630,
         alt: "Attrape-rêves artisanal - Création spirituelle",

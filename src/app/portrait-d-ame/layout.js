@@ -19,7 +19,7 @@ export const metadata = {
     url: "https://atelierartame.com/portrait-d-ame",
     images: [
       {
-        url: "/images/portrait-ame1.jpg",
+        url: "https://atelierartame.com/images/portrait-ame1.jpg",
         width: 1200,
         height: 630,
         alt: "Portrait d'Âme - Création spirituelle unique",

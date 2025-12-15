@@ -62,7 +62,7 @@ export const metadata = {
       "Créations spirituelles uniques : Portraits d'Âme, Tableaux de Vie et Attrape-rêves artisanaux. Art intuitif pour révéler votre essence.",
     images: [
       {
-        url: "/images/art.jpg",
+        url: "https://atelierartame.com/images/art.jpg",
         width: 1200,
         height: 630,
         alt: "Atelier Art'âme - Créations spirituelles",
@@ -74,7 +74,7 @@ export const metadata = {
     title: "Atelier Art'âme - Portraits d'Âme & Tableaux de Vie Spirituels",
     description:
       "Créations spirituelles uniques : Portraits d'Âme, Tableaux de Vie et Attrape-rêves artisanaux.",
-    images: ["/images/art.jpg"],
+    images: ["https://atelierartame.com/images/art.jpg"],
   },
   robots: {
     index: true,

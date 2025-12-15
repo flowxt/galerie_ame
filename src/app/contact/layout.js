@@ -18,7 +18,7 @@ export const metadata = {
     url: "https://atelierartame.com/contact",
     images: [
       {
-        url: "/images/vero-bw.jpg",
+        url: "https://atelierartame.com/images/vero-bw.jpg",
         width: 1200,
         height: 630,
         alt: "Contactez Atelier Art'âme",

@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Moon, Heart, Star } from "lucide-react";
+import { Sparkles, Moon, Heart, Star } from "lucide-react";
 import { Vortex } from "../ui/Vortex";
 import { motion } from "framer-motion";
 
@@ -77,53 +77,51 @@ export default function HeroSection() {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                className="block mb-6"
+                className="block mb-8"
               >
                 <span className="bg-gradient-to-r from-rose-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-medium animate-shimmer">
                   Essence Spirituelle
                 </span>
               </motion.span>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-600 flex items-center justify-center gap-4 flex-wrap"
-              >
-                <motion.span
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 1 }}
-                  className="inline-flex items-center gap-2"
-                >
-                  <Heart className="w-8 h-8 text-rose-400 animate-pulse" />
-                  Portraits d&apos;Âme
-                </motion.span>
-                <span className="text-gray-400">•</span>
-                <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.2 }}
-                >
-                  Tableau de vie
-                </motion.span>
-                <span className="text-gray-400">•</span>
-                <motion.span
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 1.4 }}
-                  className="inline-flex items-center gap-2"
-                >
-                  <Moon className="w-8 h-8 text-purple-400 animate-pulse animation-delay-500" />
-                  Attrape-rêves
-                </motion.span>
-              </motion.div>
             </h1>
+
+            {/* Tags des services */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex items-center justify-center gap-3 flex-wrap mb-10"
+            >
+              <Link
+                href="/portrait-d-ame"
+                className="group inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-rose-200 rounded-full px-5 py-2.5 hover:bg-rose-50 hover:border-rose-300 transition-all duration-300 hover:scale-105 shadow-sm"
+              >
+                <Heart className="w-4 h-4 text-rose-500 group-hover:scale-110 transition-transform" />
+                <span className="text-gray-700 font-medium text-sm">Portraits d&apos;Âme</span>
+              </Link>
+
+              <Link
+                href="/tableau-de-vie"
+                className="group inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-blue-200 rounded-full px-5 py-2.5 hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 hover:scale-105 shadow-sm"
+              >
+                <Sparkles className="w-4 h-4 text-blue-500 group-hover:scale-110 transition-transform" />
+                <span className="text-gray-700 font-medium text-sm">Tableau de Vie</span>
+              </Link>
+
+              <Link
+                href="/attrape-reves"
+                className="group inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-purple-200 rounded-full px-5 py-2.5 hover:bg-purple-50 hover:border-purple-300 transition-all duration-300 hover:scale-105 shadow-sm"
+              >
+                <Moon className="w-4 h-4 text-purple-500 group-hover:scale-110 transition-transform" />
+                <span className="text-gray-700 font-medium text-sm">Attrape-rêves</span>
+              </Link>
+            </motion.div>
 
             {/* Description avec animation */}
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.6 }}
+              transition={{ duration: 0.8, delay: 1 }}
               className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-crimson"
             >
               Créations spirituelles personnalisées pour révéler votre âme et

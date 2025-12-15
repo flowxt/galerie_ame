@@ -19,7 +19,7 @@ export const metadata = {
     url: "https://atelierartame.com/tableau-de-vie",
     images: [
       {
-        url: "/images/tableauvie1.jpeg",
+        url: "https://atelierartame.com/images/tableauvie1.jpeg",
         width: 1200,
         height: 630,
         alt: "Tableau de Vie - Cartographie spirituelle personnalisée",

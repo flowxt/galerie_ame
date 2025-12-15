@@ -17,7 +17,7 @@ export const metadata = {
     url: "https://atelierartame.com/galerie",
     images: [
       {
-        url: "/images/art.jpg",
+        url: "https://atelierartame.com/images/art.jpg",
         width: 1200,
         height: 630,
         alt: "Galerie des créations - Atelier Art'âme",

@@ -31,8 +31,7 @@ export default function JsonLd() {
     priceRange: "€€",
     sameAs: [
       "https://www.instagram.com/atelierartame/",
-      // Facebook en attente
-      // "https://www.facebook.com/atelierartame",
+      "https://www.facebook.com/profile.php?id=61581605606918",
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
